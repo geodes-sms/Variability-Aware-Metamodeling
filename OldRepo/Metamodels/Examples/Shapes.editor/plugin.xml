@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated shapes -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="shapes.presentation.ShapesModelWizardID"
+            name="%_UI_ShapesModelWizard_label"
+            class="shapes.presentation.ShapesModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ShapesModelFile.gif">
+         <description>%_UI_ShapesModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated shapes -->
+      <editor
+            id="shapes.presentation.ShapesEditorID"
+            name="%_UI_ShapesEditor_label"
+            icon="icons/full/obj16/ShapesModelFile.gif"
+            extensions="shapes"
+            class="shapes.presentation.ShapesEditor"
+            contributorClass="shapes.presentation.ShapesActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

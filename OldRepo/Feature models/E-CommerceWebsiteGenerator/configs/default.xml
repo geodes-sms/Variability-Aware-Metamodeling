@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+	<feature automatic="selected" name="ECommerce"/>
+	<feature automatic="selected" name="ItemCatalog"/>
+	<feature automatic="selected" manual="selected" name="Item"/>
+	<feature manual="selected" name="Service"/>
+	<feature manual="selected" name="Product"/>
+	<feature automatic="selected" name="ShoppingCart"/>
+	<feature automatic="selected" name="Discount"/>
+	<feature automatic="selected" name="PaymentType"/>
+	<feature automatic="unselected" name="MultiplePayments"/>
+	<feature automatic="selected" name="SinglePayment"/>
+</configuration>

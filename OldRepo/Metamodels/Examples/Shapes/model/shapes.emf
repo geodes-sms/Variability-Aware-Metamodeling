@@ -1,0 +1,27 @@
+@namespace(uri="http://www.example.org/shapes", prefix="shapes")
+package shapes;
+
+class ShapeConstructor {
+	val Shape[*] shape;
+	attr String name;
+}
+
+abstract class Shape {
+	attr String name;
+}
+
+class Circle extends Shape {
+	attr int radius;
+}
+
+class Rectangle extends Shape {
+	attr int length;
+	attr int width;
+}
+
+class Triangle extends Shape {
+	attr int a;
+	attr int b;
+	attr int c;
+}
+

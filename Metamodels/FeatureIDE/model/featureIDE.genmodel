@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/FeatureIDE/src-gen" creationIcons="false" editDirectory="/FeatureIDE.edit/src-gen"
+    editorDirectory="/FeatureIDE.editor/src-gen" modelPluginID="FeatureIDE" modelName="FeatureIDE"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" codeFormatting="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="20.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>featureIDE.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="FeatureIDE" disposableProviderFactory="true" ecorePackage="featureIDE.ecore#/">
+    <genClasses ecoreClass="featureIDE.ecore#//SubFeature">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference featureIDE.ecore#//SubFeature/subfeatures"/>
+    </genClasses>
+    <genClasses ecoreClass="featureIDE.ecore#//RootFeature">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference featureIDE.ecore#//RootFeature/feature"/>
+    </genClasses>
+    <genClasses ecoreClass="featureIDE.ecore#//Feature">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute featureIDE.ecore#//Feature/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute featureIDE.ecore#//Feature/abstract"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference featureIDE.ecore#//Feature/association"/>
+    </genClasses>
+    <genClasses ecoreClass="featureIDE.ecore#//Association">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference featureIDE.ecore#//Association/childfeature"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference featureIDE.ecore#//Association/parentfeature"/>
+    </genClasses>
+    <genClasses ecoreClass="featureIDE.ecore#//MandatoryAssociation"/>
+    <genClasses ecoreClass="featureIDE.ecore#//OptionalAssociation"/>
+  </genPackages>
+</genmodel:GenModel>

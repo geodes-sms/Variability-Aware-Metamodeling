@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: shapes.myconstructor
+Bundle-ManifestVersion: 2
+Bundle-Name: shapes.myconstructor
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: shapes.myconstructor; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: Shapes,
+ org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.16.0",
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Export-Package: shapes.myconstructor.services,
+ shapes.myconstructor.parser.antlr,
+ shapes.myconstructor.validation,
+ shapes.myconstructor.generator,
+ shapes.myconstructor.formatting2,
+ shapes.myconstructor.serializer,
+ shapes.myconstructor.scoping,
+ shapes.myconstructor,
+ shapes.myconstructor.parser.antlr.internal
+Import-Package: org.apache.log4j

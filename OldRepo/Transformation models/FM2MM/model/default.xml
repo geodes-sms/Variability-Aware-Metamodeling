@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+	<feature automatic="selected" name="ReLiS"/>
+	<feature automatic="selected" manual="selected" name="Screening"/>
+	<feature automatic="selected" name="Criteria"/>
+	<feature manual="selected" name="Inclusion"/>
+	<feature manual="selected" name="Exclusion"/>
+	<feature automatic="selected" name="MultipleReviewers"/>
+	<feature automatic="selected" manual="selected" name="Conflict"/>
+	<feature automatic="selected" manual="selected" name="ConflictDetection"/>
+	<feature manual="selected" name="IncludeExclude"/>
+	<feature automatic="unselected" name="ExclusionCriteria"/>
+	<feature automatic="selected" manual="selected" name="ConflictResolution"/>
+	<feature manual="selected" name="Majority"/>
+	<feature automatic="unselected" name="Unanimous"/>
+	<feature automatic="selected" manual="selected" name="Validation"/>
+	<feature automatic="selected" name="AssignmentMode"/>
+	<feature automatic="unselected" name="Normal"/>
+	<feature manual="selected" name="Veto"/>
+	<feature automatic="unselected" name="Info"/>
+	<feature automatic="selected" name="Phase"/>
+	<feature automatic="selected" name="Field"/>
+	<feature manual="selected" name="QA"/>
+	<feature automatic="selected" name="Question"/>
+	<feature automatic="selected" name="Answer"/>
+	<feature automatic="selected" name="DataExtraction"/>
+	<feature automatic="selected" name="Category"/>
+	<feature automatic="selected" name="CategoryType"/>
+	<feature automatic="selected" manual="selected" name="FreeCategory"/>
+	<feature automatic="unselected" name="Number"/>
+	<feature automatic="unselected" name="Text"/>
+	<feature manual="selected" name="String"/>
+	<feature automatic="unselected" name="Boolean"/>
+	<feature automatic="unselected" name="Decimal"/>
+	<feature automatic="unselected" name="Date"/>
+	<feature manual="selected" name="Note"/>
+	<feature manual="selected" name="StaticCategory"/>
+	<feature manual="selected" name="IndependentDynamicCategory"/>
+	<feature manual="selected" name="DependentDynamicCategory"/>
+	<feature name="Subcategories"/>
+	<feature manual="selected" name="MandatoryCategory"/>
+	<feature automatic="selected" manual="selected" name="Multivalued"/>
+	<feature manual="selected" name="InitialValue"/>
+	<feature automatic="selected" name="Synthesis"/>
+	<feature manual="selected" name="CompareGraph"/>
+	<feature automatic="selected" manual="selected" name="Type"/>
+	<feature name="Bar"/>
+	<feature name="Pie"/>
+	<feature manual="selected" name="Line"/>
+</configuration>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/Fruits/src-gen" creationIcons="false" editDirectory="/Fruits.edit/src-gen"
+    editorDirectory="/Fruits.editor/src-gen" modelPluginID="Fruits" modelName="Fruits"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" codeFormatting="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="20.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>fruits.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Fruits" disposableProviderFactory="true" ecorePackage="fruits.ecore#/">
+    <genClasses ecoreClass="fruits.ecore#//FruitBowl">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fruits.ecore#//FruitBowl/fruit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fruits.ecore#//FruitBowl/name"/>
+    </genClasses>
+    <genClasses ecoreClass="fruits.ecore#//Fruit"/>
+    <genClasses ecoreClass="fruits.ecore#//Apple">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fruits.ecore#//Apple/radius"/>
+    </genClasses>
+    <genClasses ecoreClass="fruits.ecore#//Banana">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fruits.ecore#//Banana/length"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fruits.ecore#//Banana/width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fruits.ecore#//Banana/depth"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

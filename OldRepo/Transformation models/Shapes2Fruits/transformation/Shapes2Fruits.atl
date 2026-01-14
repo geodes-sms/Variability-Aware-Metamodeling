@@ -1,0 +1,45 @@
+-- @nsURI Shapes=http://www.example.org/shapes
+-- @nsURI Fruits=http://www.example.org/fruits
+
+module Shapes2Fruits;
+create OUT : Fruits from IN : Shapes;
+
+rule ShapeConstructor2FruitBowl {
+	from
+		sc : Shapes!ShapeConstructor
+	to 
+		fb : Fruits!FruitBowl (
+			name <- sc.name,
+			fruit <- sc.shape -- Mapping the containment hierarchy between the ShapeConstructor and FruitBowl
+		)
+}
+
+rule Circles2Apples {
+	from
+		circle : Shapes!Shape(
+			circle.isCircle() -- Filter to verify the type.
+			)
+	to 
+		apple : Fruits!Apple (
+			radius <- circle.radius -- Mapping the attribute of Circle to Apple.
+		)
+}
+
+helper context Shapes!Shape def : isCircle() : Boolean = 
+	if self.oclIsTypeOf(Shapes!Circle) then 
+		true
+ 	else
+ 		false
+	endif
+	;
+
+rule Rectangles2Bananas {
+	from
+		rectangle : Shapes!Rectangle -- No filter here, because we can directly declare a subtype.
+	to 
+		banana : Fruits!Banana (
+		length <- rectangle.length,
+		width <- rectangle.width,
+		depth <- 3 -- This property is not defined in Rectangle, so we default to a static value for all bananas (could also be left null).
+		)
+}

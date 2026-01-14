@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension
+		point="org.eclipse.ui.editors">
+		<editor
+			class="shapes.myconstructor.ui.ShapesExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+			contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+			default="true"
+			extensions="shapes"
+			id="shapes.myconstructor.Shapes"
+			name="Shapes Editor">
+		</editor>
+	</extension>
+	<extension
+		point="org.eclipse.ui.handlers">
+		<handler
+			class="shapes.myconstructor.ui.ShapesExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+			commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
+			<activeWhen>
+				<reference
+					definitionId="shapes.myconstructor.Shapes.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+		<handler
+			class="shapes.myconstructor.ui.ShapesExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+			commandId="shapes.myconstructor.Shapes.validate">
+			<activeWhen>
+				<reference
+					definitionId="shapes.myconstructor.Shapes.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+		<!-- copy qualified name -->
+		<handler
+			class="shapes.myconstructor.ui.ShapesExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
+			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName">
+			<activeWhen>
+				<reference definitionId="shapes.myconstructor.Shapes.Editor.opened" />
+			</activeWhen>
+		</handler>
+		<handler
+			class="shapes.myconstructor.ui.ShapesExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
+			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName">
+			<activeWhen>
+				<and>
+					<reference definitionId="shapes.myconstructor.Shapes.XtextEditor.opened" />
+					<iterate>
+						<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
+					</iterate>
+				</and>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension point="org.eclipse.core.expressions.definitions">
+		<definition id="shapes.myconstructor.Shapes.Editor.opened">
+			<and>
+				<reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
+				<with variable="activeEditor">
+					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName"
+						value="shapes.myconstructor.Shapes"
+						forcePluginActivation="true"/>
+				</with>
+			</and>
+		</definition>
+		<definition id="shapes.myconstructor.Shapes.XtextEditor.opened">
+			<and>
+				<reference definitionId="isXtextEditorActive"/>
+				<with variable="activeEditor">
+					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName"
+						value="shapes.myconstructor.Shapes"
+						forcePluginActivation="true"/>
+				</with>
+			</and>
+		</definition>
+	</extension>
+	<extension
+			point="org.eclipse.ui.preferencePages">
+		<page
+			class="shapes.myconstructor.ui.ShapesExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="shapes.myconstructor.Shapes"
+			name="Shapes">
+			<keywordReference id="shapes.myconstructor.ui.keyword_Shapes"/>
+		</page>
+		<page
+			category="shapes.myconstructor.Shapes"
+			class="shapes.myconstructor.ui.ShapesExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+			id="shapes.myconstructor.Shapes.coloring"
+			name="Syntax Coloring">
+			<keywordReference id="shapes.myconstructor.ui.keyword_Shapes"/>
+		</page>
+		<page
+			category="shapes.myconstructor.Shapes"
+			class="shapes.myconstructor.ui.ShapesExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+			id="shapes.myconstructor.Shapes.templates"
+			name="Templates">
+			<keywordReference id="shapes.myconstructor.ui.keyword_Shapes"/>
+		</page>
+	</extension>
+	<extension
+			point="org.eclipse.ui.propertyPages">
+		<page
+			class="shapes.myconstructor.ui.ShapesExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="shapes.myconstructor.Shapes"
+			name="Shapes">
+			<keywordReference id="shapes.myconstructor.ui.keyword_Shapes"/>
+			<enabledWhen>
+				<adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+			<filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+		</page>
+	</extension>
+	<extension
+		point="org.eclipse.ui.keywords">
+		<keyword
+			id="shapes.myconstructor.ui.keyword_Shapes"
+			label="Shapes"/>
+	</extension>
+	<extension
+		point="org.eclipse.ui.commands">
+		<command
+			description="Trigger expensive validation"
+			id="shapes.myconstructor.Shapes.validate"
+			name="Validate">
+		</command>
+		<!-- copy qualified name -->
+		<command
+			id="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
+			categoryId="org.eclipse.ui.category.edit"
+			description="Copy the qualified name for the selected element"
+			name="Copy Qualified Name">
+		</command>
+		<command
+			id="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName"
+			categoryId="org.eclipse.ui.category.edit"
+			description="Copy the qualified name for the selected element"
+			name="Copy Qualified Name">
+		</command>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.edit">
+			<command
+				commandId="shapes.myconstructor.Shapes.validate"
+				style="push"
+				tooltip="Trigger expensive validation">
+				<visibleWhen checkEnabled="false">
+					<reference
+						definitionId="shapes.myconstructor.Shapes.Editor.opened">
+					</reference>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<!-- copy qualified name -->
+		<menuContribution locationURI="popup:#TextEditorContext?after=copy">
+			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
+				style="push" tooltip="Copy Qualified Name">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="shapes.myconstructor.Shapes.Editor.opened" />
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<menuContribution locationURI="menu:edit?after=copy">
+			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
+				style="push" tooltip="Copy Qualified Name">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="shapes.myconstructor.Shapes.Editor.opened" />
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<menuContribution locationURI="popup:org.eclipse.xtext.ui.outline?after=additions">
+			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName"
+				style="push" tooltip="Copy Qualified Name">
+				<visibleWhen checkEnabled="false">
+					<and>
+						<reference definitionId="shapes.myconstructor.Shapes.XtextEditor.opened" />
+						<iterate>
+							<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
+						</iterate>
+					</and>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
+			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="shapes.myconstructor.Shapes.Editor.opened">
+					</reference>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.handlers">
+		<handler
+			class="shapes.myconstructor.ui.ShapesExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+			commandId="org.eclipse.xtext.ui.editor.FindReferences">
+			<activeWhen>
+				<reference
+					definitionId="shapes.myconstructor.Shapes.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension point="org.eclipse.core.contenttype.contentTypes">
+		<content-type
+			base-type="org.eclipse.core.runtime.text"
+			file-extensions="shapes"
+			id="shapes.myconstructor.Shapes.contenttype"
+			name="Shapes File"
+			priority="normal">
+		</content-type>
+	</extension>
+	<!-- adding resource factories -->
+	<extension
+		point="org.eclipse.emf.ecore.extension_parser">
+		<parser
+			class="shapes.myconstructor.ui.ShapesExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			type="shapes">
+		</parser>
+	</extension>
+	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
+		<resourceServiceProvider
+			class="shapes.myconstructor.ui.ShapesExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+			uriExtension="shapes">
+		</resourceServiceProvider>
+	</extension>
+	<!-- marker definitions for shapes.myconstructor.Shapes -->
+	<extension
+			id="shapes.check.fast"
+			name="Shapes Problem"
+			point="org.eclipse.core.resources.markers">
+		<super type="org.eclipse.xtext.ui.check.fast"/>
+		<persistent value="true"/>
+	</extension>
+	<extension
+			id="shapes.check.normal"
+			name="Shapes Problem"
+			point="org.eclipse.core.resources.markers">
+		<super type="org.eclipse.xtext.ui.check.normal"/>
+		<persistent value="true"/>
+	</extension>
+	<extension
+			id="shapes.check.expensive"
+			name="Shapes Problem"
+			point="org.eclipse.core.resources.markers">
+		<super type="org.eclipse.xtext.ui.check.expensive"/>
+		<persistent value="true"/>
+	</extension>
+	<extension point="org.eclipse.ui.preferencePages">
+		<page
+			category="shapes.myconstructor.Shapes"
+			class="shapes.myconstructor.ui.ShapesExecutableExtensionFactory:org.eclipse.xtext.ui.validation.ValidatorPreferencePage"
+			id="shapes.myconstructor.Shapes.validator.preferencePage"
+			name="Errors/Warnings">
+			<keywordReference id="shapes.myconstructor.ui.keyword_Shapes"/>
+		</page>
+	</extension>
+	<extension point="org.eclipse.xtext.builder.participant">
+		<participant
+			class="shapes.myconstructor.ui.ShapesExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
+			fileExtensions="shapes"/>
+	</extension>
+	<extension point="org.eclipse.ui.preferencePages">
+		<page
+			category="shapes.myconstructor.Shapes"
+			class="shapes.myconstructor.ui.ShapesExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+			id="shapes.myconstructor.Shapes.compiler.preferencePage"
+			name="Compiler">
+			<keywordReference id="shapes.myconstructor.ui.keyword_Shapes"/>
+		</page>
+	</extension>
+	<extension point="org.eclipse.ui.propertyPages">
+		<page
+			category="shapes.myconstructor.Shapes"
+			class="shapes.myconstructor.ui.ShapesExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+			id="shapes.myconstructor.Shapes.compiler.propertyPage"
+			name="Compiler">
+			<keywordReference id="shapes.myconstructor.ui.keyword_Shapes"/>
+			<enabledWhen>
+				<adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+			<filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+		</page>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="popup:#TextEditorContext?after=xtext.ui.openDeclaration">
+			<command
+				commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand"
+				id="shapes.myconstructor.Shapes.OpenGeneratedCode"
+				style="push">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="shapes.myconstructor.Shapes.Editor.opened" />
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.handlers">
+		<handler
+			class="shapes.myconstructor.ui.ShapesExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
+			commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand">
+			<activeWhen>
+				<reference definitionId="shapes.myconstructor.Shapes.Editor.opened" />
+			</activeWhen>
+		</handler>
+	</extension>
+	<!-- Quick Outline -->
+	<extension
+		point="org.eclipse.ui.handlers">
+		<handler
+			class="shapes.myconstructor.ui.ShapesExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
+			<activeWhen>
+				<reference
+					definitionId="shapes.myconstructor.Shapes.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension
+		point="org.eclipse.ui.commands">
+		<command
+			description="Open the quick outline."
+			id="org.eclipse.xtext.ui.editor.outline.QuickOutline"
+			name="Quick Outline">
+		</command>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.open">
+			<command commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline"
+				style="push"
+				tooltip="Open Quick Outline">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="shapes.myconstructor.Shapes.Editor.opened"/>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<!-- quickfix marker resolution generator for shapes.myconstructor.Shapes -->
+	<extension
+			point="org.eclipse.ui.ide.markerResolution">
+		<markerResolutionGenerator
+			class="shapes.myconstructor.ui.ShapesExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			markerType="shapes.myconstructor.ui.shapes.check.fast">
+			<attribute
+				name="FIXABLE_KEY"
+				value="true">
+			</attribute>
+		</markerResolutionGenerator>
+		<markerResolutionGenerator
+			class="shapes.myconstructor.ui.ShapesExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			markerType="shapes.myconstructor.ui.shapes.check.normal">
+			<attribute
+				name="FIXABLE_KEY"
+				value="true">
+			</attribute>
+		</markerResolutionGenerator>
+		<markerResolutionGenerator
+			class="shapes.myconstructor.ui.ShapesExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			markerType="shapes.myconstructor.ui.shapes.check.expensive">
+			<attribute
+				name="FIXABLE_KEY"
+				value="true">
+			</attribute>
+		</markerResolutionGenerator>
+	</extension>
+	<!-- Rename Refactoring -->
+	<extension point="org.eclipse.ui.handlers">
+		<handler
+			class="shapes.myconstructor.ui.ShapesExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
+			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
+			<activeWhen>
+				<reference
+					definitionId="shapes.myconstructor.Shapes.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.edit">
+			<command commandId="org.eclipse.xtext.ui.refactoring.RenameElement"
+				style="push">
+				<visibleWhen checkEnabled="false">
+					<reference
+						definitionId="shapes.myconstructor.Shapes.Editor.opened">
+					</reference>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.preferencePages">
+		<page
+			category="shapes.myconstructor.Shapes"
+			class="shapes.myconstructor.ui.ShapesExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
+			id="shapes.myconstructor.Shapes.refactoring"
+			name="Refactoring">
+			<keywordReference id="shapes.myconstructor.ui.keyword_Shapes"/>
+		</page>
+	</extension>
+	<extension point="org.eclipse.compare.contentViewers">
+		<viewer id="shapes.myconstructor.Shapes.compare.contentViewers"
+			class="shapes.myconstructor.ui.ShapesExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+			extensions="shapes">
+		</viewer>
+		<contentTypeBinding
+			contentTypeId="shapes.myconstructor.Shapes.contenttype"
+			contentViewerId="shapes.myconstructor.Shapes.compare.contentViewers" />
+	</extension>
+	<extension point="org.eclipse.compare.contentMergeViewers">
+		<viewer id="shapes.myconstructor.Shapes.compare.contentMergeViewers"
+			class="shapes.myconstructor.ui.ShapesExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+			extensions="shapes" label="Shapes Compare">
+		</viewer>
+		<contentTypeBinding
+			contentTypeId="shapes.myconstructor.Shapes.contenttype"
+			contentMergeViewerId="shapes.myconstructor.Shapes.compare.contentMergeViewers" />
+	</extension>
+	<extension point="org.eclipse.ui.editors.documentProviders">
+		<provider id="shapes.myconstructor.Shapes.editors.documentProviders"
+			class="shapes.myconstructor.ui.ShapesExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
+			extensions="shapes">
+		</provider>
+	</extension>
+	<extension point="org.eclipse.team.core.fileTypes">
+		<fileTypes
+			extension="shapes"
+			type="text">
+		</fileTypes>
+	</extension>
+</plugin>

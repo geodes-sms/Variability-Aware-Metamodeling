@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+	<properties>
+		<graphics key="autolayoutconstraints" value="false"/>
+		<graphics key="legendautolayout" value="true"/>
+		<graphics key="showconstraints" value="true"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="horizontal"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<graphics key="layoutalgorithm" value="1"/>
+	</properties>
+	<struct>
+		<and abstract="true" mandatory="true" name="Formalism">
+			<or name="OptionalConcreteFeature">
+				<feature name="OrGroupFeature1"/>
+				<feature name="OrGroupFeature2"/>
+			</or>
+			<alt abstract="true" mandatory="true" name="MandatoryAbstractFeature">
+				<graphics key="collapsed" value="false"/>
+				<feature name="AlternativeGroupFeature1"/>
+				<feature name="AlternativeGroupFeature2"/>
+			</alt>
+		</and>
+	</struct>
+	<constraints>
+		<rule>
+			<imp>
+				<var>OrGroupFeature1</var>
+				<not>
+					<var>AlternativeGroupFeature1</var>
+				</not>
+			</imp>
+		</rule>
+	</constraints>
+</featureModel>

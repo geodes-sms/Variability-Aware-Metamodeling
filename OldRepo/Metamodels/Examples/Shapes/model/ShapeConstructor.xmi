@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shapes:ShapeConstructor
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:shapes="http://www.example.org/shapes">
+  <shape xsi:type="shapes:Circle"
+      name="Circle0"
+      radius="1"/>
+  <shape xsi:type="shapes:Rectangle"
+      name="Rectangle0"
+      length="10"
+      width="2"/>
+  <shape xsi:type="shapes:Triangle"
+      name="Triangle0"
+      a="1"
+      b="1"
+      c="1"/>
+  <shape xsi:type="shapes:Rectangle"
+      name="Rectangle1"
+      length="8"
+      width="4"/>
+  <shape xsi:type="shapes:Circle"
+      name="Circle1"
+      radius="10"/>
+  <shape xsi:type="shapes:Rectangle"
+      name="Rectangle2"
+      length="20"
+      width="10"/>
+</shapes:ShapeConstructor>

@@ -1,0 +1,49 @@
+@namespace(uri="http://www.example.org/eCommercePMM", prefix="eCommercePMM")
+package eCommercePMM;
+
+class ECommerce {
+	val ItemCatalog[*] productcatalog;
+	val ShoppingCart[*] shoppingcart;
+	val PaymentType[*] paymenttype;
+	readonly id attr String[1] name = "Super web store";
+}
+
+class ItemCatalog {
+	id attr String[1] catalogID;
+	val Item[*] item;
+}
+
+class ShoppingCart {
+	ref Discount discount;
+	ref PaymentType[1] paymenttype;
+	id attr String[1] cartID;
+}
+
+class Discount {
+	id attr String[1] discountID;
+	attr double amount;
+}
+
+abstract class PaymentType {
+	id attr String[1] billID;
+}
+
+class SinglePayment extends PaymentType {
+	attr double totalAmount;
+	attr EDate timestamp;
+}
+
+class Product extends Item {
+}
+
+class Service extends Item {
+	attr int duration;
+}
+
+abstract class Item {
+	id attr String[1] itemID;
+	attr String name;
+	attr String description;
+	ref Discount discount;
+}
+

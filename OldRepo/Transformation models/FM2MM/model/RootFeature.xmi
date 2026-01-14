@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<featureIDE:RootFeature
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:featureIDE="http://www.example.org/featureIDE"
+    name="ReLiS"
+    abstract="true">
+  <association
+      xsi:type="featureIDE:OptionalAssociation"
+      childfeature="Synthesis"
+      parentfeature="ReLiS"/>
+  <association
+      xsi:type="featureIDE:OptionalAssociation"
+      childfeature="Screening"
+      parentfeature="ReLiS"/>
+  <feature name="Synthesis"
+      abstract="true">
+    <association
+        xsi:type="featureIDE:MandatoryAssociation"
+        childfeature="Type"
+        parentfeature="Synthesis"/>
+    <association
+        xsi:type="featureIDE:OptionalAssociation"
+        childfeature="CompareGraph"
+        parentfeature="Synthesis"/>
+    <subfeatures
+        name="Type"
+        abstract="true">
+      <association
+          xsi:type="featureIDE:MandatoryAssociation"
+          childfeature="Bar"
+          parentfeature="Type"/>
+      <subfeatures
+          name="Bar"/>
+    </subfeatures>
+    <subfeatures
+        name="CompareGraph"/>
+  </feature>
+  <feature name="Screening"
+      abstract="true">
+    <association
+        xsi:type="featureIDE:MandatoryAssociation"
+        childfeature="Phase"
+        parentfeature="Screening"/>
+    <subfeatures
+        name="Phase">
+      <association
+          xsi:type="featureIDE:MandatoryAssociation"
+          childfeature="Field"
+          parentfeature="Phase"/>
+      <subfeatures
+          name="Field"/>
+    </subfeatures>
+  </feature>
+</featureIDE:RootFeature>

@@ -1,0 +1,259 @@
+-- @nsURI MM=http://www.eclipse.org/emf/2002/Ecore
+-- @nsURI FM=http://www.example.org/featureIDE
+
+--https://wiki.eclipse.org/ATL/User_Guide_-_The_ATL_Language
+module FM2MM;
+create OUT : MM from IN : FM;
+
+rule RootFeature2RootClass {
+	from
+		f : FM!RootFeature
+	to 
+		C : MM!EClass (
+			abstract <- f.abstract,
+			name <- f.name,
+			eReferences <- f.filterAssociationsOptional(f.association), -- If Optional rule 6 a) IS selected, choose this
+			eSuperTypes <-  C.findSuperTypeFiltered() -- If Optional rule 6 a) IS selected, choose this
+			
+			--Associate the associations to the eReferences. Then in Association, transform them to eReferences, so the link is automatically made.
+			--eReferences <- f.filterAssociationsBasic(f.association), -- If Optional rule 6 a) is NOT selected, choose this
+			--eSuperTypes <-  C.findSuperType() -- If Optional rule 6 a) is NOT selected, choose this
+			
+			
+		)
+}
+
+-- A leaf node is an EClass that has no children, which means it is never a parent. 
+-- I can find all the leaf nodes by going through all the EClass and comparing with the associations.parentfeature.name. If the name is not found as a parent in the associations, then it means it is a leaf node.
+-- The parent of the leaf nodes becomes an enumeration and the leaves become literals
+rule Features2Classes {
+	from
+		f : FM!SubFeature (
+			(not f.isLeafNode() and not f.isParentLeafNode()) or (f.isLeafNode() and not f.isMyParentEnumerable())
+		)
+	to 
+		c : MM!EClass (
+			abstract <- f.abstract,
+			name <- f.name,
+			eReferences <- f.filterAssociationsOptional(f.association), -- If Optional rule 6 a) IS selected, choose this
+			eSuperTypes <-  c.findSuperTypeFiltered() -- If Optional rule 6 a) IS selected, choose this
+			
+			--eReferences <- f.filterAssociationsBasic(f.association), -- If Optional rule 6 a) is NOT selected, choose this
+			--eSuperTypes <-  c.findSuperType() -- If Optional rule 6 a) is NOT selected, choose this
+			
+		)
+}
+
+rule Leaf2Literals{
+	from
+	-- I can split the 2 rules to have non-overlapping sets of features so that I only generate what I need
+		f : FM!SubFeature (
+			f.isLeafNode() and f.isMyParentEnumerable() -- There is an overlap here. Compare graph shouldn't be in the literals
+		)
+	to 
+		e : MM!EEnumLiteral (
+			name <- f.name		
+			--eReferences <- f.filterAssociationsBasic(f.association), -- If Optional rule 6 a) is NOT selected, choose this
+			--eSuperTypes <-  c.findSuperType() -- If Optional rule 6 a) is NOT selected, choose this
+			
+		)
+}
+
+rule LeafParent2Enums{
+	from
+		f : FM!SubFeature (
+			f.isParentLeafNode() and not f.isLeafNode()
+			--Make a helper that checks if it is a leaf node or not
+				-- I can split the 2 rules to have non-overlapping sets of features so that I only generate what I need
+		)
+	to 
+		e : MM!EEnum (
+			name <- f.name,
+			eLiterals <- f.subfeatures -- As easy as linking the subfeatures list to this. ATL can be magical and unintuitive at the same time.
+		)
+}
+
+-- https://stackoverflow.com/questions/10303280/uml-xmi-to-ecore
+-- There will be 2 EReferences if it is a bi-directional reference. One for each side of each class. i.e. Relis -> Synthesis & Synthesis -> Relis. If it is a unilateral association, then only 1 reference
+-- I need to set some parameters:
+	--Eopposite - for setting the other end of the association if it is bidirectional
+	--EType - This lets us know towards what the association is linked
+rule Association2Reference {
+	from
+		ass : FM!Association(
+		-- Select the filter based on the rule set (Only 1)
+		--ass.filteredAssociationBasic()
+		ass.filteredAssociationOptional()
+		)
+	to 
+		ref : MM!EReference (
+			name <- ass.childfeature.name.toLower(), -- Simply put the whole name in lower case.
+			lowerBound <- if ass.isOptionalAssociation() then 0 else 1 endif, --If the association is optional, return 0 as the lower bound, else return 1 (mandatory)
+			upperBound <- 1, -- Always set to one, because we cannot infer otherwise from feature model
+			eType <- ass.findChildClass()
+		)
+}
+
+-- I gotta go through all the ereferences that were generated and check if the parent has the same name as the ParentFeature. If it does, then I add it to the list, else I skip it.
+helper context FM!Feature def : getAllReferences(): Sequence(MM!EReference) = 
+		MM!EReference.allInstances() -> asSequence() -> -- Select all the references (Could've started with the associations too)
+		select(ref | ref.name = self.association -> asSequence() -> select(ass | ass.parentfeature.name = self.name 
+				and ass.childfeature.name.toLower() = ref.name)		
+)
+	;
+
+-- This only allows to find the right class for the EType, but does not actually place the EReference under the class
+-- Returns the EClass for the specific child association (self)
+helper context FM!Association def : findChildClass(): MM!EClass = 
+		MM!EClass.allInstances() -> 
+			select(child | child.name = self.childfeature.name) ->
+			first() -- Flatten the list to the first element found
+	;
+
+-- This only allows to find the right class for the EType, but does not actually place the EReference under the class
+-- Returns the EClass for the specific parent association (self)
+helper context FM!Association def : findParentClass(): MM!EClass = 
+		MM!EClass.allInstances() -> 
+			select(parent | parent.name = self.parentfeature.name) ->
+			first() -- Flatten the list to the first element found
+	;
+
+-- Only keep the associations that do not have parents as abstract classes (basic rule 6)
+-- FilterAssociationsBasic only keeps concrete -> concrete classes but still creates the associations, just doesn't link them with the classes.
+helper context FM!Feature def : filterAssociationsBasic(ass : Sequence(FM!Association)): Sequence(MM!EReference) = 
+			ass ->
+			select(child | child.parentfeature.abstract = false)
+			.asSequence()
+	;
+
+-- Keep all the associations, except the ones that have an abstract parent and the child is concrete (optional rule 6 a) )
+helper context FM!Feature def : filterAssociationsOptional(ass : Sequence(FM!Association)): Sequence(FM!Association) = 
+			ass ->
+			select(child | (child.parentfeature.abstract = true and child.childfeature.abstract = true) or (child.parentfeature.abstract = false and child.childfeature.abstract = false) or (child.parentfeature.abstract = false and child.childfeature.abstract = true))
+			.asSequence()
+	;
+
+-- The opposite (discarded) associations from the helper above
+helper context FM!Association def : notFilterAssociationsOptional(ass : Sequence(FM!Association)): Sequence(FM!Association) = 
+			ass ->
+			select(child | child.parentfeature.abstract = true and child.childfeature.abstract = false)
+			.asSequence()
+	;
+
+-- Returns true if parent is abstract, else false
+helper context FM!Association def : parentAbstract(c : MM!EClass): Boolean = 
+	if FM!Association.allInstances() -> 
+			select(ass | ass.childfeature.name = c.name and ass.parentfeature.abstract = true) ->
+			first().oclIsUndefined() 
+			then 
+				false 
+			else 
+				true 
+			endif	
+	
+	;
+
+-- Finds the Super Type of a class and returns the EClass corresponding to it.
+-- This version only returns the super type in the case where the parent is abstract and the children is concrete. All other cases have an association link instead.
+helper context MM!EClass def : findSuperTypeFiltered(): Sequence(MM!EClass) = 
+	if not FM!Association.allInstances() -> -- Check if the association can be found (Null check)
+			select(ass | ass.childfeature.name = self.name and ass.parentAbstract(self)) ->
+			first().oclIsUndefined()
+			then 
+				if not FM!Association.allInstances() ->  -- Check if the parent is abstract
+				select(ass | ass.childfeature.name = self.name and ass.parentAbstract(self) and ass.parentfeature.abstract = true and ass.childfeature.abstract = false)
+				.first().oclIsUndefined() 
+				then 
+					FM!Association.allInstances() -> -- Find the abstract parent if it exists
+					select(ass | ass.childfeature.name = self.name and ass.parentAbstract(self) and ass.parentfeature.abstract = true and ass.childfeature.abstract = false) ->
+					first().findParentClass() 
+				else 
+					OclUndefined -- Equivalent of returning Null, no abstract parent found
+				endif
+					 
+			else 
+				OclUndefined -- Equivalent of returning Null, no abstract parent found
+			endif
+	;
+				
+-- Finds the Super Type of a class and returns the EClass corresponding to it
+helper context MM!EClass def : findSuperType(): Sequence(MM!EClass) = 
+	if not FM!Association.allInstances() -> -- Check if the association can be found (Null check)
+			select(ass | ass.childfeature.name = self.name and ass.parentAbstract(self)) ->
+			first().oclIsUndefined()
+			then 
+				if FM!Association.allInstances() ->  -- Check if the parent is abstract
+				select(ass | ass.childfeature.name = self.name and ass.parentAbstract(self)) ->
+				first().parentAbstract(self)  
+				then 
+					FM!Association.allInstances() -> -- Find the abstract parent if it exists
+					select(ass | ass.childfeature.name = self.name and ass.parentAbstract(self)) ->
+					first().findParentClass() 
+				else 
+					OclUndefined -- Equivalent of returning Null, no abstract parent found
+				endif
+					 
+			else 
+				OclUndefined -- Equivalent of returning Null, no abstract parent found
+			endif
+	;
+				
+-- Go through all the associations and check if the subfeature (self) is ever a parent. If it never is a parent, an empty list is returned, which implies that it is a leaf node.
+-- Modified to make it work for all features. Exludes the root feature from the list, otherwise the root feature will count as a leaf.
+helper context FM!Feature def : isLeafNode(): Boolean = 
+	if FM!Association.allInstances() -> select(ass | ass.parentfeature.name = self.name).first().oclIsUndefined() and not (self.name = FM!RootFeature.allInstances().first().name)
+	then 
+		true 
+	else 
+		false 
+	endif
+	;
+
+-- Go through all the associations and select only the associations that are not leaf nodes. If the list is greater than 0, then it means the parent cannot be transformed as an enum or it will break the dependencies.
+helper context FM!Feature def : isParentLeafNode(): Boolean = 
+	if self.association -> select(child | not child.childfeature.isLeafNode()).size() > 0 --For all children, check if leaf node. If yes, then turn to enum
+	then 
+		false 
+	else 
+		true 
+	endif
+	;
+	
+	-- Go through all the associations and select only the associations that are not leaf nodes. If the list is greater than 0, then it means the parent cannot be transformed as an enum or it will break the dependencies.
+helper context FM!Feature def : isMyParentEnumerable(): Boolean = 
+	if not FM!Association.allInstances() -> select(ass| ass.childfeature.name = self.name and not (self.name = FM!RootFeature.allInstances().first().name)).first().oclIsUndefined()  --For all children, check if leaf node. If yes, then turn to enum
+	then 
+		if FM!Association.allInstances() -> select(ass| ass.childfeature.name = self.name and not (self.name = FM!RootFeature.allInstances().first().name)).first().parentfeature.isParentLeafNode() 
+			then 
+				true
+			else 
+				false 
+		endif 
+	else 
+		false 
+	endif
+	;
+
+helper context FM!Association def : filteredAssociationBasic(): Boolean = 
+	if not self.childfeature.isLeafNode() and not self.childfeature.isParentLeafNode() or (self.childfeature.isLeafNode() and not self.childfeature.isMyParentEnumerable()) -- Enums filters
+	and (self.parentfeature.abstract = false) -- Abstraction filters
+	then 
+		true 
+	else 
+		false 
+	endif
+	;
+
+helper context FM!Association def : filteredAssociationOptional(): Boolean = 
+	if not self.childfeature.isLeafNode() and not self.childfeature.isParentLeafNode() or (self.childfeature.isLeafNode() and not self.childfeature.isMyParentEnumerable()) -- Enums filters
+	and ((self.parentfeature.abstract = true and self.childfeature.abstract = true) or (self.parentfeature.abstract = false and self.childfeature.abstract = false) or (self.parentfeature.abstract = false and self.childfeature.abstract = true)) -- Abstraction filters
+	then 
+		true 
+	else 
+		false 
+	endif
+	;
+
+helper context FM!Association def : isOptionalAssociation(): Boolean = 
+		self.oclIsTypeOf(FM!OptionalAssociation)
+	;

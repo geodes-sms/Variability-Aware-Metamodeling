@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore">
+  <ecore:EClass name="ReLiS" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="synthesis" eType="/1"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="screening" eType="/5"/>
+  </ecore:EClass>
+  <ecore:EClass name="Synthesis" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="/2"/>
+  </ecore:EClass>
+  <ecore:EClass name="Type" abstract="true"/>
+  <ecore:EClass name="Bar" eSuperTypes="/2"/>
+  <ecore:EClass name="CompareGraph" eSuperTypes="/1"/>
+  <ecore:EClass name="Screening" abstract="true"/>
+  <ecore:EClass name="Phase" eSuperTypes="/5">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="field" lowerBound="1" eType="/7"/>
+  </ecore:EClass>
+  <ecore:EClass name="Field"/>
+</xmi:XMI>

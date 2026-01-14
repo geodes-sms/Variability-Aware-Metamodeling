@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="eCommercePMM" nsURI="http://www.example.org/eCommercePMM" nsPrefix="eCommercePMM">
+  <eClassifiers xsi:type="ecore:EClass" name="ECommerce">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="productcatalog" lowerBound="1"
+        upperBound="-1" eType="#//ItemCatalog" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="shoppingcart" lowerBound="1"
+        upperBound="-1" eType="#//ShoppingCart" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="paymenttype" lowerBound="1"
+        upperBound="-1" eType="#//PaymentType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        changeable="false" defaultValueLiteral="" iD="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ItemCatalog">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="catalogID" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="item" lowerBound="1" upperBound="-1"
+        eType="#//Item" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ShoppingCart">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="discount" eType="#//Discount"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="paymenttype" lowerBound="1"
+        eType="#//PaymentType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cartID" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" iD="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Discount">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="discountID" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PaymentType" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="billID" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" iD="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SinglePayment" eSuperTypes="#//PaymentType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="totalAmount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Product" eSuperTypes="#//Item"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Service" eSuperTypes="#//Item">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Item" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="itemID" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="discount" eType="#//Discount"/>
+  </eClassifiers>
+</ecore:EPackage>

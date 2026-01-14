@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+	<feature automatic="selected" name="Formalism"/>
+	<feature name="OptionalConcreteFeature"/>
+	<feature name="OrGroupFeature1"/>
+	<feature name="OrGroupFeature2"/>
+	<feature automatic="selected" name="MandatoryAbstractFeature"/>
+	<feature automatic="unselected" name="AlternativeGroupFeature1"/>
+	<feature manual="selected" name="AlternativeGroupFeature2"/>
+</configuration>

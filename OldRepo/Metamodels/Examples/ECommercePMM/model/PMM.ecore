@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="">
+  <eClassifiers xsi:type="ecore:EClass" name="ECommerce" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itemcatalog" lowerBound="1"
+        eType="#//ItemCatalog" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="shoppingcart" lowerBound="1"
+        eType="#//ShoppingCart" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="paymenttype" lowerBound="1"
+        eType="#//PaymentType" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ItemCatalog">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="item" lowerBound="1" eType="#//Item"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ShoppingCart">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="discount" eType="#//Discount"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PaymentType" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Service" eSuperTypes="#//Item"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Discount"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Item" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Product" eSuperTypes="#//Item"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SinglePayment" eSuperTypes="eCommercePMM.ecore#//PaymentType #//PaymentType"/>
+</ecore:EPackage>

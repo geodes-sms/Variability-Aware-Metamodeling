@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore">
+  <ecore:EClass name="ReLiS" abstract="true"/>
+  <ecore:EClass name="Synthesis" abstract="true" eSuperTypes="/0"/>
+  <ecore:EClass name="CompareGraph" eSuperTypes="/1"/>
+  <ecore:EClass name="Screening" abstract="true" eSuperTypes="/0"/>
+  <ecore:EEnum name="Type">
+    <eLiterals name="Bar"/>
+  </ecore:EEnum>
+  <ecore:EEnum name="Phase">
+    <eLiterals name="Field"/>
+  </ecore:EEnum>
+</xmi:XMI>
