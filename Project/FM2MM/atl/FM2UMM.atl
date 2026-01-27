@@ -29,7 +29,7 @@ rule RootFeature2RootClass {
 			name <- f.name,
 			abstract <- false,
 			eAnnotations <- Sequence {
-				thisModule.featureTrace(f)
+				thisModule.Feature2Annotation(f)
 			}
 		)
 }
@@ -48,7 +48,7 @@ rule Feature2Class {
 			name <- f.name,
 			abstract <- f.abstract,
 			eAnnotations <- Sequence {
-				thisModule.featureTrace(f)
+				thisModule.Feature2Annotation(f)
 			}
 		)
 }
@@ -116,7 +116,7 @@ helper context FM!Association def : resolveMultiplicity()
 -- Rule 8.2: Leaf Feature → Enumeration
 -- Alternative resolution for leaf features
 
-rule LeafFeature2Enumeration {
+lazy rule LeafFeature2Enumeration {
 	from
 		f : FM!Feature (
 			f.isLeaf() and not f.abstract
@@ -133,7 +133,7 @@ rule LeafFeature2Enumeration {
 
 -- Helper: Create enumeration literal
 
-rule Feature2EnumLiteral {
+lazy rule Feature2EnumLiteral {
     from
         s : FM!Feature
     to
@@ -145,12 +145,33 @@ rule Feature2EnumLiteral {
 
 
 -- Helper: Recover source feature name from class (μ⁻¹)
+lazy rule Feature2Annotation {
+    from
+        f : FM!Feature
+    to
+        a : MM!EAnnotation (
+            source <- 'FM2MM',
+            details <- Sequence {
+                thisModule.FeatureNameEntry(f)
+            }
+        )
+}
+
+lazy rule FeatureNameEntry {
+    from
+        f : FM!Feature
+    to
+        e : MM!EStringToStringMapEntry (
+            key <- 'feature',
+            value <- f.name
+        )
+}
 
 helper context MM!EClass def : sourceFeatureName() : String =
 	self.eAnnotations
 		->select(a | a.source = 'FM2MM')
 		->first()
-		.details->at('feature');
+		.details->get('feature');
 
 
 -- Helper: μ(F) → C using embedded trace
@@ -160,7 +181,7 @@ helper context FM!Feature def : targetClass() : MM!EClass =
 		->select(c |
 			c.eAnnotations->exists(a |
 				a.source = 'FM2MM' and
-				a.details->at('feature') = self.name
+				a.details->get('feature') = self.name
 			)
 		)
 		->first();
