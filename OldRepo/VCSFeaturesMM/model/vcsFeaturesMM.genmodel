@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/VcsFeaturesMM/src" modelPluginID="VcsFeaturesMM"
+    modelName="VcsFeaturesMM" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false">
+  <foreignModel>vcsFeaturesMM.ecore</foreignModel>
+  <genPackages prefix="VcsFeaturesMM" disposableProviderFactory="true" ecorePackage="vcsFeaturesMM.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="vcsFeaturesMM.ecore#//LowCommands">
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//LowCommands/Add"/>
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//LowCommands/Checkout"/>
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//LowCommands/CheckoutCreate"/>
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//LowCommands/Clone"/>
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//LowCommands/Commit"/>
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//LowCommands/CherryPick"/>
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//LowCommands/CreateBranch"/>
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//LowCommands/Fetch"/>
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//LowCommands/Init"/>
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//LowCommands/Pull"/>
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//LowCommands/Push"/>
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//LowCommands/RemoteAdd"/>
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//LowCommands/Rm"/>
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//LowCommands/Log"/>
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//LowCommands/Open"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="vcsFeaturesMM.ecore#//MergeStrategy">
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//MergeStrategy/DSMCompare"/>
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//MergeStrategy/GitDiff"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="vcsFeaturesMM.ecore#//LabelType">
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//LabelType/Unique"/>
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//LabelType/CommitHash"/>
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//LabelType/Label"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="vcsFeaturesMM.ecore#//DatabaseType">
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//DatabaseType/MongoDB"/>
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//DatabaseType/XMI"/>
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//DatabaseType/Neo4J"/>
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//DatabaseType/SQL"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="vcsFeaturesMM.ecore#//VersionUnitType">
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//VersionUnitType/Line"/>
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//VersionUnitType/Semantic"/>
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//VersionUnitType/File"/>
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//VersionUnitType/Element"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="vcsFeaturesMM.ecore#//CollaborationStyleType">
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//CollaborationStyleType/LocalOnly"/>
+      <genEnumLiterals ecoreEnumLiteral="vcsFeaturesMM.ecore#//CollaborationStyleType/Remote"/>
+    </genEnums>
+    <genClasses ecoreClass="vcsFeaturesMM.ecore#//VCSFeatures">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference vcsFeaturesMM.ecore#//VCSFeatures/commands"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference vcsFeaturesMM.ecore#//VCSFeatures/history"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference vcsFeaturesMM.ecore#//VCSFeatures/versionunit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference vcsFeaturesMM.ecore#//VCSFeatures/collaborationstyle"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference vcsFeaturesMM.ecore#//VCSFeatures/database"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vcsFeaturesMM.ecore#//VCSFeatures/name"/>
+    </genClasses>
+    <genClasses ecoreClass="vcsFeaturesMM.ecore#//Commands">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vcsFeaturesMM.ecore#//Commands/mergeStrategy"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference vcsFeaturesMM.ecore#//Commands/highlevelcommand"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference vcsFeaturesMM.ecore#//Commands/lowlevelcommand"/>
+    </genClasses>
+    <genClasses ecoreClass="vcsFeaturesMM.ecore#//History">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vcsFeaturesMM.ecore#//History/labelType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vcsFeaturesMM.ecore#//History/commitHistoryRange"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vcsFeaturesMM.ecore#//History/numberOfBranches"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vcsFeaturesMM.ecore#//History/UniqueLabelString"/>
+    </genClasses>
+    <genClasses ecoreClass="vcsFeaturesMM.ecore#//VersionUnit">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vcsFeaturesMM.ecore#//VersionUnit/granularity"/>
+    </genClasses>
+    <genClasses ecoreClass="vcsFeaturesMM.ecore#//CollaborationStyle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vcsFeaturesMM.ecore#//CollaborationStyle/collabStyle"/>
+    </genClasses>
+    <genClasses ecoreClass="vcsFeaturesMM.ecore#//Database">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vcsFeaturesMM.ecore#//Database/connectionString"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vcsFeaturesMM.ecore#//Database/DatabaseType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vcsFeaturesMM.ecore#//Database/name"/>
+    </genClasses>
+    <genClasses ecoreClass="vcsFeaturesMM.ecore#//LowLevelCommand">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vcsFeaturesMM.ecore#//LowLevelCommand/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vcsFeaturesMM.ecore#//LowLevelCommand/command"/>
+    </genClasses>
+    <genClasses ecoreClass="vcsFeaturesMM.ecore#//HighLevelCommand">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vcsFeaturesMM.ecore#//HighLevelCommand/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference vcsFeaturesMM.ecore#//HighLevelCommand/lowlevelcommand"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

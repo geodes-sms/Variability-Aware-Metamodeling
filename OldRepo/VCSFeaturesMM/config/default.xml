@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+	<feature automatic="selected" name="VCSFeatures"/>
+	<feature automatic="selected" name="Commands"/>
+	<feature manual="selected" name="HighLevelCommands"/>
+	<feature automatic="selected" name="LowLevelCommands"/>
+	<feature automatic="selected" name="Add"/>
+	<feature manual="selected" name="Checkout"/>
+	<feature manual="selected" name="CheckoutCreate"/>
+	<feature manual="selected" name="Clone"/>
+	<feature automatic="selected" name="Commit"/>
+	<feature name="CherryPick"/>
+	<feature manual="selected" name="CreateBranch"/>
+	<feature manual="selected" name="Fetch"/>
+	<feature automatic="selected" name="Init"/>
+	<feature name="Log"/>
+	<feature automatic="selected" name="MergeStrategy"/>
+	<feature automatic="unselected" name="DSMCompare"/>
+	<feature manual="selected" name="GitDiff"/>
+	<feature automatic="selected" name="Open"/>
+	<feature manual="selected" name="Pull"/>
+	<feature manual="selected" name="Push"/>
+	<feature manual="selected" name="RemoteAdd"/>
+	<feature name="Rm"/>
+	<feature automatic="selected" name="History"/>
+	<feature automatic="selected" name="BranchingStyle"/>
+	<feature automatic="unselected" name="SingleBranch"/>
+	<feature automatic="selected" name="MultiBranch"/>
+	<feature manual="selected" name="InfiniteBranches"/>
+	<feature automatic="unselected" name="LimitBranches"/>
+	<feature automatic="selected" name="VersionWindow"/>
+	<feature manual="selected" name="SpecificWindowRange"/>
+	<feature automatic="selected" name="Timestamping"/>
+	<feature automatic="unselected" name="Label"/>
+	<feature automatic="unselected" name="UniqueCustomLabel"/>
+	<feature manual="selected" name="CommitHash"/>
+	<feature automatic="selected" name="VersionUnit"/>
+	<feature automatic="selected" manual="selected" name="File"/>
+	<feature automatic="unselected" name="Semantic"/>
+	<feature manual="selected" name="Element"/>
+	<feature automatic="selected" name="Line"/>
+	<feature automatic="selected" name="CollaborationStyle"/>
+	<feature automatic="unselected" name="LocalOnly"/>
+	<feature automatic="selected" name="Remote"/>
+	<feature automatic="selected" name="Database"/>
+	<feature name="SQL"/>
+	<feature name="MongoDB"/>
+	<feature name="Neo4J"/>
+	<feature manual="selected" name="XMI"/>
+</configuration>

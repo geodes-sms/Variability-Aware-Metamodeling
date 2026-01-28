@@ -1,0 +1,83 @@
+package metainf;
+
+import com.google.common.collect.Iterators;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import vcsFeaturesMM.VCSFeatures;
+
+@SuppressWarnings("all")
+public class ManifestGenerator {
+  public CharSequence generate(final Resource resource) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("Manifest-Version: 1.0");
+    _builder.newLine();
+    _builder.append("Bundle-ManifestVersion: 2");
+    _builder.newLine();
+    _builder.append("Bundle-Name: ");
+    String _name = IteratorExtensions.<VCSFeatures>head(Iterators.<VCSFeatures>filter(resource.getAllContents(), VCSFeatures.class)).getName();
+    _builder.append(_name);
+    _builder.newLineIfNotEmpty();
+    _builder.append("Bundle-SymbolicName: ");
+    String _name_1 = IteratorExtensions.<VCSFeatures>head(Iterators.<VCSFeatures>filter(resource.getAllContents(), VCSFeatures.class)).getName();
+    _builder.append(_name_1);
+    _builder.append(";singleton:=true");
+    _builder.newLineIfNotEmpty();
+    _builder.append("Bundle-Version: 1.0.0.qualifier");
+    _builder.newLine();
+    _builder.append("Bundle-Activator: ");
+    String _lowerCase = IteratorExtensions.<VCSFeatures>head(Iterators.<VCSFeatures>filter(resource.getAllContents(), VCSFeatures.class)).getName().toLowerCase();
+    _builder.append(_lowerCase);
+    _builder.append(".Activator");
+    _builder.newLineIfNotEmpty();
+    _builder.append("Require-Bundle: org.eclipse.swt,");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("org.eclipse.e4.ui.model.workbench,");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("org.eclipse.jface,");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("org.eclipse.e4.ui.services,");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("org.eclipse.e4.ui.workbench,");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("org.eclipse.e4.core.di,");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("org.eclipse.e4.ui.di,");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("org.eclipse.e4.core.contexts,");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("org.eclipse.core.runtime,");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("org.eclipse.ui,");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("org.eclipse.jgit");
+    _builder.newLine();
+    _builder.append("Bundle-RequiredExecutionEnvironment: JavaSE-21");
+    _builder.newLine();
+    _builder.append("Automatic-Module-Name: ");
+    String _name_2 = IteratorExtensions.<VCSFeatures>head(Iterators.<VCSFeatures>filter(resource.getAllContents(), VCSFeatures.class)).getName();
+    _builder.append(_name_2);
+    _builder.newLineIfNotEmpty();
+    _builder.append("Import-Package: jakarta.annotation;version=\"[2.1.0,3.0.0)\",");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("jakarta.inject;version=\"[2.0.0,3.0.0)\",");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("org.eclipse.core.resources");
+    _builder.newLine();
+    _builder.append("Bundle-ActivationPolicy: lazy");
+    _builder.newLine();
+    return _builder;
+  }
+}

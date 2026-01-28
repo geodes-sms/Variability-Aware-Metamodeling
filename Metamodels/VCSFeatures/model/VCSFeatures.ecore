@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="vCSFeatures" nsURI="http://www.example.org/vCSFeatures" nsPrefix="vCSFeatures">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="vcsFeaturesMM" nsURI="http://www.example.org/vcsFeaturesMM"
+    nsPrefix="vcsFeaturesMM">
+  <eClassifiers xsi:type="ecore:EClass" name="VCSFeatures">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="commands" upperBound="-1"
+        eType="#//Commands" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="history" upperBound="-1"
+        eType="#//History" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="versionunit" upperBound="-1"
+        eType="#//VersionUnit" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="collaborationstyle" upperBound="-1"
+        eType="#//CollaborationStyle" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="database" upperBound="-1"
+        eType="#//Database" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"
+        iD="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Commands">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mergeStrategy" eType="#//MergeStrategy"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="highlevelcommand" upperBound="-1"
+        eType="#//HighLevelCommand" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lowlevelcommand" upperBound="-1"
+        eType="#//LowLevelCommand" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="History">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelType" eType="#//LabelType"
+        defaultValueLiteral="CommitHash"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="versionWindowRange" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IntObject"
+        defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfBranches" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IntObject"
+        defaultValueLiteral="0"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VersionUnit">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="granularity" upperBound="-1"
+        eType="#//VersionUnitType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CollaborationStyle">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="collabStyle" eType="#//CollaborationStyleType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Database">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionString" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="DatabaseType" eType="#//DatabaseType"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="LowCommands">
     <eLiterals name="Add"/>
     <eLiterals name="Checkout" value="1"/>
@@ -18,6 +60,27 @@
     <eLiterals name="Log" value="13"/>
     <eLiterals name="Open" value="14"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MergeStrategy">
+    <eLiterals name="DSMCompare"/>
+    <eLiterals name="GitDiff" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LabelType">
+    <eLiterals name="Unique"/>
+    <eLiterals name="CommitHash" value="1"/>
+    <eLiterals name="Label" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LowLevelCommand">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="command" lowerBound="1"
+        eType="#//LowCommands"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HighLevelCommand">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lowlevelcommand" upperBound="-1"
+        eType="#//LowLevelCommand"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="DatabaseType">
     <eLiterals name="MongoDB"/>
     <eLiterals name="XMI" value="1"/>
@@ -33,68 +96,5 @@
   <eClassifiers xsi:type="ecore:EEnum" name="CollaborationStyleType">
     <eLiterals name="LocalOnly"/>
     <eLiterals name="Remote" value="1"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="LabelType">
-    <eLiterals name="Unique"/>
-    <eLiterals name="CommitHash" value="1"/>
-    <eLiterals name="Label" value="2"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="MergeStrategy">
-    <eLiterals name="DSMCompare"/>
-    <eLiterals name="GitDiff" value="1"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="HighLevelCommand">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="lowlevelcommand" upperBound="-1"
-        eType="#//LowLevelCommand"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LowLevelCommand">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="command" lowerBound="1"
-        eType="#//LowCommands" defaultValueLiteral="Add"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Commands">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mergeStrategy" eType="#//MergeStrategy"
-        defaultValueLiteral="DSMCompare"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="highlevelcommand" upperBound="-1"
-        eType="#//HighLevelCommand" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="lowlevelcommand" upperBound="-1"
-        eType="#//LowLevelCommand" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Database">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionString" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="DatabaseType" eType="#//DatabaseType"
-        defaultValueLiteral="MongoDB"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="VCSFeatures">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="commands" upperBound="-1"
-        eType="#//Commands" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="database" upperBound="-1"
-        eType="#//Database" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="collaborationstyle" upperBound="-1"
-        eType="#//CollaborationStyle" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="history" upperBound="-1"
-        eType="#//History" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="versionunit" upperBound="-1"
-        eType="#//VersionUnit" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="History">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelType" eType="#//LabelType"
-        defaultValueLiteral="CommitHash"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="commitHistoryRange" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        defaultValueLiteral="0"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfBranches" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        defaultValueLiteral="0"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="UniqueLabelString" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CollaborationStyle">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="collabStyle" eType="#//CollaborationStyleType"
-        defaultValueLiteral="LocalOnly"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="VersionUnit">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="granularity" upperBound="-1"
-        eType="#//VersionUnitType"/>
   </eClassifiers>
 </ecore:EPackage>

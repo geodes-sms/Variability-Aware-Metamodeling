@@ -1,0 +1,31 @@
+VCSFeatures TestingV2 {
+	commands {
+		- mergeStrategy GitDiff
+		- lowlevelcommand {
+			LowLevelCommand add (command Add),
+			LowLevelCommand commit (command Commit),
+			LowLevelCommand push (command Push),
+			LowLevelCommand pull (command Pull)
+		}
+		- highlevelcommand {
+			HighLevelCommand addCommit lowlevelcommand (add, commit)
+		}
+	}
+	history {
+		- labelType CommitHash
+		- commitHistoryRange 0
+		- numberOfBranches 0
+	}
+	versionunit {
+		- granularity {Element, File, Line, Semantic}
+	}
+	collaborationstyle {
+		- collabStyle Remote
+	}
+	database {
+		Database
+		- ConnectionString "127.0.0.1"
+		- DatabaseType SQL
+	}
+	
+}
