@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="relisEugene" nsURI="http://www.example.org/relisEugene" nsPrefix="relisEugene">
+  <eClassifiers xsi:type="ecore:EClass" name="ReLiS">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="qa" eType="#//QA" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataextraction" lowerBound="1"
+        eType="#//DataExtraction" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="screening" eType="#//Screening"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="synthesis" eType="#//Synthesis"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//ID"
+        iD="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Screening">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exclusion_criteria" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="conflict_type" eType="#//ConflictType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inclusion_criteria" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="validation_assignment_mode"
+        eType="#//AssignmentMode"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="conflict_resolution" eType="#//ConflictResolution"
+        defaultValueLiteral="Majority"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reviews_per_paper" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="2"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="validation_percentage"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="20"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="phase" lowerBound="1" upperBound="-1"
+        eType="#//Phase" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QA">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cut_off_score" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="question" lowerBound="1"
+        upperBound="-1" eType="#//Question" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="answer" lowerBound="1"
+        upperBound="-1" eType="#//Answer" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataExtraction">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="category" lowerBound="1"
+        upperBound="-1" eType="#//Category" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Synthesis">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="chart" lowerBound="1" upperBound="-1"
+        eType="#//Chart" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Phase">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fields" lowerBound="1"
+        upperBound="-1" eType="#//Field"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Question">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Answer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="score" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Category" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subcategories" upperBound="-1"
+        eType="#//Category" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//ID"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="categorytype" upperBound="-1"
+        eType="#//CategoryType" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CategoryType" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mandatory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="number_of_values" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FreeCategory" eSuperTypes="#//CategoryType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//SimpleType"
+        defaultValueLiteral="String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pattern" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max_char" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="initial_value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DependentDynamicCategory" eSuperTypes="#//CategoryType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="depends_on" lowerBound="1"
+        eType="#//Category" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Note" eSuperTypes="#//FreeCategory"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StaticCategory" eSuperTypes="#//CategoryType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="2" upperBound="-1"
+        eType="#//Value" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IndependentDynamicCategory" eSuperTypes="#//CategoryType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reference_name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
+        eType="#//Value" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CompareGraph" eSuperTypes="#//Chart">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="category" lowerBound="1"
+        eType="#//Category" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Field">
+    <eLiterals name="Title"/>
+    <eLiterals name="Abstract" value="1"/>
+    <eLiterals name="Paper" value="2"/>
+    <eLiterals name="Author" value="3"/>
+    <eLiterals name="Reference" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ConflictType">
+    <eLiterals name="IncludeExclude"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ConflictResolution">
+    <eLiterals name="Majority"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AssignmentMode">
+    <eLiterals name="Veto" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SimpleType">
+    <eLiterals name="String" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Value">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ChartType">
+    <eLiterals name="Line" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Chart">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base" lowerBound="1" eType="#//Category"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//ID"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="chart" lowerBound="1" upperBound="-1"
+        eType="#//ChartType"/>
+  </eClassifiers>
+</ecore:EPackage>
