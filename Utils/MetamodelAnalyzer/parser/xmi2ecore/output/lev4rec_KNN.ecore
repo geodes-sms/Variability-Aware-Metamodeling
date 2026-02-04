@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ecore:EPackage xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="RecommenderSpecification" nsPrefix="RecommenderSpecification" nsURI="http://www.example.org/RecommenderSpecification" xmi:version="2.0">
+    <eClassifiers name="RecommenderSpecification" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="RecommenderSpecification"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers abstract="true" eSuperTypes="#//RecommenderSpecification" name="RecommenderComponent" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="RecommenderComponent"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers abstract="true" eSuperTypes="#//RecommenderComponent" name="AlgorithmComponent" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="AlgorithmComponent"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers abstract="true" eSuperTypes="#//AlgorithmComponent" name="CollaborativeFiltering" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="CollaborativeFiltering"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//CollaborativeFiltering" name="UserBased" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="UserBased"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers abstract="true" eSuperTypes="#//RecommenderComponent" name="DatasetComponent" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="DatasetComponent"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers abstract="true" eSuperTypes="#//DatasetComponent" name="DataStructure" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="DataStructure"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//DataStructure" name="Matrix" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="Matrix"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers abstract="true" eSuperTypes="#//DatasetComponent" name="DatasetType" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="DatasetType"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//DatasetType" name="UnsupervisedDataset" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="UnsupervisedDataset"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers abstract="true" eSuperTypes="#//RecommenderComponent" name="PreprocessingComponent" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="PreprocessingComponent"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//PreprocessingComponent" name="Vectorization" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="Vectorization"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers abstract="true" eSuperTypes="#//RecommenderComponent" name="EvaluationComponent" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="EvaluationComponent"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers abstract="true" eSuperTypes="#//EvaluationComponent" name="CrossFold" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="CrossFold"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//CrossFold" name="SplittingKfold" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="SplittingKfold"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers abstract="true" eSuperTypes="#//RecommenderComponent" name="PresentationComponent" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="PresentationComponent"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//PresentationComponent" name="WebInterface" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="WebInterface"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers abstract="true" eSuperTypes="#//RecommenderSpecification" name="SupportingLibrary" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="SupportingLibrary"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers abstract="true" eSuperTypes="#//SupportingLibrary" name="AlgorithmLibrary" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="AlgorithmLibrary"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//AlgorithmLibrary" name="Surprise" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="Surprise"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers abstract="true" eSuperTypes="#//SupportingLibrary" name="DatasetLibrary" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="DatasetLibrary"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//DatasetLibrary" name="Pandas" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="Pandas"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers abstract="true" eSuperTypes="#//SupportingLibrary" name="PresentationLibrary" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="PresentationLibrary"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers abstract="true" eSuperTypes="#//PresentationLibrary" name="WebLibrary" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="WebLibrary"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//WebLibrary" name="Flask" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="Flask"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers abstract="true" eSuperTypes="#//SupportingLibrary" name="EvaluationLibrary" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="EvaluationLibrary"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers abstract="true" eSuperTypes="#//EvaluationLibrary" name="SurpriseSplit" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="SurpriseSplit"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//SurpriseSplit" name="SurpriseCrossFold" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="SurpriseCrossFold"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers abstract="true" eSuperTypes="#//SupportingLibrary" name="PreprocessingLibrary" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="PreprocessingLibrary"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//PreprocessingLibrary" name="SurprisePreprocessing" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2MM">
+                  
+            <details key="feature" value="SurprisePreprocessing"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+</ecore:EPackage>

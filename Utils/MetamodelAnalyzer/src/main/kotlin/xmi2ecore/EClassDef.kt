@@ -1,4 +1,4 @@
-package parser
+package xmi2ecore
 
 import org.w3c.dom.Element
 

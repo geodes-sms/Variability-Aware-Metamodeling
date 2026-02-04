@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ASCII"?>
+<FM:RootFeature xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:FM="http://www.example.org/FM" name="RecommenderSpecification" abstract="true">
+  <association xsi:type="FM:OptionalAssociation" childfeature="RecommenderComponent" parentfeature="RecommenderSpecification"/>
+  <association xsi:type="FM:OptionalAssociation" childfeature="SupportingLibrary" parentfeature="RecommenderSpecification"/>
+  <feature name="RecommenderComponent" abstract="true">
+    <association xsi:type="FM:MandatoryAssociation" childfeature="AlgorithmComponent" parentfeature="RecommenderComponent"/>
+    <association xsi:type="FM:MandatoryAssociation" childfeature="DatasetComponent" parentfeature="RecommenderComponent"/>
+    <association xsi:type="FM:MandatoryAssociation" childfeature="PreprocessingComponent" parentfeature="RecommenderComponent"/>
+    <association xsi:type="FM:MandatoryAssociation" childfeature="EvaluationComponent" parentfeature="RecommenderComponent"/>
+    <association xsi:type="FM:MandatoryAssociation" childfeature="PresentationComponent" parentfeature="RecommenderComponent"/>
+    <subfeatures name="AlgorithmComponent" abstract="true">
+      <association xsi:type="FM:OptionalAssociation" childfeature="CollaborativeFiltering" parentfeature="AlgorithmComponent"/>
+      <subfeatures name="CollaborativeFiltering" abstract="true">
+        <association xsi:type="FM:OptionalAssociation" childfeature="UserBased" parentfeature="CollaborativeFiltering"/>
+        <subfeatures name="UserBased"/>
+      </subfeatures>
+    </subfeatures>
+    <subfeatures name="DatasetComponent" abstract="true">
+      <association xsi:type="FM:MandatoryAssociation" childfeature="DataStructure" parentfeature="DatasetComponent"/>
+      <association xsi:type="FM:MandatoryAssociation" childfeature="DatasetType" parentfeature="DatasetComponent"/>
+      <subfeatures name="DataStructure" abstract="true">
+        <association xsi:type="FM:OptionalAssociation" childfeature="Matrix" parentfeature="DataStructure"/>
+        <subfeatures name="Matrix"/>
+      </subfeatures>
+      <subfeatures name="DatasetType" abstract="true">
+        <association xsi:type="FM:OptionalAssociation" childfeature="UnsupervisedDataset" parentfeature="DatasetType"/>
+        <subfeatures name="UnsupervisedDataset"/>
+      </subfeatures>
+    </subfeatures>
+    <subfeatures name="PreprocessingComponent" abstract="true">
+      <association xsi:type="FM:OptionalAssociation" childfeature="Vectorization" parentfeature="PreprocessingComponent"/>
+      <subfeatures name="Vectorization"/>
+    </subfeatures>
+    <subfeatures name="EvaluationComponent" abstract="true">
+      <association xsi:type="FM:OptionalAssociation" childfeature="CrossFold" parentfeature="EvaluationComponent"/>
+      <subfeatures name="CrossFold" abstract="true">
+        <association xsi:type="FM:OptionalAssociation" childfeature="SplittingKfold" parentfeature="CrossFold"/>
+        <subfeatures name="SplittingKfold"/>
+      </subfeatures>
+    </subfeatures>
+    <subfeatures name="PresentationComponent" abstract="true">
+      <association xsi:type="FM:OptionalAssociation" childfeature="WebInterface" parentfeature="PresentationComponent"/>
+      <subfeatures name="WebInterface"/>
+    </subfeatures>
+  </feature>
+  <feature name="SupportingLibrary" abstract="true">
+    <association xsi:type="FM:MandatoryAssociation" childfeature="AlgorithmLibrary" parentfeature="SupportingLibrary"/>
+    <association xsi:type="FM:MandatoryAssociation" childfeature="DatasetLibrary" parentfeature="SupportingLibrary"/>
+    <association xsi:type="FM:MandatoryAssociation" childfeature="PresentationLibrary" parentfeature="SupportingLibrary"/>
+    <association xsi:type="FM:MandatoryAssociation" childfeature="EvaluationLibrary" parentfeature="SupportingLibrary"/>
+    <association xsi:type="FM:MandatoryAssociation" childfeature="PreprocessingLibrary" parentfeature="SupportingLibrary"/>
+    <subfeatures name="AlgorithmLibrary" abstract="true">
+      <association xsi:type="FM:OptionalAssociation" childfeature="Surprise" parentfeature="AlgorithmLibrary"/>
+      <subfeatures name="Surprise"/>
+    </subfeatures>
+    <subfeatures name="DatasetLibrary" abstract="true">
+      <association xsi:type="FM:OptionalAssociation" childfeature="Pandas" parentfeature="DatasetLibrary"/>
+      <subfeatures name="Pandas"/>
+    </subfeatures>
+    <subfeatures name="PresentationLibrary" abstract="true">
+      <association xsi:type="FM:OptionalAssociation" childfeature="WebLibrary" parentfeature="PresentationLibrary"/>
+      <subfeatures name="WebLibrary" abstract="true">
+        <association xsi:type="FM:OptionalAssociation" childfeature="Flask" parentfeature="WebLibrary"/>
+        <subfeatures name="Flask"/>
+      </subfeatures>
+    </subfeatures>
+    <subfeatures name="EvaluationLibrary" abstract="true">
+      <association xsi:type="FM:OptionalAssociation" childfeature="SurpriseSplit" parentfeature="EvaluationLibrary"/>
+      <subfeatures name="SurpriseSplit" abstract="true">
+        <association xsi:type="FM:OptionalAssociation" childfeature="SurpriseCrossFold" parentfeature="SurpriseSplit"/>
+        <subfeatures name="SurpriseCrossFold"/>
+      </subfeatures>
+    </subfeatures>
+    <subfeatures name="PreprocessingLibrary" abstract="true">
+      <association xsi:type="FM:OptionalAssociation" childfeature="SurprisePreprocessing" parentfeature="PreprocessingLibrary"/>
+      <subfeatures name="SurprisePreprocessing"/>
+    </subfeatures>
+  </feature>
+</FM:RootFeature>

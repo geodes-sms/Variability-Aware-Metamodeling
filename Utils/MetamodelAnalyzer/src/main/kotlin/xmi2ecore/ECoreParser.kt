@@ -1,4 +1,4 @@
-package parser
+package xmi2ecore
 
 import org.w3c.dom.*
 import java.io.File
@@ -61,7 +61,7 @@ fun transformXmiToEcore(input: File, output: File) {
 
     outDoc.appendChild(pkg)
 
-    // -------- PASS 3: emit classifiers --------
+    // emit classifiers
     classes.forEachIndexed { index, cls ->
         if (cls.name == null) return@forEachIndexed
 
@@ -90,7 +90,7 @@ fun transformXmiToEcore(input: File, output: File) {
         pkg.appendChild(eCls)
     }
 
-    // -------- write file --------
+    // write file
     val tf = TransformerFactory.newInstance().newTransformer()
     tf.setOutputProperty(OutputKeys.INDENT, "yes")
     tf.transform(DOMSource(outDoc), StreamResult(output))
