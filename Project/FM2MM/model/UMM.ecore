@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ReLiS" nsURI="http://www.example.org/ReLiS" nsPrefix="ReLiS">
+  <eClassifiers xsi:type="ecore:EClass" name="ReLiS">
+    <eAnnotations source="FM2MM">
+      <details key="feature" value="ReLiS"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Synthesis" abstract="true">
+    <eAnnotations source="FM2MM">
+      <details key="feature" value="Synthesis"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Type" abstract="true">
+    <eAnnotations source="FM2MM">
+      <details key="feature" value="Type"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Bar">
+    <eAnnotations source="FM2MM">
+      <details key="feature" value="Bar"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CompareGraph">
+    <eAnnotations source="FM2MM">
+      <details key="feature" value="CompareGraph"/>
+    </eAnnotations>
+  </eClassifiers>
+
+</ecore:EPackage>

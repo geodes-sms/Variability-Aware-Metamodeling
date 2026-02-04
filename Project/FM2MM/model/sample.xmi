@@ -10,6 +10,10 @@
       xsi:type="FM:OptionalAssociation"
       childfeature="Synthesis"
       parentfeature="ReLiS"/>
+  <association
+      xsi:type="FM:OptionalAssociation"
+      childfeature="Screening"
+      parentfeature="ReLiS"/>
   <feature name="Synthesis"
       abstract="true">
     <association
@@ -32,5 +36,21 @@
     </subfeatures>
     <subfeatures
         name="CompareGraph"/>
+  </feature>
+  <feature name="Screening"
+      abstract="true">
+    <association
+        xsi:type="FM:MandatoryAssociation"
+        childfeature="Phase"
+        parentfeature="Screening"/>
+    <subfeatures
+        name="Phase">
+      <association
+          xsi:type="FM:MandatoryAssociation"
+          childfeature="Field"
+          parentfeature="Phase"/>
+      <subfeatures
+          name="Field"/>
+    </subfeatures>
   </feature>
 </FM:RootFeature>

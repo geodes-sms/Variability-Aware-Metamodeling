@@ -13,11 +13,6 @@ module FM2MM;
 create OUT : MM from IN : FM;
 
 
--- Helper: Create trace annotation for μ(F) = C
-
-
-
-
 -- Rule 1: Root Feature
 -- The root feature is transformed into the root class (non-abstract)
 
@@ -49,46 +44,51 @@ rule Feature2Class {
 			abstract <- f.abstract,
 			eAnnotations <- Sequence {
 				thisModule.Feature2Annotation(f)
-			}
+			},
+		 	eSuperTypes <- f.inheritsFrom() 
 		)
 }
 
+-- helper that returns a sequence of parent EClasses
+helper context FM!Feature def : inheritsFrom() : Sequence(MM!EClass) =
+    FM!Association.allInstances()
+        ->select(a | a.childfeature = self and a.parentfeature.abstract)
+        ->collect(a | a.findParentClass());
 
 -- Rule 4: Subfeature → Composition (Uncertainty on multiplicity)
 -- Parent feature is concrete
 
 rule SubFeature2Composition {
-	from
-		ass : FM!Association (
-			not ass.parentfeature.abstract
-		)
-	to
-		ref : MM!EReference (
-			name <- ass.childfeature.name.toLower(),
-			eType <- ass.findChildClass(),
-			containment <- true,
-			lowerBound <- 0,   -- ? unresolved multiplicity
-			upperBound <- -1  -- ? unresolved multiplicity (*)
-		)
-	do {
-		-- Attach reference to parent class
-		ref.eContainingClass <- ass.findParentClass();
-	}
+    from
+        ass : FM!Association (
+            not ass.parentfeature.abstract
+        )
+    to
+        ref : MM!EReference (
+            name <- ass.childfeature.name.toLower(),
+            eType <- ass.findChildClass(),
+            containment <- true,
+            lowerBound <- ass.resolveMultiplicity().lower,
+            upperBound <- ass.resolveMultiplicity().upper
+        )
+    do {
+        -- Add the reference to the parent class
+        ass.findParentClass().eStructuralFeatures->including(ref);
+    }
 }
 
 
 -- Rule 5: Inheritance from Abstract Feature
--- Child feature inherits from abstract parent feature
-
-rule AbstractParent2Inheritance {
-	from
-		ass : FM!Association (
-			ass.parentfeature.abstract
-		)
-	to
-		child : MM!EClass (
-			eSuperTypes <- Sequence { ass.findParentClass() }
-		)
+-- Child feature inherits from abstract parent feature 
+lazy rule AddInheritance {
+    from
+        ass : FM!Association (
+            ass.parentfeature.abstract
+        )
+    to
+        c : MM!EClass (
+            eSuperTypes <- Sequence { ass.findParentClass() }
+        )
 }
 
 
