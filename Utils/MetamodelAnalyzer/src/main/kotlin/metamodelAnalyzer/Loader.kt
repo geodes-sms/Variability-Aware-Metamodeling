@@ -1,37 +1,14 @@
+package metamodelAnalyzer
+
 import org.eclipse.emf.common.util.URI
-import org.eclipse.emf.ecore.*
+import org.eclipse.emf.ecore.EClass
+import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl
-import org.junit.jupiter.api.Test
 import java.io.File
+import kotlin.collections.set
 
-/*/
-To run this file, follow the steps on the Readme.md
- */
-// Test file to evaluate RQ1
-class Analyzer {
-    @Test
-    fun runEcoreAnalysis() {
-        exportEcoreMetricsToCSV(
-            "metamodels",
-            "results/metamodels.csv"
-        )
-    }
-}
-
-//  Data class for metrics 
-data class EcoreMetrics(
-    val modelName: String,
-    val numClasses: Int,
-    val numAttributes: Int,
-    val numReferences: Int,
-    val numContainments: Int,
-    val loc: Int,
-    val maxDIT: Int,
-    val maxHagg: Int
-)
-
-//  Load Ecore model 
+//  Load Ecore model
 fun loadEcoreModel(filePath: String): Collection<EPackage> {
     val resourceSet = ResourceSetImpl()
     resourceSet.resourceFactoryRegistry.extensionToFactoryMap["ecore"] = EcoreResourceFactoryImpl()
@@ -41,7 +18,7 @@ fun loadEcoreModel(filePath: String): Collection<EPackage> {
     return resource.contents.filterIsInstance<EPackage>()
 }
 
-//  DIT (Generalisation / Inheritance) 
+//  DIT (Generalisation / Inheritance)
 fun computeDIT(
     eClass: EClass,
     visited: MutableSet<EClass> = mutableSetOf(),
@@ -63,7 +40,7 @@ fun computeMaxDIT(allClasses: Collection<EClass>): Int {
     return allClasses.maxOfOrNull { computeDIT(it, mutableSetOf(), memo) } ?: 0
 }
 
-//  HAgg (Aggregation / Containment) 
+//  HAgg (Aggregation / Containment)
 fun buildAggregationMap(allClasses: Collection<EClass>): Map<EClass, List<EClass>> {
     val map = mutableMapOf<EClass, MutableList<EClass>>()
     for (cls in allClasses) {
@@ -98,7 +75,7 @@ fun computeMaxHagg(allClasses: Collection<EClass>): Int {
     return allClasses.maxOfOrNull { computeHaggDepth(it, aggMap, mutableSetOf(), memo) } ?: 0
 }
 
-//  Main analysis 
+//  Main analysis
 fun analyzeEcore(filePath: String): EcoreMetrics {
     val packages = loadEcoreModel(filePath)
 
@@ -139,24 +116,4 @@ fun analyzeEcore(filePath: String): EcoreMetrics {
         maxDIT,
         maxHagg
     )
-}
-
-//  CSV Export 
-fun exportEcoreMetricsToCSV(directoryPath: String, outputPath: String) {
-    val metamodelsDir = File(directoryPath)
-    val ecoreFiles = metamodelsDir.walk()
-        .filter { it.isFile && it.extension == "ecore" }
-        .map { it.path }
-        .toList()
-
-    val outputFile = File(outputPath)
-    outputFile.writeText("model,LOC,classes,attributes,refs,containments,maxDIT,maxHagg\n")
-    for (model in ecoreFiles) {
-        val metrics = analyzeEcore(model)
-        outputFile.appendText(
-            "${metrics.modelName},${metrics.loc},${metrics.numClasses}," +
-                    "${metrics.numAttributes},${metrics.numReferences},${metrics.numContainments}," +
-                    "${metrics.maxDIT},${metrics.maxHagg}\n"
-        )
-    }
 }
