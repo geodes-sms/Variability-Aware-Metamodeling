@@ -58,12 +58,18 @@ fun parseFeatureModelXml(file: File): FMNode {
 fun parseFeatureElement(elem: Element): FMNode {
     val name = elem.getAttribute("name")
     val mandatory = elem.getAttribute("mandatory") == "true"
+    val isAbstract = elem.getAttribute("abstract") == "true"
 
     val children = elem.childElements()
         .filter { it.tagName in setOf("and", "or", "alt", "feature") }
         .map { parseFeatureElement(it) }
 
-    return FMNode(name = name, mandatory = mandatory, children = children)
+    return FMNode(
+        name = name,
+        mandatory = mandatory,
+        abstract = isAbstract,
+        children = children
+    )
 }
 
 // Filter FMNode tree by selected features

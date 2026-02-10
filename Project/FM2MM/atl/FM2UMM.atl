@@ -1,4 +1,4 @@
--- FM2MM.atl
+-- FM2UMM.atl
 -- Transform a Configured Feature Model (CFM) into a UMM
 -- Traceability (μ : F → C) is embedded as an EAnnotation in each EClass
 
@@ -6,11 +6,11 @@
 
 -- Metamodel declarations
 
--- @nsURI MM = http://www.eclipse.org/emf/2002/Ecore
+-- @nsURI UMM = http://www.eclipse.org/emf/2002/Ecore
 -- @nsURI FM = http://www.example.org/FM
 
-module FM2MM;
-create OUT : MM from IN : FM;
+module FM2UMM;
+create OUT : UMM from IN : FM;
 
 
 -- Rule 1: Root Feature
@@ -20,7 +20,7 @@ rule RootFeature2RootClass {
 	from
 		f : FM!RootFeature
 	to
-		c : MM!EClass (
+		c : UMM!EClass (
 			name <- f.name,
 			abstract <- false,
 			eAnnotations <- Sequence {
@@ -34,51 +34,87 @@ rule RootFeature2RootClass {
 -- Each feature is transformed into a class with matching abstraction
 
 rule Feature2Class {
-	from
-		f : FM!Feature (
-			not f.oclIsTypeOf(FM!RootFeature)
-		)
-	to
-		c : MM!EClass (
-			name <- f.name,
-			abstract <- f.abstract,
-			eAnnotations <- Sequence {
-				thisModule.Feature2Annotation(f)
-			},
-		 	eSuperTypes <- f.inheritsFrom() 
-		)
+    from
+        f : FM!Feature (
+            not f.oclIsTypeOf(FM!RootFeature)
+        )
+    to
+        c : UMM!EClass (
+            name <- f.name,
+            abstract <- f.abstract,
+            eAnnotations <- 
+                Sequence { thisModule.Feature2Annotation(f) }
+                ->union(
+                    if f.isLeaf() then
+                        Sequence { thisModule.LeafFeatureAnnotation(f)}
+                    else
+                        Sequence {}
+                    endif
+                ),
+            eSuperTypes <- f.inheritsFrom()  -- now safe
+        )
 }
 
+
 -- helper that returns a sequence of parent EClasses
-helper context FM!Feature def : inheritsFrom() : Sequence(MM!EClass) =
+helper context FM!Feature def : inheritsFrom() : Sequence(UMM!EClass) =
+    FM!Association.allInstances()
+            ->select(a | a.childfeature = self and a.parentfeature.abstract)
+            ->collect(a | a.findParentClass());
+
+lazy rule LeafParentAnnotationFromFeature { -- for leaf features we only add the parent as annotation for now
+    from
+        f : FM!Feature
+    to
+        a : UMM!EAnnotation (
+            source <- 'FM2UMM',
+            details <- Sequence {
+                thisModule.ParentFeatureEntryFromFeature(f)
+            }
+        )
+}
+
+lazy rule ParentFeatureEntryFromFeature {
+    from
+        f : FM!Feature
+    to
+        e : UMM!EStringToStringMapEntry (
+            key <- 'leafParent',
+            value <- f.getAbstractParentName()  -- helper below
+        )
+}
+
+helper context FM!Feature def : getAbstractParentName() : String =
     FM!Association.allInstances()
         ->select(a | a.childfeature = self and a.parentfeature.abstract)
-        ->collect(a | a.findParentClass());
+        ->collect(a | a.parentfeature.name)
+        ->first();  -- should be only one
 
--- Rule 4: Subfeature → Composition (Uncertainty on multiplicity)
--- Parent feature is concrete
 
+-- Rule 4: Subfeature → Composition (Uncertainty on multiplicity), also Rule 8.1
+-- Parent feature is concrete, child is not a leaf
 rule SubFeature2Composition {
     from
         ass : FM!Association (
             not ass.parentfeature.abstract
         )
     to
-        ref : MM!EReference (
+        ref : UMM!EReference (
             name <- ass.childfeature.name.toLower(),
             eType <- ass.findChildClass(),
             containment <- true,
-            lowerBound <- ass.resolveMultiplicity().lower,
-            upperBound <- ass.resolveMultiplicity().upper
+            lowerBound <- -2,
+            upperBound <- -2
         )
     do {
-        -- Add the reference to the parent class
-        ass.findParentClass().eStructuralFeatures->including(ref);
+        ass.findParentClass().eStructuralFeatures <- 
+            ass.findParentClass().eStructuralFeatures->including(ref);
     }
 }
 
 
--- Rule 5: Inheritance from Abstract Feature
+
+-- Rule 5: Inheritance from Abstract Feature, also Rule 8.1
 -- Child feature inherits from abstract parent feature 
 lazy rule AddInheritance {
     from
@@ -86,10 +122,35 @@ lazy rule AddInheritance {
             ass.parentfeature.abstract
         )
     to
-        c : MM!EClass (
-            eSuperTypes <- Sequence { ass.findParentClass() }
+        c : UMM!EClass (
+            -- only add inheritance if not leaf
+            eSuperTypes <- Sequence { ass.findParentClass() },
+            eAnnotations <- Sequence { thisModule.LeafParentAnnotation(ass) }
         )
 }
+
+lazy rule LeafParentAnnotation { -- nedeed later for Rule 8
+    from
+        ass : FM!Association
+    to
+        a : UMM!EAnnotation (
+            source <- 'FM2UMM',
+            details <- Sequence {
+                thisModule.ParentFeatureEntry(ass)
+            }
+        )
+}
+
+lazy rule ParentFeatureEntry {
+    from
+        ass : FM!Association
+    to
+        e : UMM!EStringToStringMapEntry (
+            key <- 'leafParent',
+            value <- ass.parentfeature.name
+        )
+}
+
 
 
 -- Rule 6: Leaf Feature Detection
@@ -100,48 +161,28 @@ helper context FM!Feature def : isLeaf() : Boolean =
 		->select(a | a.parentfeature = self)
 		->isEmpty();
 
-
--- Rule 7: Multiplicity Resolution (Optional Helper)
--- Can be refined in later iterations
-
-helper context FM!Association def : resolveMultiplicity()
-	: TupleType(lower : Integer, upper : Integer) =
-	if self.oclIsTypeOf(FM!OptionalAssociation) then
-		Tuple { lower = 0, upper = 1 }
-	else
-		Tuple { lower = 1, upper = 1 }
-	endif;
-
-
--- Rule 8.2: Leaf Feature → Enumeration
--- Alternative resolution for leaf features
-
-lazy rule LeafFeature2Enumeration {
-	from
-		f : FM!Feature (
-			f.isLeaf() and not f.abstract
-		)
-	to
-		e : MM!EEnum (
-			name <- f.name.concat('Enum'),
-			eLiterals <- Sequence {
-				thisModule.createLiteral(f)
-			}
-		)
-}
-
-
--- Helper: Create enumeration literal
-
-lazy rule Feature2EnumLiteral {
+lazy rule LeafFeatureAnnotation {
     from
-        s : FM!Feature
+        f : FM!Feature
     to
-        t : MM!EEnumLiteral (
-            name <- s.name.toUpper(),
-            value <- 0
+        a : UMM!EAnnotation (
+            source <- 'FM2UMM',
+            details <- Sequence {
+                thisModule.FeatureLeafUncertainty(f)
+            }
         )
 }
+
+lazy rule FeatureLeafUncertainty {
+    from
+        f : FM!Feature
+    to
+        e : UMM!EStringToStringMapEntry (
+            key <- 'leaf',
+            value <- 'true'
+        )
+}
+
 
 
 -- Helper: Recover source feature name from class (μ⁻¹)
@@ -149,8 +190,8 @@ lazy rule Feature2Annotation {
     from
         f : FM!Feature
     to
-        a : MM!EAnnotation (
-            source <- 'FM2MM',
+        a : UMM!EAnnotation (
+            source <- 'FM2UMM',
             details <- Sequence {
                 thisModule.FeatureNameEntry(f)
             }
@@ -161,26 +202,26 @@ lazy rule FeatureNameEntry {
     from
         f : FM!Feature
     to
-        e : MM!EStringToStringMapEntry (
+        e : UMM!EStringToStringMapEntry (
             key <- 'feature',
             value <- f.name
         )
 }
 
-helper context MM!EClass def : sourceFeatureName() : String =
+helper context UMM!EClass def : sourceFeatureName() : String =
 	self.eAnnotations
-		->select(a | a.source = 'FM2MM')
+		->select(a | a.source = 'FM2UMM')
 		->first()
 		.details->get('feature');
 
 
 -- Helper: μ(F) → C using embedded trace
 
-helper context FM!Feature def : targetClass() : MM!EClass =
-	MM!EClass.allInstances()
+helper context FM!Feature def : targetClass() : UMM!EClass =
+	UMM!EClass.allInstances()
 		->select(c |
 			c.eAnnotations->exists(a |
-				a.source = 'FM2MM' and
+				a.source = 'FM2UMM' and
 				a.details->get('feature') = self.name
 			)
 		)
@@ -189,8 +230,8 @@ helper context FM!Feature def : targetClass() : MM!EClass =
 
 -- Helper: Association navigation using μ
 
-helper context FM!Association def : findChildClass() : MM!EClass =
+helper context FM!Association def : findChildClass() : UMM!EClass =
 	self.childfeature.targetClass();
 
-helper context FM!Association def : findParentClass() : MM!EClass =
+helper context FM!Association def : findParentClass() : UMM!EClass =
 	self.parentfeature.targetClass();

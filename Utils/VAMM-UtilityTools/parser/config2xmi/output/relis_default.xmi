@@ -15,7 +15,7 @@
       <subfeatures name="Inclusion"/>
       <subfeatures name="Exclusion"/>
     </subfeatures>
-    <subfeatures name="MultipleReviewers" abstract="true">
+    <subfeatures name="MultipleReviewers">
       <association xsi:type="FM:MandatoryAssociation" childfeature="Conflict" parentfeature="MultipleReviewers"/>
       <subfeatures name="Conflict" abstract="true">
         <association xsi:type="FM:OptionalAssociation" childfeature="ConflictDetection" parentfeature="Conflict"/>
@@ -37,7 +37,7 @@
         <subfeatures name="Veto"/>
       </subfeatures>
     </subfeatures>
-    <subfeatures name="Phase" abstract="true">
+    <subfeatures name="Phase">
       <association xsi:type="FM:MandatoryAssociation" childfeature="Field" parentfeature="Phase"/>
       <subfeatures name="Field"/>
     </subfeatures>
@@ -62,7 +62,7 @@
         <association xsi:type="FM:OptionalAssociation" childfeature="StaticCategory" parentfeature="CategoryType"/>
         <association xsi:type="FM:OptionalAssociation" childfeature="IndependentDynamicCategory" parentfeature="CategoryType"/>
         <association xsi:type="FM:OptionalAssociation" childfeature="DependentDynamicCategory" parentfeature="CategoryType"/>
-        <subfeatures name="FreeCategory" abstract="true">
+        <subfeatures name="FreeCategory">
           <association xsi:type="FM:OptionalAssociation" childfeature="String" parentfeature="FreeCategory"/>
           <subfeatures name="String"/>
         </subfeatures>

@@ -45,7 +45,7 @@ class FMBuilder(ecorePath: String) {
     ) {
         val root = factory.create(rootCls)
         root.eSet(rootCls.getEStructuralFeature("name"), rootNode.name)
-        root.eSet(rootCls.getEStructuralFeature("abstract"), true)
+        root.eSet(rootCls.getEStructuralFeature("abstract"), rootNode.abstract)
 
         for (c in rootNode.children) {
             if (c.name in selected) {
@@ -53,7 +53,7 @@ class FMBuilder(ecorePath: String) {
 
                 root.getList("feature").add(f)
                 root.getList("association")
-                    .add(createAssoc(root, f, false))
+                    .add(createAssoc(root, f, c.mandatory))
             }
         }
 
@@ -69,9 +69,7 @@ class FMBuilder(ecorePath: String) {
         val f = factory.create(subFeatureCls)
         f.eSet(subFeatureCls.getEStructuralFeature("name"), node.name)
         f.eSet(
-            subFeatureCls.getEStructuralFeature("abstract"),
-            node.children.isNotEmpty()
-        )
+            subFeatureCls.getEStructuralFeature("abstract"),node.abstract)
 
         for (c in node.children) {
             if (c.name in selected) {
