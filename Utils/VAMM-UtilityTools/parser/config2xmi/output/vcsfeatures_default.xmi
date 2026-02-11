@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ASCII"?>
+<FM:RootFeature xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:FM="http://www.example.org/FM" name="VCSFeatures" abstract="true">
+  <association xsi:type="FM:MandatoryAssociation" childfeature="Commands" parentfeature="VCSFeatures"/>
+  <association xsi:type="FM:MandatoryAssociation" childfeature="History" parentfeature="VCSFeatures"/>
+  <association xsi:type="FM:MandatoryAssociation" childfeature="VersionUnit" parentfeature="VCSFeatures"/>
+  <association xsi:type="FM:MandatoryAssociation" childfeature="CollaborationStyle" parentfeature="VCSFeatures"/>
+  <association xsi:type="FM:MandatoryAssociation" childfeature="Database" parentfeature="VCSFeatures"/>
+  <feature name="Commands" abstract="true">
+    <association xsi:type="FM:OptionalAssociation" childfeature="HighLevelCommands" parentfeature="Commands"/>
+    <association xsi:type="FM:MandatoryAssociation" childfeature="LowLevelCommands" parentfeature="Commands"/>
+    <association xsi:type="FM:OptionalAssociation" childfeature="MergeStrategy" parentfeature="Commands"/>
+    <subfeatures name="HighLevelCommands"/>
+    <subfeatures name="LowLevelCommands" abstract="true">
+      <association xsi:type="FM:MandatoryAssociation" childfeature="Add" parentfeature="LowLevelCommands"/>
+      <association xsi:type="FM:OptionalAssociation" childfeature="Checkout" parentfeature="LowLevelCommands"/>
+      <association xsi:type="FM:OptionalAssociation" childfeature="CheckoutCreate" parentfeature="LowLevelCommands"/>
+      <association xsi:type="FM:OptionalAssociation" childfeature="Clone" parentfeature="LowLevelCommands"/>
+      <association xsi:type="FM:MandatoryAssociation" childfeature="Commit" parentfeature="LowLevelCommands"/>
+      <association xsi:type="FM:OptionalAssociation" childfeature="CreateBranch" parentfeature="LowLevelCommands"/>
+      <association xsi:type="FM:OptionalAssociation" childfeature="Fetch" parentfeature="LowLevelCommands"/>
+      <association xsi:type="FM:MandatoryAssociation" childfeature="Init" parentfeature="LowLevelCommands"/>
+      <association xsi:type="FM:MandatoryAssociation" childfeature="Open" parentfeature="LowLevelCommands"/>
+      <association xsi:type="FM:OptionalAssociation" childfeature="Pull" parentfeature="LowLevelCommands"/>
+      <association xsi:type="FM:OptionalAssociation" childfeature="Push" parentfeature="LowLevelCommands"/>
+      <association xsi:type="FM:OptionalAssociation" childfeature="RemoteAdd" parentfeature="LowLevelCommands"/>
+      <subfeatures name="Add"/>
+      <subfeatures name="Checkout"/>
+      <subfeatures name="CheckoutCreate"/>
+      <subfeatures name="Clone"/>
+      <subfeatures name="Commit"/>
+      <subfeatures name="CreateBranch"/>
+      <subfeatures name="Fetch"/>
+      <subfeatures name="Init"/>
+      <subfeatures name="Open"/>
+      <subfeatures name="Pull"/>
+      <subfeatures name="Push"/>
+      <subfeatures name="RemoteAdd"/>
+    </subfeatures>
+    <subfeatures name="MergeStrategy" abstract="true">
+      <association xsi:type="FM:OptionalAssociation" childfeature="GitDiff" parentfeature="MergeStrategy"/>
+      <subfeatures name="GitDiff"/>
+    </subfeatures>
+  </feature>
+  <feature name="History" abstract="true">
+    <association xsi:type="FM:MandatoryAssociation" childfeature="BranchingStyle" parentfeature="History"/>
+    <association xsi:type="FM:MandatoryAssociation" childfeature="Timestamping" parentfeature="History"/>
+    <subfeatures name="BranchingStyle" abstract="true">
+      <association xsi:type="FM:OptionalAssociation" childfeature="MultiBranch" parentfeature="BranchingStyle"/>
+      <subfeatures name="MultiBranch" abstract="true">
+        <association xsi:type="FM:OptionalAssociation" childfeature="InfiniteBranches" parentfeature="MultiBranch"/>
+        <subfeatures name="InfiniteBranches"/>
+      </subfeatures>
+    </subfeatures>
+    <subfeatures name="Timestamping" abstract="true">
+      <association xsi:type="FM:OptionalAssociation" childfeature="CommitHash" parentfeature="Timestamping"/>
+      <subfeatures name="CommitHash"/>
+    </subfeatures>
+  </feature>
+  <feature name="VersionUnit" abstract="true">
+    <association xsi:type="FM:OptionalAssociation" childfeature="File" parentfeature="VersionUnit"/>
+    <association xsi:type="FM:OptionalAssociation" childfeature="Element" parentfeature="VersionUnit"/>
+    <association xsi:type="FM:OptionalAssociation" childfeature="Line" parentfeature="VersionUnit"/>
+    <subfeatures name="File"/>
+    <subfeatures name="Element"/>
+    <subfeatures name="Line"/>
+  </feature>
+  <feature name="CollaborationStyle" abstract="true">
+    <association xsi:type="FM:OptionalAssociation" childfeature="Remote" parentfeature="CollaborationStyle"/>
+    <subfeatures name="Remote"/>
+  </feature>
+  <feature name="Database" abstract="true">
+    <association xsi:type="FM:OptionalAssociation" childfeature="XMI" parentfeature="Database"/>
+    <subfeatures name="XMI"/>
+  </feature>
+</FM:RootFeature>

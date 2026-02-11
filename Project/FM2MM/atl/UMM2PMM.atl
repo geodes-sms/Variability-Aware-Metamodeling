@@ -1,11 +1,4 @@
--- FM2MM.atl
--- Transform a Configured Feature Model (CFM) into a UMM
--- Traceability (μ : F → C) is embedded as an EAnnotation in each EClass
-
-
-
--- Metamodel declarations
-
+-- UMM2PMM.atl
 -- @nsURI UMM = http://www.eclipse.org/emf/2002/Ecore
 -- @nsURI PMM = http://www.eclipse.org/emf/2002/Ecore
 
@@ -13,70 +6,60 @@ module UMM2PMM;
 create OUT : PMM from IN : UMM;
 
 
--- Rule 7: Multiplicity Resolution (Optional Helper)
--- This is done manually by the user
-helper context UMM!EReference def : isUncertain() : Boolean =
-	self.lowerBound = -2 and self.upperBound = -2;
-
--- Rule 8 Either Rule 8.1 or 8.2 must be commented out
-
--- Rule 8.1: Leaf Feature → Subfeatures
+-- Helper to force rule dependency
 
 
-
--- Helper detect leaf classes (uncertainty)
-helper context UMM!EClass def : isLeafClass() : Boolean =
-	self.eAnnotations->exists(a |
-		a.source = 'FM2UMM' and
-		a.details->get('leaf') = 'true'
-	);
+helper context UMM!EClass def : tgt() : PMM!EClass =
+    thisModule.resolveTemp(self, 'CopyEClass');
 
 
--- We copy everything that is not uncertain
--- Copy non-leaf EClasses
--- Map a UMM class to its PMM equivalent
-helper context UMM!EClass def : targetClass() : PMM!EClass =
-    PMM!EClass.allInstances()
-        ->select(c | c.name = self.name)
-        ->first();
+-- Copy all EClasses
 
--- Map a UMM reference to PMM reference
-helper context UMM!EReference def : targetRef() : PMM!EReference =
-    PMM!EReference.allInstances()
-        ->select(r | r.name = self.name and r.eType.targetClass() = self.eType.targetClass())
-        ->first();
 
--- Copy non-leaf EClasses
 rule CopyEClass {
     from
-        c : UMM!EClass (
-            not c.isLeafClass()
-        )
+        c : UMM!EClass
     to
         c2 : PMM!EClass (
             name <- c.name,
             abstract <- c.abstract,
-            eSuperTypes <- c.eSuperTypes->collect(s | s.targetClass()),
-            eStructuralFeatures <- c.eStructuralFeatures->collect(f | thisModule.CopyEReference(f)),
-            eAnnotations <- c.eAnnotations->collect(a | thisModule.CopyEAnnotation(a))  -- preserves FM trace
+ 
+            eSuperTypes <- c.eSuperTypes->collect(s | s.tgt()),
+
+            eStructuralFeatures <- c.eStructuralFeatures
+                ->select(f | f.oclIsKindOf(UMM!EReference))
+                ->collect(f | thisModule.CopyEReference(f)),
+
+            eAnnotations <- c.eAnnotations
+                ->reject(a |
+                    a.source = 'FM2UMM' and
+                    a.details->exists(d | d.key = 'leaf')
+                )
+                ->collect(a | thisModule.CopyEAnnotation(a))
         )
 }
 
--- Copy EReferences safely
+
+-- Copy references safely
+
+
 lazy rule CopyEReference {
     from
         r : UMM!EReference
     to
         r2 : PMM!EReference (
             name <- r.name,
-            eType <- r.eType.targetClass(),
+            eType <- r.eType,
             containment <- r.containment,
             lowerBound <- r.lowerBound,
             upperBound <- r.upperBound
         )
 }
 
--- Copy annotations preserving trace
+
+-- Copy annotations
+
+
 lazy rule CopyEAnnotation {
     from
         a : UMM!EAnnotation
@@ -86,6 +69,10 @@ lazy rule CopyEAnnotation {
             details <- a.details->collect(d | thisModule.CopyMapEntry(d))
         )
 }
+
+
+-- Copy annotation entries
+
 
 lazy rule CopyMapEntry {
     from
@@ -97,45 +84,3 @@ lazy rule CopyMapEntry {
         )
 }
 
--- Rule 8.2: Leaf Feature → Enumeration
--- Alternative resolution for leaf features
-rule LeafClass2EnumAttribute {
-    from
-        leaf : UMM!EClass (
-            leaf.isLeafClass() and not leaf.abstract
-        )
-    to
-        enum : PMM!EEnum (
-            name <- leaf.name.concat('Enum'),
-            eLiterals <- Sequence { thisModule.Class2EnumLiteral(leaf) }
-        ),
-        attr : PMM!EAttribute (
-            name <- leaf.name.concat('Attr'),
-            eType <- enum,
-            eContainingClass <- leaf.leafParentClass()  -- attach to parent class
-        )
-}
-
--- Helper: Create enumeration literal
-lazy rule Class2EnumLiteral {
-	from
-		c : UMM!EClass
-	to
-		l : PMM!EEnumLiteral (
-			name <- c.name.toUpper(),
-			value <- 0
-		)
-}
-
-
-
-
-
--- Helper to retrieve parent class from annotation
-helper context UMM!EClass def : leafParentClass() : PMM!EClass =
-    PMM!EClass.allInstances()
-        ->select(c | c.name = self.eAnnotations
-            ->select(a | a.source = 'FM2UMM')
-            ->collect(a | a.details->get('leafParent'))
-            ->first())
-        ->first();
