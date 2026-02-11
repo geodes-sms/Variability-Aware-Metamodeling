@@ -19,7 +19,7 @@ fun transformXmiToEcore(input: File, output: File) {
 
     val classes = mutableListOf<EClassDef>()
 
-    // collect classes
+    /* ---------- collect classes ---------- */
     for (i in 0 until eClassNodes.length) {
         val node = eClassNodes.item(i) as Element
 
@@ -34,15 +34,33 @@ fun transformXmiToEcore(input: File, output: File) {
 
         val cls = EClassDef(name, isAbstract, annList)
 
+        /* --- super types --- */
         val superTypes = node.getAttribute("eSuperTypes")
         if (superTypes.startsWith("/")) {
             cls.superTypeIndices.add(superTypes.substring(1).toInt())
         }
 
+        /* --- structural features (EReference) --- */
+        val features = node.getElementsByTagName("eStructuralFeatures")
+        for (k in 0 until features.length) {
+            val f = features.item(k) as Element
+
+            if (f.getAttribute("xsi:type") == "ecore:EReference") {
+                val ref = EReferenceDef(
+                    name = f.getAttribute("name"),
+                    lower = f.getAttribute("lowerBound").toInt(),
+                    upper = f.getAttribute("upperBound").toInt(),
+                    typeIndex = f.getAttribute("eType").removePrefix("/").toInt(),
+                    containment = f.getAttribute("containment") == "true"
+                )
+                cls.references.add(ref)
+            }
+        }
+
         classes.add(cls)
     }
 
-    // build Ecore document
+    /* ---------- build Ecore document ---------- */
     val outDoc = dbf.newDocumentBuilder().newDocument()
 
     val pkg = outDoc.createElementNS(
@@ -61,9 +79,9 @@ fun transformXmiToEcore(input: File, output: File) {
 
     outDoc.appendChild(pkg)
 
-    // emit classifiers
-    classes.forEachIndexed { index, cls ->
-        if (cls.name == null) return@forEachIndexed
+    /* ---------- emit classifiers ---------- */
+    classes.forEach { cls ->
+        if (cls.name == null) return@forEach
 
         val eCls = outDoc.createElement("eClassifiers")
         eCls.setAttribute("xsi:type", "ecore:EClass")
@@ -73,7 +91,7 @@ fun transformXmiToEcore(input: File, output: File) {
             eCls.setAttribute("abstract", "true")
         }
 
-        // resolve super types
+        /* --- super types --- */
         if (cls.superTypeIndices.isNotEmpty()) {
             val refs = cls.superTypeIndices.joinToString(" ") {
                 "#//${classes[it].name}"
@@ -81,16 +99,29 @@ fun transformXmiToEcore(input: File, output: File) {
             eCls.setAttribute("eSuperTypes", refs)
         }
 
-        // import annotations
+        /* --- annotations --- */
         cls.annotations.forEach {
             val imported = outDoc.importNode(it, true)
             eCls.appendChild(imported)
         }
 
+        /* --- references --- */
+        cls.references.forEach { ref ->
+            val eRef = outDoc.createElement("eStructuralFeatures")
+            eRef.setAttribute("xsi:type", "ecore:EReference")
+            eRef.setAttribute("name", ref.name)
+            eRef.setAttribute("lowerBound", ref.lower.toString())
+            eRef.setAttribute("upperBound", ref.upper.toString())
+            eRef.setAttribute("containment", ref.containment.toString())
+            eRef.setAttribute("eType", "#//${classes[ref.typeIndex].name}")
+
+            eCls.appendChild(eRef)
+        }
+
         pkg.appendChild(eCls)
     }
 
-    // write file
+    /* ---------- write file ---------- */
     val tf = TransformerFactory.newInstance().newTransformer()
     tf.setOutputProperty(OutputKeys.INDENT, "yes")
     tf.transform(DOMSource(outDoc), StreamResult(output))
