@@ -12,14 +12,14 @@
 	</properties>
 	<struct>
 		<and abstract="true" mandatory="true" name="ReLiS">
-			<and abstract="true" name="Screening">
+			<and name="Screening">
 				<or abstract="true" mandatory="true" name="Criteria">
 					<feature name="Inclusion"/>
 					<feature name="Exclusion"/>
 				</or>
 				<and name="MultipleReviewers">
 					<and abstract="true" mandatory="true" name="Conflict">
-						<alt abstract="true" name="ConflictDetection">
+						<alt abstract="true" name="ConflictType">
 							<feature name="IncludeExclude"/>
 							<feature name="ExclusionCriteria"/>
 						</alt>
@@ -29,7 +29,7 @@
 						</alt>
 					</and>
 				</and>
-				<and abstract="true" name="Validation">
+				<and name="Validation">
 					<alt abstract="true" mandatory="true" name="AssignmentMode">
 						<feature name="Normal"/>
 						<feature name="Veto"/>
@@ -37,42 +37,52 @@
 					</alt>
 				</and>
 				<and mandatory="true" name="Phase">
-					<feature mandatory="true" name="Field"/>
+					<or abstract="true" mandatory="true" name="Field">
+						<feature name="Title"/>
+						<feature name="Abstract"/>
+						<feature name="Paper"/>
+						<feature name="Author"/>
+						<feature name="Reference"/>
+					</or>
 				</and>
 			</and>
-			<and abstract="true" name="QA">
+			<and name="QA">
 				<feature mandatory="true" name="Question"/>
 				<feature mandatory="true" name="Answer"/>
 			</and>
-			<and abstract="true" name="DataExtraction">
+			<and name="DataExtraction">
 				<and abstract="true" name="Category">
 					<and abstract="true" mandatory="true" name="CategoryType">
-						<alt name="FreeCategory">
-							<feature name="Number"/>
-							<feature name="Text"/>
-							<feature name="String"/>
-							<feature name="Boolean"/>
-							<feature name="Decimal"/>
+						<or name="FreeCategory">
 							<feature name="Date"/>
-						</alt>
-						<feature name="Note"/>
+							<feature name="Note"/>
+							<alt abstract="true" name="SimpleType">
+								<feature name="Decimal"/>
+								<feature name="String"/>
+								<feature name="Text"/>
+								<feature name="Number"/>
+								<feature name="Boolean"/>
+							</alt>
+						</or>
 						<feature name="StaticCategory"/>
 						<feature name="IndependentDynamicCategory"/>
 						<feature name="DependentDynamicCategory"/>
 					</and>
-					<feature name="Subcategroies"/>
+					<feature name="Subcategories"/>
 					<feature name="MandatoryCategory"/>
 					<feature name="Multivalued"/>
 					<feature name="InitialValue"/>
 				</and>
 			</and>
-			<and abstract="true" name="Synthesis">
-				<feature name="CompareGraph"/>
-				<and abstract="true" name="Type">
-					<feature name="Var"/>
-					<feature name="Pie"/>
-					<feature name="Line"/>
-				</and>
+			<and name="Synthesis">
+				<or name="Chart">
+					<or abstract="true" name="ChartType">
+						<feature name="Var"/>
+						<feature name="Pie"/>
+						<feature name="Line"/>
+					</or>
+					<feature name="CompareGraph"/>
+				</or>
 			</and>
 		</and>
 	</struct>

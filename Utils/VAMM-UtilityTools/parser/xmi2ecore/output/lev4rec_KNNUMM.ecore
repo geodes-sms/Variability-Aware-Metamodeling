@@ -1,242 +1,295 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="RecommenderSpecification" nsURI="http://www.example.org/RecommenderSpecification"
-    nsPrefix="RecommenderSpecification">
-  <eClassifiers xsi:type="ecore:EClass" name="RecommenderSpecification">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="RecommenderSpecification"/>
-    </eAnnotations>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RecommenderComponent" eSuperTypes="#//RecommenderSpecification">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="RecommenderComponent"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="algorithmcomponent" lowerBound="-2"
-        upperBound="-2" eType="#//AlgorithmComponent" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="datasetcomponent" lowerBound="-2"
-        upperBound="-2" eType="#//DatasetComponent" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="preprocessingcomponent"
-        lowerBound="-2" upperBound="-2" eType="#//PreprocessingComponent" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="evaluationcomponent" lowerBound="-2"
-        upperBound="-2" eType="#//EvaluationComponent" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="presentationcomponent"
-        lowerBound="-2" upperBound="-2" eType="#//PresentationComponent" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AlgorithmComponent">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="AlgorithmComponent"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="collaborativefiltering"
-        lowerBound="-2" upperBound="-2" eType="#//CollaborativeFiltering" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CollaborativeFiltering">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="CollaborativeFiltering"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="userbased" lowerBound="-2"
-        upperBound="-2" eType="#//UserBased?" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="UserBased?">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="UserBased"/>
-    </eAnnotations>
-    <eAnnotations source="FM2UMM">
-      <details key="leaf" value="true"/>
-    </eAnnotations>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DatasetComponent">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="DatasetComponent"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="datastructure" lowerBound="-2"
-        upperBound="-2" eType="#//DataStructure" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="datasettype" lowerBound="-2"
-        upperBound="-2" eType="#//DatasetType" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DataStructure">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="DataStructure"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="matrix" lowerBound="-2"
-        upperBound="-2" eType="#//Matrix?" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Matrix?">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="Matrix"/>
-    </eAnnotations>
-    <eAnnotations source="FM2UMM">
-      <details key="leaf" value="true"/>
-    </eAnnotations>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DatasetType">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="DatasetType"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="unsuperviseddataset" lowerBound="-2"
-        upperBound="-2" eType="#//UnsupervisedDataset?" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="UnsupervisedDataset?">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="UnsupervisedDataset"/>
-    </eAnnotations>
-    <eAnnotations source="FM2UMM">
-      <details key="leaf" value="true"/>
-    </eAnnotations>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PreprocessingComponent">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="PreprocessingComponent"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="vectorization" lowerBound="-2"
-        upperBound="-2" eType="#//Vectorization?" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Vectorization?">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="Vectorization"/>
-    </eAnnotations>
-    <eAnnotations source="FM2UMM">
-      <details key="leaf" value="true"/>
-    </eAnnotations>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EvaluationComponent">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="EvaluationComponent"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="crossfold" lowerBound="-2"
-        upperBound="-2" eType="#//CrossFold" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CrossFold">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="CrossFold"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="splittingkfold" lowerBound="-2"
-        upperBound="-2" eType="#//SplittingKfold?" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SplittingKfold?">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="SplittingKfold"/>
-    </eAnnotations>
-    <eAnnotations source="FM2UMM">
-      <details key="leaf" value="true"/>
-    </eAnnotations>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PresentationComponent">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="PresentationComponent"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="webinterface" lowerBound="-2"
-        upperBound="-2" eType="#//WebInterface?" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WebInterface?">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="WebInterface"/>
-    </eAnnotations>
-    <eAnnotations source="FM2UMM">
-      <details key="leaf" value="true"/>
-    </eAnnotations>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SupportingLibrary" eSuperTypes="#//RecommenderSpecification">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="SupportingLibrary"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="algorithmlibrary" lowerBound="-2"
-        upperBound="-2" eType="#//AlgorithmLibrary" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="datasetlibrary" lowerBound="-2"
-        upperBound="-2" eType="#//DatasetLibrary" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="presentationlibrary" lowerBound="-2"
-        upperBound="-2" eType="#//PresentationLibrary" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="evaluationlibrary" lowerBound="-2"
-        upperBound="-2" eType="#//EvaluationLibrary" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="preprocessinglibrary" lowerBound="-2"
-        upperBound="-2" eType="#//PreprocessingLibrary" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AlgorithmLibrary">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="AlgorithmLibrary"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="surprise" lowerBound="-2"
-        upperBound="-2" eType="#//Surprise?" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Surprise?">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="Surprise"/>
-    </eAnnotations>
-    <eAnnotations source="FM2UMM">
-      <details key="leaf" value="true"/>
-    </eAnnotations>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DatasetLibrary">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="DatasetLibrary"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="pandas" lowerBound="-2"
-        upperBound="-2" eType="#//Pandas?" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Pandas?">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="Pandas"/>
-    </eAnnotations>
-    <eAnnotations source="FM2UMM">
-      <details key="leaf" value="true"/>
-    </eAnnotations>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PresentationLibrary">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="PresentationLibrary"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="weblibrary" lowerBound="-2"
-        upperBound="-2" eType="#//WebLibrary" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WebLibrary">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="WebLibrary"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="flask" lowerBound="-2"
-        upperBound="-2" eType="#//Flask?" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Flask?">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="Flask"/>
-    </eAnnotations>
-    <eAnnotations source="FM2UMM">
-      <details key="leaf" value="true"/>
-    </eAnnotations>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EvaluationLibrary">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="EvaluationLibrary"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="surprisesplit" lowerBound="-2"
-        upperBound="-2" eType="#//SurpriseSplit" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SurpriseSplit">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="SurpriseSplit"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="surprisecrossfold" lowerBound="-2"
-        upperBound="-2" eType="#//SurpriseCrossFold?" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SurpriseCrossFold?">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="SurpriseCrossFold"/>
-    </eAnnotations>
-    <eAnnotations source="FM2UMM">
-      <details key="leaf" value="true"/>
-    </eAnnotations>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PreprocessingLibrary">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="PreprocessingLibrary"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="surprisepreprocessing"
-        lowerBound="-2" upperBound="-2" eType="#//SurprisePreprocessing?" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SurprisePreprocessing?">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="SurprisePreprocessing"/>
-    </eAnnotations>
-    <eAnnotations source="FM2UMM">
-      <details key="leaf" value="true"/>
-    </eAnnotations>
-  </eClassifiers>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ecore:EPackage xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="RecommenderSpecification" nsPrefix="RecommenderSpecification" nsURI="http://www.example.org/RecommenderSpecification" xmi:version="2.0">
+    <eClassifiers name="RecommenderSpecification" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="RecommenderSpecification"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//RecommenderSpecification" name="RecommenderComponent" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="RecommenderComponent"/>
+                
+        </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//AlgorithmComponent" lowerBound="-2" name="algorithmcomponent" upperBound="-2" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures containment="true" eType="#//DatasetComponent" lowerBound="-2" name="datasetcomponent" upperBound="-2" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures containment="true" eType="#//PreprocessingComponent" lowerBound="-2" name="preprocessingcomponent" upperBound="-2" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures containment="true" eType="#//EvaluationComponent" lowerBound="-2" name="evaluationcomponent" upperBound="-2" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures containment="true" eType="#//PresentationComponent" lowerBound="-2" name="presentationcomponent" upperBound="-2" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers name="AlgorithmComponent" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="AlgorithmComponent"/>
+                
+        </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//CollaborativeFiltering" lowerBound="-2" name="collaborativefiltering" upperBound="-2" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers name="CollaborativeFiltering" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="CollaborativeFiltering"/>
+                
+        </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//UserBased?" lowerBound="-2" name="userbased" upperBound="-2" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers name="UserBased?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="UserBased"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers name="DatasetComponent" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="DatasetComponent"/>
+                
+        </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//DataStructure" lowerBound="-2" name="datastructure" upperBound="-2" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures containment="true" eType="#//DatasetType" lowerBound="-2" name="datasettype" upperBound="-2" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers name="DataStructure" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="DataStructure"/>
+                
+        </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//Matrix?" lowerBound="-2" name="matrix" upperBound="-2" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers name="Matrix?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="Matrix"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers name="DatasetType" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="DatasetType"/>
+                
+        </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//UnsupervisedDataset?" lowerBound="-2" name="unsuperviseddataset" upperBound="-2" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers name="UnsupervisedDataset?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="UnsupervisedDataset"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers name="PreprocessingComponent" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="PreprocessingComponent"/>
+                
+        </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//Vectorization?" lowerBound="-2" name="vectorization" upperBound="-2" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers name="Vectorization?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="Vectorization"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers name="EvaluationComponent" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="EvaluationComponent"/>
+                
+        </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//CrossFold" lowerBound="-2" name="crossfold" upperBound="-2" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers name="CrossFold" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="CrossFold"/>
+                
+        </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//SplittingKfold?" lowerBound="-2" name="splittingkfold" upperBound="-2" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers name="SplittingKfold?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="SplittingKfold"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers name="PresentationComponent" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="PresentationComponent"/>
+                
+        </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//WebInterface?" lowerBound="-2" name="webinterface" upperBound="-2" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers name="WebInterface?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="WebInterface"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//RecommenderSpecification" name="SupportingLibrary" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="SupportingLibrary"/>
+                
+        </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//AlgorithmLibrary" lowerBound="-2" name="algorithmlibrary" upperBound="-2" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures containment="true" eType="#//DatasetLibrary" lowerBound="-2" name="datasetlibrary" upperBound="-2" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures containment="true" eType="#//PresentationLibrary" lowerBound="-2" name="presentationlibrary" upperBound="-2" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures containment="true" eType="#//EvaluationLibrary" lowerBound="-2" name="evaluationlibrary" upperBound="-2" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures containment="true" eType="#//PreprocessingLibrary" lowerBound="-2" name="preprocessinglibrary" upperBound="-2" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers name="AlgorithmLibrary" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="AlgorithmLibrary"/>
+                
+        </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//Surprise?" lowerBound="-2" name="surprise" upperBound="-2" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers name="Surprise?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="Surprise"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers name="DatasetLibrary" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="DatasetLibrary"/>
+                
+        </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//Pandas?" lowerBound="-2" name="pandas" upperBound="-2" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers name="Pandas?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="Pandas"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers name="PresentationLibrary" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="PresentationLibrary"/>
+                
+        </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//WebLibrary" lowerBound="-2" name="weblibrary" upperBound="-2" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers name="WebLibrary" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="WebLibrary"/>
+                
+        </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//Flask?" lowerBound="-2" name="flask" upperBound="-2" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers name="Flask?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="Flask"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers name="EvaluationLibrary" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="EvaluationLibrary"/>
+                
+        </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//SurpriseSplit" lowerBound="-2" name="surprisesplit" upperBound="-2" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers name="SurpriseSplit" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="SurpriseSplit"/>
+                
+        </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//SurpriseCrossFold?" lowerBound="-2" name="surprisecrossfold" upperBound="-2" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers name="SurpriseCrossFold?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="SurpriseCrossFold"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers name="PreprocessingLibrary" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="PreprocessingLibrary"/>
+                
+        </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//SurprisePreprocessing?" lowerBound="-2" name="surprisepreprocessing" upperBound="-2" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers name="SurprisePreprocessing?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="SurprisePreprocessing"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
+                
+        </eAnnotations>
+    </eClassifiers>
 </ecore:EPackage>

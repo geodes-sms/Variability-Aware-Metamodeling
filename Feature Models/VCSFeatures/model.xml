@@ -12,35 +12,37 @@
 	</properties>
 	<struct>
 		<and abstract="true" mandatory="true" name="VCSFeatures">
-			<and abstract="true" mandatory="true" name="Commands">
-				<feature name="HighLevelCommands"/>
-				<and abstract="true" mandatory="true" name="LowLevelCommands">
-					<graphics key="collapsed" value="false"/>
-					<feature mandatory="true" name="Add"/>
-					<feature name="Checkout"/>
-					<feature name="CheckoutCreate"/>
-					<feature name="Clone"/>
-					<feature mandatory="true" name="Commit"/>
-					<feature name="CherryPick">
-						<description>Unimplemented for this iteration</description>
-					</feature>
-					<feature name="CreateBranch"/>
-					<feature name="Fetch"/>
-					<feature mandatory="true" name="Init"/>
-					<feature name="Log"/>
-					<feature mandatory="true" name="Open"/>
-					<feature name="Pull"/>
-					<feature name="Push"/>
-					<feature name="RemoteAdd"/>
-					<feature name="Rm"/>
+			<and mandatory="true" name="Commands">
+				<feature name="HighLevelCommand"/>
+				<and mandatory="true" name="LowLevelCommand">
+					<and abstract="true" mandatory="true" name="LowCommands">
+						<graphics key="collapsed" value="false"/>
+						<feature mandatory="true" name="Add"/>
+						<feature name="Checkout"/>
+						<feature name="CheckoutCreate"/>
+						<feature name="Clone"/>
+						<feature mandatory="true" name="Commit"/>
+						<feature name="CherryPick">
+							<description>Unimplemented for this iteration</description>
+						</feature>
+						<feature name="CreateBranch"/>
+						<feature name="Fetch"/>
+						<feature mandatory="true" name="Init"/>
+						<feature name="Log"/>
+						<feature mandatory="true" name="Open"/>
+						<feature name="Pull"/>
+						<feature name="Push"/>
+						<feature name="RemoteAdd"/>
+						<feature name="Rm"/>
+					</and>
 				</and>
-				<alt abstract="true" name="MergeStrategy">
+				<or abstract="true" name="MergeStrategy">
 					<feature name="DSMCompare"/>
 					<feature name="GitDiff"/>
-				</alt>
+				</or>
 			</and>
-			<and abstract="true" mandatory="true" name="History">
-				<alt abstract="true" mandatory="true" name="BranchingStyle">
+			<and mandatory="true" name="History">
+				<alt abstract="true" name="BranchingStyle">
 					<feature name="SingleBranch">
 						<description>Linear</description>
 					</feature>
@@ -59,7 +61,7 @@
 						<description>Will require some sort of form to collect the number</description>
 					</feature>
 				</and>
-				<alt abstract="true" mandatory="true" name="Timestamping">
+				<alt abstract="true" name="Timestamping">
 					<feature name="Label">
 						<description>Predefined labels that are automatically generated instead of commit Hash</description>
 					</feature>
@@ -71,25 +73,31 @@
 					</feature>
 				</alt>
 			</and>
-			<or abstract="true" mandatory="true" name="VersionUnit">
-				<graphics key="collapsed" value="false"/>
-				<feature name="File"/>
-				<feature name="Semantic"/>
-				<feature name="Element"/>
-				<feature name="Line"/>
-			</or>
-			<alt abstract="true" mandatory="true" name="CollaborationStyle">
-				<feature name="LocalOnly"/>
-				<feature name="Remote"/>
-			</alt>
-			<and abstract="true" mandatory="true" name="Database">
+			<and mandatory="true" name="CollaborationStyle">
+				<or abstract="true" mandatory="true" name="CollaborationStyleType">
+					<feature name="LocalOnly"/>
+					<feature name="Remote"/>
+				</or>
+			</and>
+			<and mandatory="true" name="Database">
 				<description>Will require to ask the user where the DB is located</description>
-				<feature name="SQL"/>
-				<feature name="MongoDB"/>
-				<feature name="Neo4J"/>
-				<feature name="XMI">
-					<description>Basically, disk storage, no DB</description>
-				</feature>
+				<or abstract="true" mandatory="true" name="DataBaseType">
+					<feature name="Neo4J"/>
+					<feature name="XMI">
+						<description>Basically, disk storage, no DB</description>
+					</feature>
+					<feature name="SQL"/>
+					<feature name="MongoDB"/>
+				</or>
+			</and>
+			<and name="VersionUnit">
+				<or abstract="true" mandatory="true" name="VersionUnitType">
+					<graphics key="collapsed" value="false"/>
+					<feature name="File"/>
+					<feature name="Semantic"/>
+					<feature name="Element"/>
+					<feature name="Line"/>
+				</or>
 			</and>
 		</and>
 	</struct>
@@ -144,18 +152,6 @@
 					<var>File</var>
 				</conj>
 			</eq>
-		</rule>
-		<rule>
-			<disj>
-				<var>SQL</var>
-				<disj>
-					<var>MongoDB</var>
-					<disj>
-						<var>XMI</var>
-						<var>Neo4J</var>
-					</disj>
-				</disj>
-			</disj>
 		</rule>
 	</constraints>
 </featureModel>

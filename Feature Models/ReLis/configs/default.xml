@@ -2,12 +2,12 @@
 <configuration>
 	<feature automatic="selected" name="ReLiS"/>
 	<feature automatic="selected" manual="selected" name="Screening"/>
-	<feature automatic="selected" name="Criteria"/>
+	<feature automatic="selected" manual="selected" name="Criteria"/>
 	<feature manual="selected" name="Inclusion"/>
 	<feature manual="selected" name="Exclusion"/>
-	<feature automatic="selected" name="MultipleReviewers"/>
+	<feature automatic="selected" manual="selected" name="MultipleReviewers"/>
 	<feature automatic="selected" manual="selected" name="Conflict"/>
-	<feature automatic="selected" manual="selected" name="ConflictDetection"/>
+	<feature automatic="selected" manual="selected" name="ConflictType"/>
 	<feature manual="selected" name="IncludeExclude"/>
 	<feature automatic="unselected" name="ExclusionCriteria"/>
 	<feature automatic="selected" manual="selected" name="ConflictResolution"/>
@@ -18,33 +18,40 @@
 	<feature automatic="unselected" name="Normal"/>
 	<feature manual="selected" name="Veto"/>
 	<feature automatic="unselected" name="Info"/>
-	<feature automatic="selected" name="Phase"/>
+	<feature automatic="selected" manual="selected" name="Phase"/>
 	<feature automatic="selected" name="Field"/>
+	<feature manual="selected" name="Title"/>
+	<feature manual="selected" name="Abstract"/>
+	<feature manual="selected" name="Paper"/>
+	<feature manual="selected" name="Author"/>
+	<feature manual="selected" name="Reference"/>
 	<feature manual="selected" name="QA"/>
-	<feature automatic="selected" name="Question"/>
-	<feature automatic="selected" name="Answer"/>
+	<feature automatic="selected" manual="selected" name="Question"/>
+	<feature automatic="selected" manual="selected" name="Answer"/>
 	<feature automatic="selected" manual="selected" name="DataExtraction"/>
-	<feature automatic="selected" name="Category"/>
-	<feature automatic="selected" name="CategoryType"/>
-	<feature automatic="selected" manual="selected" name="FreeCategory"/>
-	<feature automatic="unselected" name="Number"/>
-	<feature automatic="unselected" name="Text"/>
-	<feature manual="selected" name="String"/>
-	<feature automatic="unselected" name="Boolean"/>
-	<feature automatic="unselected" name="Decimal"/>
-	<feature automatic="unselected" name="Date"/>
-	<feature manual="selected" name="Note"/>
+	<feature automatic="selected" manual="selected" name="Category"/>
+	<feature automatic="selected" manual="selected" name="CategoryType"/>
+	<feature name="FreeCategory"/>
+	<feature name="Date"/>
+	<feature name="Note"/>
+	<feature name="SimpleType"/>
+	<feature name="Decimal"/>
+	<feature name="String"/>
+	<feature name="Text"/>
+	<feature name="Number"/>
+	<feature name="Boolean"/>
 	<feature manual="selected" name="StaticCategory"/>
 	<feature manual="selected" name="IndependentDynamicCategory"/>
 	<feature manual="selected" name="DependentDynamicCategory"/>
-	<feature manual="selected" name="Subcategroies"/>
-	<feature manual="selected" name="MandatoryCategory"/>
-	<feature manual="selected" name="Multivalued"/>
-	<feature manual="selected" name="InitialValue"/>
-	<feature automatic="selected" name="Synthesis"/>
-	<feature manual="selected" name="CompareGraph"/>
-	<feature automatic="selected" manual="selected" name="Type"/>
+	<feature name="Subcategories"/>
+	<feature name="MandatoryCategory"/>
+	<feature name="Multivalued"/>
+	<feature name="InitialValue"/>
+	<feature automatic="selected" manual="selected" name="Synthesis"/>
+	<feature automatic="selected" name="Chart"/>
+	<feature automatic="selected" manual="selected" name="ChartType"/>
 	<feature name="Var"/>
 	<feature name="Pie"/>
 	<feature manual="selected" name="Line"/>
+	<feature manual="selected" name="CompareGraph"/>
 </configuration>

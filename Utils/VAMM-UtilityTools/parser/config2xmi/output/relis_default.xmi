@@ -4,7 +4,7 @@
   <association xsi:type="FM:OptionalAssociation" childfeature="QA" parentfeature="ReLiS"/>
   <association xsi:type="FM:OptionalAssociation" childfeature="DataExtraction" parentfeature="ReLiS"/>
   <association xsi:type="FM:OptionalAssociation" childfeature="Synthesis" parentfeature="ReLiS"/>
-  <feature name="Screening" abstract="true">
+  <feature name="Screening">
     <association xsi:type="FM:MandatoryAssociation" childfeature="Criteria" parentfeature="Screening"/>
     <association xsi:type="FM:OptionalAssociation" childfeature="MultipleReviewers" parentfeature="Screening"/>
     <association xsi:type="FM:OptionalAssociation" childfeature="Validation" parentfeature="Screening"/>
@@ -18,10 +18,10 @@
     <subfeatures name="MultipleReviewers">
       <association xsi:type="FM:MandatoryAssociation" childfeature="Conflict" parentfeature="MultipleReviewers"/>
       <subfeatures name="Conflict" abstract="true">
-        <association xsi:type="FM:OptionalAssociation" childfeature="ConflictDetection" parentfeature="Conflict"/>
+        <association xsi:type="FM:OptionalAssociation" childfeature="ConflictType" parentfeature="Conflict"/>
         <association xsi:type="FM:OptionalAssociation" childfeature="ConflictResolution" parentfeature="Conflict"/>
-        <subfeatures name="ConflictDetection" abstract="true">
-          <association xsi:type="FM:OptionalAssociation" childfeature="IncludeExclude" parentfeature="ConflictDetection"/>
+        <subfeatures name="ConflictType" abstract="true">
+          <association xsi:type="FM:OptionalAssociation" childfeature="IncludeExclude" parentfeature="ConflictType"/>
           <subfeatures name="IncludeExclude"/>
         </subfeatures>
         <subfeatures name="ConflictResolution" abstract="true">
@@ -30,7 +30,7 @@
         </subfeatures>
       </subfeatures>
     </subfeatures>
-    <subfeatures name="Validation" abstract="true">
+    <subfeatures name="Validation">
       <association xsi:type="FM:MandatoryAssociation" childfeature="AssignmentMode" parentfeature="Validation"/>
       <subfeatures name="AssignmentMode" abstract="true">
         <association xsi:type="FM:OptionalAssociation" childfeature="Veto" parentfeature="AssignmentMode"/>
@@ -39,51 +39,50 @@
     </subfeatures>
     <subfeatures name="Phase">
       <association xsi:type="FM:MandatoryAssociation" childfeature="Field" parentfeature="Phase"/>
-      <subfeatures name="Field"/>
+      <subfeatures name="Field" abstract="true">
+        <association xsi:type="FM:OptionalAssociation" childfeature="Title" parentfeature="Field"/>
+        <association xsi:type="FM:OptionalAssociation" childfeature="Abstract" parentfeature="Field"/>
+        <association xsi:type="FM:OptionalAssociation" childfeature="Paper" parentfeature="Field"/>
+        <association xsi:type="FM:OptionalAssociation" childfeature="Author" parentfeature="Field"/>
+        <association xsi:type="FM:OptionalAssociation" childfeature="Reference" parentfeature="Field"/>
+        <subfeatures name="Title"/>
+        <subfeatures name="Abstract"/>
+        <subfeatures name="Paper"/>
+        <subfeatures name="Author"/>
+        <subfeatures name="Reference"/>
+      </subfeatures>
     </subfeatures>
   </feature>
-  <feature name="QA" abstract="true">
+  <feature name="QA">
     <association xsi:type="FM:MandatoryAssociation" childfeature="Question" parentfeature="QA"/>
     <association xsi:type="FM:MandatoryAssociation" childfeature="Answer" parentfeature="QA"/>
     <subfeatures name="Question"/>
     <subfeatures name="Answer"/>
   </feature>
-  <feature name="DataExtraction" abstract="true">
+  <feature name="DataExtraction">
     <association xsi:type="FM:OptionalAssociation" childfeature="Category" parentfeature="DataExtraction"/>
     <subfeatures name="Category" abstract="true">
       <association xsi:type="FM:MandatoryAssociation" childfeature="CategoryType" parentfeature="Category"/>
-      <association xsi:type="FM:OptionalAssociation" childfeature="Subcategroies" parentfeature="Category"/>
-      <association xsi:type="FM:OptionalAssociation" childfeature="MandatoryCategory" parentfeature="Category"/>
-      <association xsi:type="FM:OptionalAssociation" childfeature="Multivalued" parentfeature="Category"/>
-      <association xsi:type="FM:OptionalAssociation" childfeature="InitialValue" parentfeature="Category"/>
       <subfeatures name="CategoryType" abstract="true">
-        <association xsi:type="FM:OptionalAssociation" childfeature="FreeCategory" parentfeature="CategoryType"/>
-        <association xsi:type="FM:OptionalAssociation" childfeature="Note" parentfeature="CategoryType"/>
         <association xsi:type="FM:OptionalAssociation" childfeature="StaticCategory" parentfeature="CategoryType"/>
         <association xsi:type="FM:OptionalAssociation" childfeature="IndependentDynamicCategory" parentfeature="CategoryType"/>
         <association xsi:type="FM:OptionalAssociation" childfeature="DependentDynamicCategory" parentfeature="CategoryType"/>
-        <subfeatures name="FreeCategory">
-          <association xsi:type="FM:OptionalAssociation" childfeature="String" parentfeature="FreeCategory"/>
-          <subfeatures name="String"/>
-        </subfeatures>
-        <subfeatures name="Note"/>
         <subfeatures name="StaticCategory"/>
         <subfeatures name="IndependentDynamicCategory"/>
         <subfeatures name="DependentDynamicCategory"/>
       </subfeatures>
-      <subfeatures name="Subcategroies"/>
-      <subfeatures name="MandatoryCategory"/>
-      <subfeatures name="Multivalued"/>
-      <subfeatures name="InitialValue"/>
     </subfeatures>
   </feature>
-  <feature name="Synthesis" abstract="true">
-    <association xsi:type="FM:OptionalAssociation" childfeature="CompareGraph" parentfeature="Synthesis"/>
-    <association xsi:type="FM:OptionalAssociation" childfeature="Type" parentfeature="Synthesis"/>
-    <subfeatures name="CompareGraph"/>
-    <subfeatures name="Type" abstract="true">
-      <association xsi:type="FM:OptionalAssociation" childfeature="Line" parentfeature="Type"/>
-      <subfeatures name="Line"/>
+  <feature name="Synthesis">
+    <association xsi:type="FM:OptionalAssociation" childfeature="Chart" parentfeature="Synthesis"/>
+    <subfeatures name="Chart">
+      <association xsi:type="FM:OptionalAssociation" childfeature="ChartType" parentfeature="Chart"/>
+      <association xsi:type="FM:OptionalAssociation" childfeature="CompareGraph" parentfeature="Chart"/>
+      <subfeatures name="ChartType" abstract="true">
+        <association xsi:type="FM:OptionalAssociation" childfeature="Line" parentfeature="ChartType"/>
+        <subfeatures name="Line"/>
+      </subfeatures>
+      <subfeatures name="CompareGraph"/>
     </subfeatures>
   </feature>
 </FM:RootFeature>

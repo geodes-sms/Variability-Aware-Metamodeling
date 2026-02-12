@@ -7,17 +7,20 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers abstract="true" eSuperTypes="#//VCSFeatures" name="Commands" xsi:type="ecore:EClass">
+    <eClassifiers eSuperTypes="#//VCSFeatures" name="Commands" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="Commands"/>
                 
         </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//HighLevelCommand?" lowerBound="-2" name="highlevelcommand" upperBound="-2" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures containment="true" eType="#//LowLevelCommand" lowerBound="-2" name="lowlevelcommand" upperBound="-2" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures containment="true" eType="#//MergeStrategy" lowerBound="-2" name="mergestrategy" upperBound="-2" xsi:type="ecore:EReference"/>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//Commands" name="HighLevelCommands?" xsi:type="ecore:EClass">
+    <eClassifiers name="HighLevelCommand?" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
-            <details key="feature" value="HighLevelCommands"/>
+            <details key="feature" value="HighLevelCommand"/>
                 
         </eAnnotations>
         <eAnnotations source="FM2UMM">
@@ -26,14 +29,22 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers abstract="true" eSuperTypes="#//Commands" name="LowLevelCommands" xsi:type="ecore:EClass">
+    <eClassifiers name="LowLevelCommand" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
-            <details key="feature" value="LowLevelCommands"/>
+            <details key="feature" value="LowLevelCommand"/>
+                
+        </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//LowCommands" lowerBound="-2" name="lowcommands" upperBound="-2" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers abstract="true" name="LowCommands" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="LowCommands"/>
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//LowLevelCommands" name="Add?" xsi:type="ecore:EClass">
+    <eClassifiers eSuperTypes="#//LowCommands" name="Add?" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="Add"/>
@@ -45,7 +56,7 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//LowLevelCommands" name="Checkout?" xsi:type="ecore:EClass">
+    <eClassifiers eSuperTypes="#//LowCommands" name="Checkout?" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="Checkout"/>
@@ -57,7 +68,7 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//LowLevelCommands" name="CheckoutCreate?" xsi:type="ecore:EClass">
+    <eClassifiers eSuperTypes="#//LowCommands" name="CheckoutCreate?" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="CheckoutCreate"/>
@@ -69,7 +80,7 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//LowLevelCommands" name="Clone?" xsi:type="ecore:EClass">
+    <eClassifiers eSuperTypes="#//LowCommands" name="Clone?" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="Clone"/>
@@ -81,7 +92,7 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//LowLevelCommands" name="Commit?" xsi:type="ecore:EClass">
+    <eClassifiers eSuperTypes="#//LowCommands" name="Commit?" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="Commit"/>
@@ -93,7 +104,19 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//LowLevelCommands" name="CreateBranch?" xsi:type="ecore:EClass">
+    <eClassifiers eSuperTypes="#//LowCommands" name="CherryPick?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="CherryPick"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//LowCommands" name="CreateBranch?" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="CreateBranch"/>
@@ -105,7 +128,7 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//LowLevelCommands" name="Fetch?" xsi:type="ecore:EClass">
+    <eClassifiers eSuperTypes="#//LowCommands" name="Fetch?" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="Fetch"/>
@@ -117,7 +140,7 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//LowLevelCommands" name="Init?" xsi:type="ecore:EClass">
+    <eClassifiers eSuperTypes="#//LowCommands" name="Init?" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="Init"/>
@@ -129,7 +152,19 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//LowLevelCommands" name="Open?" xsi:type="ecore:EClass">
+    <eClassifiers eSuperTypes="#//LowCommands" name="Log?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="Log"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//LowCommands" name="Open?" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="Open"/>
@@ -141,7 +176,7 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//LowLevelCommands" name="Pull?" xsi:type="ecore:EClass">
+    <eClassifiers eSuperTypes="#//LowCommands" name="Pull?" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="Pull"/>
@@ -153,7 +188,7 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//LowLevelCommands" name="Push?" xsi:type="ecore:EClass">
+    <eClassifiers eSuperTypes="#//LowCommands" name="Push?" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="Push"/>
@@ -165,7 +200,7 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//LowLevelCommands" name="RemoteAdd?" xsi:type="ecore:EClass">
+    <eClassifiers eSuperTypes="#//LowCommands" name="RemoteAdd?" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="RemoteAdd"/>
@@ -177,10 +212,34 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers abstract="true" eSuperTypes="#//Commands" name="MergeStrategy" xsi:type="ecore:EClass">
+    <eClassifiers eSuperTypes="#//LowCommands" name="Rm?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="Rm"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers abstract="true" name="MergeStrategy" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="MergeStrategy"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//MergeStrategy" name="DSMCompare?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="DSMCompare"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
                 
         </eAnnotations>
     </eClassifiers>
@@ -196,14 +255,15 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers abstract="true" eSuperTypes="#//VCSFeatures" name="History" xsi:type="ecore:EClass">
+    <eClassifiers eSuperTypes="#//VCSFeatures" name="History" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="History"/>
                 
         </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//BranchingStyle" lowerBound="-2" name="branchingstyle" upperBound="-2" xsi:type="ecore:EReference"/>
     </eClassifiers>
-    <eClassifiers abstract="true" eSuperTypes="#//History" name="BranchingStyle" xsi:type="ecore:EClass">
+    <eClassifiers abstract="true" name="BranchingStyle" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="BranchingStyle"/>
@@ -217,10 +277,10 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//MultiBranch" name="InfiniteBranches?" xsi:type="ecore:EClass">
+    <eClassifiers eSuperTypes="#//MultiBranch" name="LimitBranches?" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
-            <details key="feature" value="InfiniteBranches"/>
+            <details key="feature" value="LimitBranches"/>
                 
         </eAnnotations>
         <eAnnotations source="FM2UMM">
@@ -229,76 +289,34 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers abstract="true" eSuperTypes="#//History" name="Timestamping" xsi:type="ecore:EClass">
-        <eAnnotations source="FM2UMM">
-                  
-            <details key="feature" value="Timestamping"/>
-                
-        </eAnnotations>
-    </eClassifiers>
-    <eClassifiers eSuperTypes="#//Timestamping" name="CommitHash?" xsi:type="ecore:EClass">
-        <eAnnotations source="FM2UMM">
-                  
-            <details key="feature" value="CommitHash"/>
-                
-        </eAnnotations>
-        <eAnnotations source="FM2UMM">
-                  
-            <details key="leaf" value="true"/>
-                
-        </eAnnotations>
-    </eClassifiers>
-    <eClassifiers abstract="true" eSuperTypes="#//VCSFeatures" name="VersionUnit" xsi:type="ecore:EClass">
-        <eAnnotations source="FM2UMM">
-                  
-            <details key="feature" value="VersionUnit"/>
-                
-        </eAnnotations>
-    </eClassifiers>
-    <eClassifiers eSuperTypes="#//VersionUnit" name="File?" xsi:type="ecore:EClass">
-        <eAnnotations source="FM2UMM">
-                  
-            <details key="feature" value="File"/>
-                
-        </eAnnotations>
-        <eAnnotations source="FM2UMM">
-                  
-            <details key="leaf" value="true"/>
-                
-        </eAnnotations>
-    </eClassifiers>
-    <eClassifiers eSuperTypes="#//VersionUnit" name="Element?" xsi:type="ecore:EClass">
-        <eAnnotations source="FM2UMM">
-                  
-            <details key="feature" value="Element"/>
-                
-        </eAnnotations>
-        <eAnnotations source="FM2UMM">
-                  
-            <details key="leaf" value="true"/>
-                
-        </eAnnotations>
-    </eClassifiers>
-    <eClassifiers eSuperTypes="#//VersionUnit" name="Line?" xsi:type="ecore:EClass">
-        <eAnnotations source="FM2UMM">
-                  
-            <details key="feature" value="Line"/>
-                
-        </eAnnotations>
-        <eAnnotations source="FM2UMM">
-                  
-            <details key="leaf" value="true"/>
-                
-        </eAnnotations>
-    </eClassifiers>
-    <eClassifiers abstract="true" eSuperTypes="#//VCSFeatures" name="CollaborationStyle" xsi:type="ecore:EClass">
+    <eClassifiers eSuperTypes="#//VCSFeatures" name="CollaborationStyle" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="CollaborationStyle"/>
                 
         </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//CollaborationStyleType" lowerBound="-2" name="collaborationstyletype" upperBound="-2" xsi:type="ecore:EReference"/>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//CollaborationStyle" name="Remote?" xsi:type="ecore:EClass">
+    <eClassifiers abstract="true" name="CollaborationStyleType" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="CollaborationStyleType"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//CollaborationStyleType" name="LocalOnly?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="LocalOnly"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//CollaborationStyleType" name="Remote?" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="Remote"/>
@@ -310,17 +328,124 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers abstract="true" eSuperTypes="#//VCSFeatures" name="Database" xsi:type="ecore:EClass">
+    <eClassifiers eSuperTypes="#//VCSFeatures" name="Database" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="Database"/>
                 
         </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//DataBaseType" lowerBound="-2" name="databasetype" upperBound="-2" xsi:type="ecore:EReference"/>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//Database" name="XMI?" xsi:type="ecore:EClass">
+    <eClassifiers abstract="true" name="DataBaseType" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="DataBaseType"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//DataBaseType" name="Neo4J?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="Neo4J"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//DataBaseType" name="XMI?" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="XMI"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//DataBaseType" name="SQL?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="SQL"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//DataBaseType" name="MongoDB?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="MongoDB"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//VCSFeatures" name="VersionUnit" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="VersionUnit"/>
+                
+        </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//VersionUnitType" lowerBound="-2" name="versionunittype" upperBound="-2" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers abstract="true" name="VersionUnitType" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="VersionUnitType"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//VersionUnitType" name="File?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="File"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//VersionUnitType" name="Semantic?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="Semantic"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//VersionUnitType" name="Element?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="Element"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//VersionUnitType" name="Line?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="Line"/>
                 
         </eAnnotations>
         <eAnnotations source="FM2UMM">
