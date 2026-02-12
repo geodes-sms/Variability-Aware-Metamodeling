@@ -5,6 +5,7 @@
     <semanticResources>lEV4REC.genmodel</semanticResources>
     <semanticResources>lowcoders.ecore</semanticResources>
     <semanticResources>lEV4RECEvaluation.ecore</semanticResources>
+    <semanticResources>lEV4RECv1.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_m5SsgCwWEfCPzpjp2WHhEg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_m53UQCwWEfCPzpjp2WHhEg" name="lEV4REC" repPath="#_m5vYcCwWEfCPzpjp2WHhEg" changeId="1755108991822">

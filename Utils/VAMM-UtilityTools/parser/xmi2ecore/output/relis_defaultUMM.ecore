@@ -7,14 +7,18 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers abstract="true" eSuperTypes="#//ReLiS" name="Screening" xsi:type="ecore:EClass">
+    <eClassifiers eSuperTypes="#//ReLiS" name="Screening" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="Screening"/>
                 
         </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//Criteria" lowerBound="-2" name="criteria" upperBound="-2" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures containment="true" eType="#//MultipleReviewers" lowerBound="-2" name="multiplereviewers" upperBound="-2" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures containment="true" eType="#//Validation" lowerBound="-2" name="validation" upperBound="-2" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures containment="true" eType="#//Phase" lowerBound="-2" name="phase" upperBound="-2" xsi:type="ecore:EReference"/>
     </eClassifiers>
-    <eClassifiers abstract="true" eSuperTypes="#//Screening" name="Criteria" xsi:type="ecore:EClass">
+    <eClassifiers abstract="true" name="Criteria" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="Criteria"/>
@@ -45,7 +49,7 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//Screening" name="MultipleReviewers" xsi:type="ecore:EClass">
+    <eClassifiers name="MultipleReviewers" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="MultipleReviewers"/>
@@ -60,14 +64,14 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers abstract="true" eSuperTypes="#//Conflict" name="ConflictDetection" xsi:type="ecore:EClass">
+    <eClassifiers abstract="true" eSuperTypes="#//Conflict" name="ConflictType" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
-            <details key="feature" value="ConflictDetection"/>
+            <details key="feature" value="ConflictType"/>
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//ConflictDetection" name="IncludeExclude?" xsi:type="ecore:EClass">
+    <eClassifiers eSuperTypes="#//ConflictType" name="IncludeExclude?" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="IncludeExclude"/>
@@ -98,14 +102,15 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers abstract="true" eSuperTypes="#//Screening" name="Validation" xsi:type="ecore:EClass">
+    <eClassifiers name="Validation" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="Validation"/>
                 
         </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//AssignmentMode" lowerBound="-2" name="assignmentmode" upperBound="-2" xsi:type="ecore:EReference"/>
     </eClassifiers>
-    <eClassifiers abstract="true" eSuperTypes="#//Validation" name="AssignmentMode" xsi:type="ecore:EClass">
+    <eClassifiers abstract="true" name="AssignmentMode" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="AssignmentMode"/>
@@ -124,18 +129,25 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//Screening" name="Phase" xsi:type="ecore:EClass">
+    <eClassifiers name="Phase" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="Phase"/>
                 
         </eAnnotations>
-        <eStructuralFeatures containment="true" eType="#//Field?" lowerBound="-2" name="field" upperBound="-2" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures containment="true" eType="#//Field" lowerBound="-2" name="field" upperBound="-2" xsi:type="ecore:EReference"/>
     </eClassifiers>
-    <eClassifiers name="Field?" xsi:type="ecore:EClass">
+    <eClassifiers abstract="true" name="Field" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="Field"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//Field" name="Title?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="Title"/>
                 
         </eAnnotations>
         <eAnnotations source="FM2UMM">
@@ -144,14 +156,64 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers abstract="true" eSuperTypes="#//ReLiS" name="QA" xsi:type="ecore:EClass">
+    <eClassifiers eSuperTypes="#//Field" name="Abstract?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="Abstract"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//Field" name="Paper?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="Paper"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//Field" name="Author?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="Author"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//Field" name="Reference?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="Reference"/>
+                
+        </eAnnotations>
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="leaf" value="true"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//ReLiS" name="QA" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="QA"/>
                 
         </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//Question?" lowerBound="-2" name="question" upperBound="-2" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures containment="true" eType="#//Answer?" lowerBound="-2" name="answer" upperBound="-2" xsi:type="ecore:EReference"/>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//QA" name="Question?" xsi:type="ecore:EClass">
+    <eClassifiers name="Question?" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="Question"/>
@@ -163,7 +225,7 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//QA" name="Answer?" xsi:type="ecore:EClass">
+    <eClassifiers name="Answer?" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="Answer"/>
@@ -175,14 +237,15 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers abstract="true" eSuperTypes="#//ReLiS" name="DataExtraction" xsi:type="ecore:EClass">
+    <eClassifiers eSuperTypes="#//ReLiS" name="DataExtraction" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="DataExtraction"/>
                 
         </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//Category" lowerBound="-2" name="category" upperBound="-2" xsi:type="ecore:EReference"/>
     </eClassifiers>
-    <eClassifiers abstract="true" eSuperTypes="#//DataExtraction" name="Category" xsi:type="ecore:EClass">
+    <eClassifiers abstract="true" name="Category" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="Category"/>
@@ -193,38 +256,6 @@
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="CategoryType"/>
-                
-        </eAnnotations>
-    </eClassifiers>
-    <eClassifiers eSuperTypes="#//CategoryType" name="FreeCategory" xsi:type="ecore:EClass">
-        <eAnnotations source="FM2UMM">
-                  
-            <details key="feature" value="FreeCategory"/>
-                
-        </eAnnotations>
-        <eStructuralFeatures containment="true" eType="#//String?" lowerBound="-2" name="string" upperBound="-2" xsi:type="ecore:EReference"/>
-    </eClassifiers>
-    <eClassifiers name="String?" xsi:type="ecore:EClass">
-        <eAnnotations source="FM2UMM">
-                  
-            <details key="feature" value="String"/>
-                
-        </eAnnotations>
-        <eAnnotations source="FM2UMM">
-                  
-            <details key="leaf" value="true"/>
-                
-        </eAnnotations>
-    </eClassifiers>
-    <eClassifiers eSuperTypes="#//CategoryType" name="Note?" xsi:type="ecore:EClass">
-        <eAnnotations source="FM2UMM">
-                  
-            <details key="feature" value="Note"/>
-                
-        </eAnnotations>
-        <eAnnotations source="FM2UMM">
-                  
-            <details key="leaf" value="true"/>
                 
         </eAnnotations>
     </eClassifiers>
@@ -264,65 +295,34 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//Category" name="Subcategroies?" xsi:type="ecore:EClass">
-        <eAnnotations source="FM2UMM">
-                  
-            <details key="feature" value="Subcategroies"/>
-                
-        </eAnnotations>
-        <eAnnotations source="FM2UMM">
-                  
-            <details key="leaf" value="true"/>
-                
-        </eAnnotations>
-    </eClassifiers>
-    <eClassifiers eSuperTypes="#//Category" name="MandatoryCategory?" xsi:type="ecore:EClass">
-        <eAnnotations source="FM2UMM">
-                  
-            <details key="feature" value="MandatoryCategory"/>
-                
-        </eAnnotations>
-        <eAnnotations source="FM2UMM">
-                  
-            <details key="leaf" value="true"/>
-                
-        </eAnnotations>
-    </eClassifiers>
-    <eClassifiers eSuperTypes="#//Category" name="Multivalued?" xsi:type="ecore:EClass">
-        <eAnnotations source="FM2UMM">
-                  
-            <details key="feature" value="Multivalued"/>
-                
-        </eAnnotations>
-        <eAnnotations source="FM2UMM">
-                  
-            <details key="leaf" value="true"/>
-                
-        </eAnnotations>
-    </eClassifiers>
-    <eClassifiers eSuperTypes="#//Category" name="InitialValue?" xsi:type="ecore:EClass">
-        <eAnnotations source="FM2UMM">
-                  
-            <details key="feature" value="InitialValue"/>
-                
-        </eAnnotations>
-        <eAnnotations source="FM2UMM">
-                  
-            <details key="leaf" value="true"/>
-                
-        </eAnnotations>
-    </eClassifiers>
-    <eClassifiers abstract="true" eSuperTypes="#//ReLiS" name="Synthesis" xsi:type="ecore:EClass">
+    <eClassifiers eSuperTypes="#//ReLiS" name="Synthesis" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="Synthesis"/>
                 
         </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//Chart" lowerBound="-2" name="chart" upperBound="-2" xsi:type="ecore:EReference"/>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//Synthesis" name="CompareGraph?" xsi:type="ecore:EClass">
+    <eClassifiers name="Chart" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
-            <details key="feature" value="CompareGraph"/>
+            <details key="feature" value="Chart"/>
+                
+        </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//ChartType" lowerBound="-2" name="charttype" upperBound="-2" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures containment="true" eType="#//CompareGraph?" lowerBound="-2" name="comparegraph" upperBound="-2" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers abstract="true" name="ChartType" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="ChartType"/>
+                
+        </eAnnotations>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//ChartType" name="Line?" xsi:type="ecore:EClass">
+        <eAnnotations source="FM2UMM">
+                  
+            <details key="feature" value="Line"/>
                 
         </eAnnotations>
         <eAnnotations source="FM2UMM">
@@ -331,17 +331,10 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers abstract="true" eSuperTypes="#//Synthesis" name="Type" xsi:type="ecore:EClass">
+    <eClassifiers name="CompareGraph?" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
-            <details key="feature" value="Type"/>
-                
-        </eAnnotations>
-    </eClassifiers>
-    <eClassifiers eSuperTypes="#//Type" name="Line?" xsi:type="ecore:EClass">
-        <eAnnotations source="FM2UMM">
-                  
-            <details key="feature" value="Line"/>
+            <details key="feature" value="CompareGraph"/>
                 
         </eAnnotations>
         <eAnnotations source="FM2UMM">

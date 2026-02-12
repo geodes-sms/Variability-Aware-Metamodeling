@@ -5,12 +5,16 @@
       <details key="feature" value="ReLiS"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="Screening" abstract="true" eSuperTypes="/0">
+  <ecore:EClass name="Screening" eSuperTypes="/0">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Screening"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="criteria" lowerBound="-2" upperBound="-2" eType="/2" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="multiplereviewers" lowerBound="-2" upperBound="-2" eType="/5" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="validation" lowerBound="-2" upperBound="-2" eType="/11" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="phase" lowerBound="-2" upperBound="-2" eType="/14" containment="true"/>
   </ecore:EClass>
-  <ecore:EClass name="Criteria" abstract="true" eSuperTypes="/1">
+  <ecore:EClass name="Criteria" abstract="true">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Criteria"/>
     </eAnnotations>
@@ -31,7 +35,7 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="MultipleReviewers" eSuperTypes="/1">
+  <ecore:EClass name="MultipleReviewers">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="MultipleReviewers"/>
     </eAnnotations>
@@ -42,9 +46,9 @@
       <details key="feature" value="Conflict"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="ConflictDetection" abstract="true" eSuperTypes="/6">
+  <ecore:EClass name="ConflictType" abstract="true" eSuperTypes="/6">
     <eAnnotations source="FM2UMM">
-      <details key="feature" value="ConflictDetection"/>
+      <details key="feature" value="ConflictType"/>
     </eAnnotations>
   </ecore:EClass>
   <ecore:EClass name="IncludeExclude?" eSuperTypes="/7">
@@ -68,12 +72,13 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="Validation" abstract="true" eSuperTypes="/1">
+  <ecore:EClass name="Validation">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Validation"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="assignmentmode" lowerBound="-2" upperBound="-2" eType="/12" containment="true"/>
   </ecore:EClass>
-  <ecore:EClass name="AssignmentMode" abstract="true" eSuperTypes="/11">
+  <ecore:EClass name="AssignmentMode" abstract="true">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="AssignmentMode"/>
     </eAnnotations>
@@ -86,26 +91,65 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="Phase" eSuperTypes="/1">
+  <ecore:EClass name="Phase">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Phase"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="field" lowerBound="-2" upperBound="-2" eType="/15" containment="true"/>
   </ecore:EClass>
-  <ecore:EClass name="Field?">
+  <ecore:EClass name="Field" abstract="true">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Field"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="Title?" eSuperTypes="/15">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="Title"/>
     </eAnnotations>
     <eAnnotations source="FM2UMM">
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="QA" abstract="true" eSuperTypes="/0">
+  <ecore:EClass name="Abstract?" eSuperTypes="/15">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="Abstract"/>
+    </eAnnotations>
+    <eAnnotations source="FM2UMM">
+      <details key="leaf" value="true"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="Paper?" eSuperTypes="/15">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="Paper"/>
+    </eAnnotations>
+    <eAnnotations source="FM2UMM">
+      <details key="leaf" value="true"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="Author?" eSuperTypes="/15">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="Author"/>
+    </eAnnotations>
+    <eAnnotations source="FM2UMM">
+      <details key="leaf" value="true"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="Reference?" eSuperTypes="/15">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="Reference"/>
+    </eAnnotations>
+    <eAnnotations source="FM2UMM">
+      <details key="leaf" value="true"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="QA" eSuperTypes="/0">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="QA"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="question" lowerBound="-2" upperBound="-2" eType="/22" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="answer" lowerBound="-2" upperBound="-2" eType="/23" containment="true"/>
   </ecore:EClass>
-  <ecore:EClass name="Question?" eSuperTypes="/16">
+  <ecore:EClass name="Question?">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Question"/>
     </eAnnotations>
@@ -113,7 +157,7 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="Answer?" eSuperTypes="/16">
+  <ecore:EClass name="Answer?">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Answer"/>
     </eAnnotations>
@@ -121,44 +165,23 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="DataExtraction" abstract="true" eSuperTypes="/0">
+  <ecore:EClass name="DataExtraction" eSuperTypes="/0">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="DataExtraction"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="category" lowerBound="-2" upperBound="-2" eType="/25" containment="true"/>
   </ecore:EClass>
-  <ecore:EClass name="Category" abstract="true" eSuperTypes="/19">
+  <ecore:EClass name="Category" abstract="true">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Category"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="CategoryType" abstract="true" eSuperTypes="/20">
+  <ecore:EClass name="CategoryType" abstract="true" eSuperTypes="/25">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="CategoryType"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="FreeCategory" eSuperTypes="/21">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="FreeCategory"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="string" lowerBound="-2" upperBound="-2" eType="/23" containment="true"/>
-  </ecore:EClass>
-  <ecore:EClass name="String?">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="String"/>
-    </eAnnotations>
-    <eAnnotations source="FM2UMM">
-      <details key="leaf" value="true"/>
-    </eAnnotations>
-  </ecore:EClass>
-  <ecore:EClass name="Note?" eSuperTypes="/21">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="Note"/>
-    </eAnnotations>
-    <eAnnotations source="FM2UMM">
-      <details key="leaf" value="true"/>
-    </eAnnotations>
-  </ecore:EClass>
-  <ecore:EClass name="StaticCategory?" eSuperTypes="/21">
+  <ecore:EClass name="StaticCategory?" eSuperTypes="/26">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="StaticCategory"/>
     </eAnnotations>
@@ -166,7 +189,7 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="IndependentDynamicCategory?" eSuperTypes="/21">
+  <ecore:EClass name="IndependentDynamicCategory?" eSuperTypes="/26">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="IndependentDynamicCategory"/>
     </eAnnotations>
@@ -174,7 +197,7 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="DependentDynamicCategory?" eSuperTypes="/21">
+  <ecore:EClass name="DependentDynamicCategory?" eSuperTypes="/26">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="DependentDynamicCategory"/>
     </eAnnotations>
@@ -182,59 +205,35 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="Subcategroies?" eSuperTypes="/20">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="Subcategroies"/>
-    </eAnnotations>
-    <eAnnotations source="FM2UMM">
-      <details key="leaf" value="true"/>
-    </eAnnotations>
-  </ecore:EClass>
-  <ecore:EClass name="MandatoryCategory?" eSuperTypes="/20">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="MandatoryCategory"/>
-    </eAnnotations>
-    <eAnnotations source="FM2UMM">
-      <details key="leaf" value="true"/>
-    </eAnnotations>
-  </ecore:EClass>
-  <ecore:EClass name="Multivalued?" eSuperTypes="/20">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="Multivalued"/>
-    </eAnnotations>
-    <eAnnotations source="FM2UMM">
-      <details key="leaf" value="true"/>
-    </eAnnotations>
-  </ecore:EClass>
-  <ecore:EClass name="InitialValue?" eSuperTypes="/20">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="InitialValue"/>
-    </eAnnotations>
-    <eAnnotations source="FM2UMM">
-      <details key="leaf" value="true"/>
-    </eAnnotations>
-  </ecore:EClass>
-  <ecore:EClass name="Synthesis" abstract="true" eSuperTypes="/0">
+  <ecore:EClass name="Synthesis" eSuperTypes="/0">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Synthesis"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="chart" lowerBound="-2" upperBound="-2" eType="/31" containment="true"/>
   </ecore:EClass>
-  <ecore:EClass name="CompareGraph?" eSuperTypes="/32">
+  <ecore:EClass name="Chart">
     <eAnnotations source="FM2UMM">
-      <details key="feature" value="CompareGraph"/>
+      <details key="feature" value="Chart"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="charttype" lowerBound="-2" upperBound="-2" eType="/32" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="comparegraph" lowerBound="-2" upperBound="-2" eType="/34" containment="true"/>
+  </ecore:EClass>
+  <ecore:EClass name="ChartType" abstract="true">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="ChartType"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="Line?" eSuperTypes="/32">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="Line"/>
     </eAnnotations>
     <eAnnotations source="FM2UMM">
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="Type" abstract="true" eSuperTypes="/32">
+  <ecore:EClass name="CompareGraph?">
     <eAnnotations source="FM2UMM">
-      <details key="feature" value="Type"/>
-    </eAnnotations>
-  </ecore:EClass>
-  <ecore:EClass name="Line?" eSuperTypes="/34">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="Line"/>
+      <details key="feature" value="CompareGraph"/>
     </eAnnotations>
     <eAnnotations source="FM2UMM">
       <details key="leaf" value="true"/>

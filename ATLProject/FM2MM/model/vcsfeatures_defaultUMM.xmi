@@ -1,29 +1,38 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore">
   <ecore:EClass name="VCSFeatures">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="VCSFeatures"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="Commands" abstract="true" eSuperTypes="/0">
+  <ecore:EClass name="Commands" eSuperTypes="/0">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Commands"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="highlevelcommand" lowerBound="-2" upperBound="-2" eType="/2" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lowlevelcommand" lowerBound="-2" upperBound="-2" eType="/3" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mergestrategy" lowerBound="-2" upperBound="-2" eType="/20" containment="true"/>
   </ecore:EClass>
-  <ecore:EClass name="HighLevelCommands?" eSuperTypes="/1">
+  <ecore:EClass name="HighLevelCommand?">
     <eAnnotations source="FM2UMM">
-      <details key="feature" value="HighLevelCommands"/>
+      <details key="feature" value="HighLevelCommand"/>
     </eAnnotations>
     <eAnnotations source="FM2UMM">
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="LowLevelCommands" abstract="true" eSuperTypes="/1">
+  <ecore:EClass name="LowLevelCommand">
     <eAnnotations source="FM2UMM">
-      <details key="feature" value="LowLevelCommands"/>
+      <details key="feature" value="LowLevelCommand"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lowcommands" lowerBound="-2" upperBound="-2" eType="/4" containment="true"/>
+  </ecore:EClass>
+  <ecore:EClass name="LowCommands" abstract="true">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="LowCommands"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="Add?" eSuperTypes="/3">
+  <ecore:EClass name="Add?" eSuperTypes="/4">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Add"/>
     </eAnnotations>
@@ -31,7 +40,7 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="Checkout?" eSuperTypes="/3">
+  <ecore:EClass name="Checkout?" eSuperTypes="/4">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Checkout"/>
     </eAnnotations>
@@ -39,7 +48,7 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="CheckoutCreate?" eSuperTypes="/3">
+  <ecore:EClass name="CheckoutCreate?" eSuperTypes="/4">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="CheckoutCreate"/>
     </eAnnotations>
@@ -47,7 +56,7 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="Clone?" eSuperTypes="/3">
+  <ecore:EClass name="Clone?" eSuperTypes="/4">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Clone"/>
     </eAnnotations>
@@ -55,7 +64,7 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="Commit?" eSuperTypes="/3">
+  <ecore:EClass name="Commit?" eSuperTypes="/4">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Commit"/>
     </eAnnotations>
@@ -63,7 +72,15 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="CreateBranch?" eSuperTypes="/3">
+  <ecore:EClass name="CherryPick?" eSuperTypes="/4">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="CherryPick"/>
+    </eAnnotations>
+    <eAnnotations source="FM2UMM">
+      <details key="leaf" value="true"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="CreateBranch?" eSuperTypes="/4">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="CreateBranch"/>
     </eAnnotations>
@@ -71,7 +88,7 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="Fetch?" eSuperTypes="/3">
+  <ecore:EClass name="Fetch?" eSuperTypes="/4">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Fetch"/>
     </eAnnotations>
@@ -79,7 +96,7 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="Init?" eSuperTypes="/3">
+  <ecore:EClass name="Init?" eSuperTypes="/4">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Init"/>
     </eAnnotations>
@@ -87,7 +104,15 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="Open?" eSuperTypes="/3">
+  <ecore:EClass name="Log?" eSuperTypes="/4">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="Log"/>
+    </eAnnotations>
+    <eAnnotations source="FM2UMM">
+      <details key="leaf" value="true"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="Open?" eSuperTypes="/4">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Open"/>
     </eAnnotations>
@@ -95,7 +120,7 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="Pull?" eSuperTypes="/3">
+  <ecore:EClass name="Pull?" eSuperTypes="/4">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Pull"/>
     </eAnnotations>
@@ -103,7 +128,7 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="Push?" eSuperTypes="/3">
+  <ecore:EClass name="Push?" eSuperTypes="/4">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Push"/>
     </eAnnotations>
@@ -111,7 +136,7 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="RemoteAdd?" eSuperTypes="/3">
+  <ecore:EClass name="RemoteAdd?" eSuperTypes="/4">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="RemoteAdd"/>
     </eAnnotations>
@@ -119,12 +144,28 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="MergeStrategy" abstract="true" eSuperTypes="/1">
+  <ecore:EClass name="Rm?" eSuperTypes="/4">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="Rm"/>
+    </eAnnotations>
+    <eAnnotations source="FM2UMM">
+      <details key="leaf" value="true"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="MergeStrategy" abstract="true">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="MergeStrategy"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="GitDiff?" eSuperTypes="/16">
+  <ecore:EClass name="DSMCompare?" eSuperTypes="/20">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="DSMCompare"/>
+    </eAnnotations>
+    <eAnnotations source="FM2UMM">
+      <details key="leaf" value="true"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="GitDiff?" eSuperTypes="/20">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="GitDiff"/>
     </eAnnotations>
@@ -132,74 +173,47 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="History" abstract="true" eSuperTypes="/0">
+  <ecore:EClass name="History" eSuperTypes="/0">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="History"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="branchingstyle" lowerBound="-2" upperBound="-2" eType="/24" containment="true"/>
   </ecore:EClass>
-  <ecore:EClass name="BranchingStyle" abstract="true" eSuperTypes="/18">
+  <ecore:EClass name="BranchingStyle" abstract="true">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="BranchingStyle"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="MultiBranch" abstract="true" eSuperTypes="/19">
+  <ecore:EClass name="MultiBranch" abstract="true" eSuperTypes="/24">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="MultiBranch"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="InfiniteBranches?" eSuperTypes="/20">
+  <ecore:EClass name="LimitBranches?" eSuperTypes="/25">
     <eAnnotations source="FM2UMM">
-      <details key="feature" value="InfiniteBranches"/>
+      <details key="feature" value="LimitBranches"/>
     </eAnnotations>
     <eAnnotations source="FM2UMM">
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="Timestamping" abstract="true" eSuperTypes="/18">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="Timestamping"/>
-    </eAnnotations>
-  </ecore:EClass>
-  <ecore:EClass name="CommitHash?" eSuperTypes="/22">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="CommitHash"/>
-    </eAnnotations>
-    <eAnnotations source="FM2UMM">
-      <details key="leaf" value="true"/>
-    </eAnnotations>
-  </ecore:EClass>
-  <ecore:EClass name="VersionUnit" abstract="true" eSuperTypes="/0">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="VersionUnit"/>
-    </eAnnotations>
-  </ecore:EClass>
-  <ecore:EClass name="File?" eSuperTypes="/24">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="File"/>
-    </eAnnotations>
-    <eAnnotations source="FM2UMM">
-      <details key="leaf" value="true"/>
-    </eAnnotations>
-  </ecore:EClass>
-  <ecore:EClass name="Element?" eSuperTypes="/24">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="Element"/>
-    </eAnnotations>
-    <eAnnotations source="FM2UMM">
-      <details key="leaf" value="true"/>
-    </eAnnotations>
-  </ecore:EClass>
-  <ecore:EClass name="Line?" eSuperTypes="/24">
-    <eAnnotations source="FM2UMM">
-      <details key="feature" value="Line"/>
-    </eAnnotations>
-    <eAnnotations source="FM2UMM">
-      <details key="leaf" value="true"/>
-    </eAnnotations>
-  </ecore:EClass>
-  <ecore:EClass name="CollaborationStyle" abstract="true" eSuperTypes="/0">
+  <ecore:EClass name="CollaborationStyle" eSuperTypes="/0">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="CollaborationStyle"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="collaborationstyletype" lowerBound="-2" upperBound="-2" eType="/28" containment="true"/>
+  </ecore:EClass>
+  <ecore:EClass name="CollaborationStyleType" abstract="true">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="CollaborationStyleType"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="LocalOnly?" eSuperTypes="/28">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="LocalOnly"/>
+    </eAnnotations>
+    <eAnnotations source="FM2UMM">
+      <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
   <ecore:EClass name="Remote?" eSuperTypes="/28">
@@ -210,14 +224,87 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="Database" abstract="true" eSuperTypes="/0">
+  <ecore:EClass name="Database" eSuperTypes="/0">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Database"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="databasetype" lowerBound="-2" upperBound="-2" eType="/32" containment="true"/>
   </ecore:EClass>
-  <ecore:EClass name="XMI?" eSuperTypes="/30">
+  <ecore:EClass name="DataBaseType" abstract="true">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="DataBaseType"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="Neo4J?" eSuperTypes="/32">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="Neo4J"/>
+    </eAnnotations>
+    <eAnnotations source="FM2UMM">
+      <details key="leaf" value="true"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="XMI?" eSuperTypes="/32">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="XMI"/>
+    </eAnnotations>
+    <eAnnotations source="FM2UMM">
+      <details key="leaf" value="true"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="SQL?" eSuperTypes="/32">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="SQL"/>
+    </eAnnotations>
+    <eAnnotations source="FM2UMM">
+      <details key="leaf" value="true"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="MongoDB?" eSuperTypes="/32">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="MongoDB"/>
+    </eAnnotations>
+    <eAnnotations source="FM2UMM">
+      <details key="leaf" value="true"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="VersionUnit" eSuperTypes="/0">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="VersionUnit"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="versionunittype" lowerBound="-2" upperBound="-2" eType="/38" containment="true"/>
+  </ecore:EClass>
+  <ecore:EClass name="VersionUnitType" abstract="true">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="VersionUnitType"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="File?" eSuperTypes="/38">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="File"/>
+    </eAnnotations>
+    <eAnnotations source="FM2UMM">
+      <details key="leaf" value="true"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="Semantic?" eSuperTypes="/38">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="Semantic"/>
+    </eAnnotations>
+    <eAnnotations source="FM2UMM">
+      <details key="leaf" value="true"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="Element?" eSuperTypes="/38">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="Element"/>
+    </eAnnotations>
+    <eAnnotations source="FM2UMM">
+      <details key="leaf" value="true"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="Line?" eSuperTypes="/38">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="Line"/>
     </eAnnotations>
     <eAnnotations source="FM2UMM">
       <details key="leaf" value="true"/>
