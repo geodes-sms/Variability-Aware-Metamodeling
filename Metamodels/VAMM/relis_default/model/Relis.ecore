@@ -109,7 +109,7 @@
       <details key="feature" value="QA"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Question" eSuperTypes="#//QA">
+  <eClassifiers xsi:type="ecore:EClass" name="Question?" eSuperTypes="#//QA">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Question"/>
     </eAnnotations>
@@ -117,7 +117,7 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Answer" eSuperTypes="#//QA">
+  <eClassifiers xsi:type="ecore:EClass" name="Answer?" eSuperTypes="#//QA">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Answer"/>
     </eAnnotations>
