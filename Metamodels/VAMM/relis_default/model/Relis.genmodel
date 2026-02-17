@@ -43,6 +43,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Screening/conflict_type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Screening/validation_assignment_mode"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Screening/conflict_resolution"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Screening/exclusion_criteria"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Screening/inclusion_criteria"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Screening/reviews_per_paper"/>
     </genClasses>
     <genClasses ecoreClass="Relis.ecore#//Phase">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Phase/fields"/>
