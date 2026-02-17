@@ -7,7 +7,7 @@
     <semanticResources>RelisUMM.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_6oae8AeCEfGAUPEisu0Uag">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_4KPzAQwaEfGKTYgzrmJiVw" name="ReLiS PMM" repPath="#_4KPL8AwaEfGKTYgzrmJiVw" changeId="1771347785558">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_4KPzAQwaEfGKTYgzrmJiVw" name="ReLiS RMM" repPath="#_4KPL8AwaEfGKTYgzrmJiVw" changeId="1771348008459">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="Relis.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -720,9 +720,8 @@
     <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_44s0iAwaEfGKTYgzrmJiVw" name="FreeCategory" tooltipText="" outgoingEdges="_44y7TwwaEfGKTYgzrmJiVw" incomingEdges="_44ziIwwaEfGKTYgzrmJiVw" width="12" height="10">
       <target xmi:type="ecore:EClass" href="Relis.ecore#//FreeCategory"/>
       <semanticElements xmi:type="ecore:EClass" href="Relis.ecore#//FreeCategory"/>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_3-H7QwwdEfGKTYgzrmJiVw" iconPath="/org.eclipse.emf.ecoretools.design/icons/full/obj16/EClass_abstract.gif" borderSize="1" borderSizeComputationExpression="1" borderColor="125,125,125" backgroundStyle="Liquid" foregroundColor="228,228,228">
-        <labelFormat>italic</labelFormat>
-        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@conditionnalStyles.1/@style"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_C65YkwwjEfGKTYgzrmJiVw" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,252,216">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_2ZDa0AwdEfGKTYgzrmJiVw" name="type : SimpleType = String" tooltipText="">

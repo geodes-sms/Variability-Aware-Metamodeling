@@ -79,7 +79,7 @@
       <details key="feature" value="CategoryType"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FreeCategory" abstract="true" eSuperTypes="#//CategoryType">
+  <eClassifiers xsi:type="ecore:EClass" name="FreeCategory" eSuperTypes="#//CategoryType">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="FreeCategory"/>
     </eAnnotations>
