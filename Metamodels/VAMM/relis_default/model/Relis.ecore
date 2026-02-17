@@ -6,8 +6,12 @@
             <details key="feature" value="ReLiS"/>
                 
         </eAnnotations>
+        <eStructuralFeatures containment="true" eType="#//Screening" lowerBound="-2" name="screening" upperBound="-2" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures containment="true" eType="#//QA" lowerBound="-2" name="qa" upperBound="-2" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures containment="true" eType="#//DataExtraction" lowerBound="-2" name="dataextraction" upperBound="-2" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures containment="true" eType="#//Synthesis" lowerBound="-2" name="synthesis" upperBound="-2" xsi:type="ecore:EReference"/>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//ReLiS" name="Screening" xsi:type="ecore:EClass">
+    <eClassifiers name="Screening" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="Screening"/>
@@ -204,7 +208,7 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//ReLiS" name="QA" xsi:type="ecore:EClass">
+    <eClassifiers name="QA" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="QA"/>
@@ -237,7 +241,7 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//ReLiS" name="DataExtraction" xsi:type="ecore:EClass">
+    <eClassifiers name="DataExtraction" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="DataExtraction"/>
@@ -333,7 +337,7 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//ReLiS" name="Synthesis" xsi:type="ecore:EClass">
+    <eClassifiers name="Synthesis" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="Synthesis"/>

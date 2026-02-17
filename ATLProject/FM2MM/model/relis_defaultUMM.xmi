@@ -4,8 +4,12 @@
     <eAnnotations source="FM2UMM">
       <details key="feature" value="ReLiS"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="screening" lowerBound="-2" upperBound="-2" eType="/1" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="qa" lowerBound="-2" upperBound="-2" eType="/21" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataextraction" lowerBound="-2" upperBound="-2" eType="/24" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="synthesis" lowerBound="-2" upperBound="-2" eType="/34" containment="true"/>
   </ecore:EClass>
-  <ecore:EClass name="Screening" eSuperTypes="/0">
+  <ecore:EClass name="Screening">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Screening"/>
     </eAnnotations>
@@ -142,7 +146,7 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="QA" eSuperTypes="/0">
+  <ecore:EClass name="QA">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="QA"/>
     </eAnnotations>
@@ -165,7 +169,7 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="DataExtraction" eSuperTypes="/0">
+  <ecore:EClass name="DataExtraction">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="DataExtraction"/>
     </eAnnotations>
@@ -231,7 +235,7 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="Synthesis" eSuperTypes="/0">
+  <ecore:EClass name="Synthesis">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Synthesis"/>
     </eAnnotations>
