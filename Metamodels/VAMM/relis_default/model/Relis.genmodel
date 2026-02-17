@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/relis_default/src-gen" creationIcons="false" editDirectory="/relis_default.edit/src-gen"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/relis_default/src-gen" creationIcons="false" editDirectory="/relis_default.edit/src-gen"
     editorDirectory="/relis_default.editor/src-gen" modelPluginID="relis_default"
     modelName="Relis" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="21.0"
@@ -8,5 +9,37 @@
   <foreignModel>Relis.ecore</foreignModel>
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="Relis" basePackage="relis_default" disposableProviderFactory="true"
-      ecorePackage="Relis.ecore#/"/>
+      ecorePackage="Relis.ecore#/">
+    <genClasses ecoreClass="Relis.ecore#//ReLiS">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Relis.ecore#//ReLiS/screening"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Relis.ecore#//ReLiS/qa"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Relis.ecore#//ReLiS/dataextraction"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Relis.ecore#//ReLiS/synthesis"/>
+    </genClasses>
+    <genClasses ecoreClass="Relis.ecore#//Screening">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Relis.ecore#//Screening/phase"/>
+    </genClasses>
+    <genClasses ecoreClass="Relis.ecore#//Phase"/>
+    <genClasses ecoreClass="Relis.ecore#//QA">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Relis.ecore#//QA/question"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Relis.ecore#//QA/answer"/>
+    </genClasses>
+    <genClasses ecoreClass="Relis.ecore#//Question"/>
+    <genClasses ecoreClass="Relis.ecore#//Answer"/>
+    <genClasses ecoreClass="Relis.ecore#//DataExtraction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Relis.ecore#//DataExtraction/category"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Relis.ecore#//Category"/>
+    <genClasses image="false" ecoreClass="Relis.ecore#//CategoryType"/>
+    <genClasses image="false" ecoreClass="Relis.ecore#//FreeCategory"/>
+    <genClasses ecoreClass="Relis.ecore#//Note"/>
+    <genClasses ecoreClass="Relis.ecore#//StaticCategory"/>
+    <genClasses ecoreClass="Relis.ecore#//IndependentDynamicCategory"/>
+    <genClasses ecoreClass="Relis.ecore#//DependentDynamicCategory"/>
+    <genClasses ecoreClass="Relis.ecore#//Synthesis">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Relis.ecore#//Synthesis/chart"/>
+    </genClasses>
+    <genClasses ecoreClass="Relis.ecore#//Chart"/>
+    <genClasses ecoreClass="Relis.ecore#//CompareGraph?"/>
+  </genPackages>
 </genmodel:GenModel>
