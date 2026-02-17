@@ -181,6 +181,34 @@
       <details key="feature" value="CategoryType"/>
     </eAnnotations>
   </ecore:EClass>
+  <ecore:EClass name="FreeCategory" eSuperTypes="/26">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="FreeCategory"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="note" lowerBound="-2" upperBound="-2" eType="/28" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="simpletype" lowerBound="-2" upperBound="-2" eType="/29" containment="true"/>
+  </ecore:EClass>
+  <ecore:EClass name="Note?">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="Note"/>
+    </eAnnotations>
+    <eAnnotations source="FM2UMM">
+      <details key="leaf" value="true"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="SimpleType" abstract="true">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="SimpleType"/>
+    </eAnnotations>
+  </ecore:EClass>
+  <ecore:EClass name="String?" eSuperTypes="/29">
+    <eAnnotations source="FM2UMM">
+      <details key="feature" value="String"/>
+    </eAnnotations>
+    <eAnnotations source="FM2UMM">
+      <details key="leaf" value="true"/>
+    </eAnnotations>
+  </ecore:EClass>
   <ecore:EClass name="StaticCategory?" eSuperTypes="/26">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="StaticCategory"/>
@@ -209,21 +237,21 @@
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Synthesis"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="chart" lowerBound="-2" upperBound="-2" eType="/31" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="chart" lowerBound="-2" upperBound="-2" eType="/35" containment="true"/>
   </ecore:EClass>
   <ecore:EClass name="Chart">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Chart"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="charttype" lowerBound="-2" upperBound="-2" eType="/32" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="comparegraph" lowerBound="-2" upperBound="-2" eType="/34" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="charttype" lowerBound="-2" upperBound="-2" eType="/36" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="comparegraph" lowerBound="-2" upperBound="-2" eType="/38" containment="true"/>
   </ecore:EClass>
   <ecore:EClass name="ChartType" abstract="true">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="ChartType"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="Line?" eSuperTypes="/32">
+  <ecore:EClass name="Line?" eSuperTypes="/36">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Line"/>
     </eAnnotations>
