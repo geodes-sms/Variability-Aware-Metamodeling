@@ -12,8 +12,6 @@
         eType="#//DataExtraction" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="synthesis" eType="#//Synthesis"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//ID"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Screening">
     <eAnnotations source="FM2UMM">
@@ -27,11 +25,6 @@
         eType="#//AssignmentMode" defaultValueLiteral="Veto"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="conflict_resolution" eType="#//ConflictResolution"
         defaultValueLiteral="Majority"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exclusion_criteria" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inclusion_criteria" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reviews_per_paper" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="validation_percentage"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Phase">
     <eAnnotations source="FM2UMM">
@@ -39,8 +32,6 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fields" lowerBound="1"
         upperBound="-1" eType="#//Field"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="QA">
     <eAnnotations source="FM2UMM">
@@ -50,7 +41,6 @@
         upperBound="-1" eType="#//Question" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="answer" lowerBound="1"
         upperBound="-1" eType="#//Answer" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cut_off_score" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Question">
     <eAnnotations source="FM2UMM">
@@ -59,7 +49,6 @@
     <eAnnotations source="FM2UMM">
       <details key="leaf" value="true"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Answer">
     <eAnnotations source="FM2UMM">
@@ -68,8 +57,6 @@
     <eAnnotations source="FM2UMM">
       <details key="leaf" value="true"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="score" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataExtraction">
     <eAnnotations source="FM2UMM">
@@ -82,27 +69,18 @@
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Category"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//ID"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="subcategories" upperBound="-1"
-        eType="#//Category" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CategoryType" abstract="true" eSuperTypes="#//Category">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="CategoryType"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mandatory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="number_of_values" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FreeCategory" eSuperTypes="#//CategoryType">
+  <eClassifiers xsi:type="ecore:EClass" name="FreeCategory" abstract="true" eSuperTypes="#//CategoryType">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="FreeCategory"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//SimpleType"
         defaultValueLiteral="String"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pattern" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max_char" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="initial_value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Note" eSuperTypes="#//FreeCategory">
     <eAnnotations source="FM2UMM">
@@ -119,8 +97,6 @@
     <eAnnotations source="FM2UMM">
       <details key="leaf" value="true"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="2" upperBound="-1"
-        eType="#//Value" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IndependentDynamicCategory" eSuperTypes="#//CategoryType">
     <eAnnotations source="FM2UMM">
@@ -129,9 +105,6 @@
     <eAnnotations source="FM2UMM">
       <details key="leaf" value="true"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reference_name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
-        eType="#//Value" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DependentDynamicCategory" eSuperTypes="#//CategoryType">
     <eAnnotations source="FM2UMM">
@@ -140,8 +113,6 @@
     <eAnnotations source="FM2UMM">
       <details key="leaf" value="true"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="depends_on" lowerBound="1"
-        eType="#//Category" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Synthesis">
     <eAnnotations source="FM2UMM">
@@ -156,10 +127,6 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="chart" lowerBound="1" upperBound="-1"
         eType="#//ChartType"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//ID"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="base" lowerBound="1" eType="#//Category"
-        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CompareGraph" eSuperTypes="#//Chart">
     <eAnnotations source="FM2UMM">
@@ -168,8 +135,6 @@
     <eAnnotations source="FM2UMM">
       <details key="leaf" value="true"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="category" lowerBound="1"
-        eType="#//Category" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ConflictType">
     <eLiterals name="IncludeExclude"/>
@@ -192,8 +157,5 @@
     <eLiterals name="Paper" value="2"/>
     <eLiterals name="Author" value="3"/>
     <eLiterals name="Reference" value="4"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Value">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

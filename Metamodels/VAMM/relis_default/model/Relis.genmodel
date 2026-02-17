@@ -37,6 +37,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Relis.ecore#//ReLiS/qa"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Relis.ecore#//ReLiS/dataextraction"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Relis.ecore#//ReLiS/synthesis"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//ReLiS/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//ReLiS/name"/>
     </genClasses>
     <genClasses ecoreClass="Relis.ecore#//Screening">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Relis.ecore#//Screening/phase"/>
@@ -46,34 +48,68 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Screening/exclusion_criteria"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Screening/inclusion_criteria"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Screening/reviews_per_paper"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Screening/validation_percentage"/>
     </genClasses>
     <genClasses ecoreClass="Relis.ecore#//Phase">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Phase/fields"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Phase/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Phase/description"/>
     </genClasses>
     <genClasses ecoreClass="Relis.ecore#//QA">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Relis.ecore#//QA/question"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Relis.ecore#//QA/answer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//QA/cut_off_score"/>
     </genClasses>
-    <genClasses ecoreClass="Relis.ecore#//Question"/>
-    <genClasses ecoreClass="Relis.ecore#//Answer"/>
+    <genClasses ecoreClass="Relis.ecore#//Question">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Question/text"/>
+    </genClasses>
+    <genClasses ecoreClass="Relis.ecore#//Answer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Answer/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Answer/score"/>
+    </genClasses>
     <genClasses ecoreClass="Relis.ecore#//DataExtraction">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Relis.ecore#//DataExtraction/category"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="Relis.ecore#//Category"/>
-    <genClasses image="false" ecoreClass="Relis.ecore#//CategoryType"/>
+    <genClasses image="false" ecoreClass="Relis.ecore#//Category">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Category/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Category/title"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference Relis.ecore#//Category/subcategories"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Relis.ecore#//CategoryType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//CategoryType/mandatory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//CategoryType/number_of_values"/>
+    </genClasses>
     <genClasses image="false" ecoreClass="Relis.ecore#//FreeCategory">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//FreeCategory/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//FreeCategory/pattern"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//FreeCategory/max_char"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//FreeCategory/initial_value"/>
     </genClasses>
     <genClasses ecoreClass="Relis.ecore#//Note"/>
-    <genClasses ecoreClass="Relis.ecore#//StaticCategory"/>
-    <genClasses ecoreClass="Relis.ecore#//IndependentDynamicCategory"/>
-    <genClasses ecoreClass="Relis.ecore#//DependentDynamicCategory"/>
+    <genClasses ecoreClass="Relis.ecore#//StaticCategory">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference Relis.ecore#//StaticCategory/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Relis.ecore#//IndependentDynamicCategory">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//IndependentDynamicCategory/reference_name"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference Relis.ecore#//IndependentDynamicCategory/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Relis.ecore#//DependentDynamicCategory">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference Relis.ecore#//DependentDynamicCategory/depends_on"/>
+    </genClasses>
     <genClasses ecoreClass="Relis.ecore#//Synthesis">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Relis.ecore#//Synthesis/chart"/>
     </genClasses>
     <genClasses ecoreClass="Relis.ecore#//Chart">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Chart/chart"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Chart/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Chart/title"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference Relis.ecore#//Chart/base"/>
     </genClasses>
-    <genClasses ecoreClass="Relis.ecore#//CompareGraph"/>
+    <genClasses ecoreClass="Relis.ecore#//CompareGraph">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference Relis.ecore#//CompareGraph/category"/>
+    </genClasses>
+    <genClasses ecoreClass="Relis.ecore#//Value">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Value/value"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>
