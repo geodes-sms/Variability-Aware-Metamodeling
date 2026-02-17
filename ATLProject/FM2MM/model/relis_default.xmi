@@ -68,7 +68,7 @@
         <association xsi:type="FM:OptionalAssociation" childfeature="StaticCategory" parentfeature="CategoryType"/>
         <association xsi:type="FM:OptionalAssociation" childfeature="IndependentDynamicCategory" parentfeature="CategoryType"/>
         <association xsi:type="FM:OptionalAssociation" childfeature="DependentDynamicCategory" parentfeature="CategoryType"/>
-        <subfeatures name="FreeCategory">
+        <subfeatures name="FreeCategory" abstract="true">
           <association xsi:type="FM:OptionalAssociation" childfeature="Note" parentfeature="FreeCategory"/>
           <association xsi:type="FM:OptionalAssociation" childfeature="SimpleType" parentfeature="FreeCategory"/>
           <subfeatures name="Note"/>

@@ -181,14 +181,12 @@
       <details key="feature" value="CategoryType"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="FreeCategory" eSuperTypes="/26">
+  <ecore:EClass name="FreeCategory" abstract="true" eSuperTypes="/26">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="FreeCategory"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="note" lowerBound="-2" upperBound="-2" eType="/28" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="simpletype" lowerBound="-2" upperBound="-2" eType="/29" containment="true"/>
   </ecore:EClass>
-  <ecore:EClass name="Note?">
+  <ecore:EClass name="Note?" eSuperTypes="/27">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Note"/>
     </eAnnotations>
@@ -196,7 +194,7 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="SimpleType" abstract="true">
+  <ecore:EClass name="SimpleType" abstract="true" eSuperTypes="/27">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="SimpleType"/>
     </eAnnotations>
