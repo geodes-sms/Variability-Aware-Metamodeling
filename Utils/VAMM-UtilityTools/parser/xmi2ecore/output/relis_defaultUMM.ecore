@@ -259,16 +259,14 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers eSuperTypes="#//CategoryType" name="FreeCategory" xsi:type="ecore:EClass">
+    <eClassifiers abstract="true" eSuperTypes="#//CategoryType" name="FreeCategory" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="FreeCategory"/>
                 
         </eAnnotations>
-        <eStructuralFeatures containment="true" eType="#//Note?" lowerBound="-2" name="note" upperBound="-2" xsi:type="ecore:EReference"/>
-        <eStructuralFeatures containment="true" eType="#//SimpleType" lowerBound="-2" name="simpletype" upperBound="-2" xsi:type="ecore:EReference"/>
     </eClassifiers>
-    <eClassifiers name="Note?" xsi:type="ecore:EClass">
+    <eClassifiers eSuperTypes="#//FreeCategory" name="Note?" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="Note"/>
@@ -280,7 +278,7 @@
                 
         </eAnnotations>
     </eClassifiers>
-    <eClassifiers abstract="true" name="SimpleType" xsi:type="ecore:EClass">
+    <eClassifiers abstract="true" eSuperTypes="#//FreeCategory" name="SimpleType" xsi:type="ecore:EClass">
         <eAnnotations source="FM2UMM">
                   
             <details key="feature" value="SimpleType"/>
