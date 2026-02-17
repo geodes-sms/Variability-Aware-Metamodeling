@@ -4,8 +4,13 @@
     <eAnnotations source="FM2UMM">
       <details key="feature" value="VCSFeatures"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="commands" lowerBound="-2" upperBound="-2" eType="/1" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="history" lowerBound="-2" upperBound="-2" eType="/23" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="collaborationstyle" lowerBound="-2" upperBound="-2" eType="/27" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="database" lowerBound="-2" upperBound="-2" eType="/31" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="versionunit" lowerBound="-2" upperBound="-2" eType="/37" containment="true"/>
   </ecore:EClass>
-  <ecore:EClass name="Commands" eSuperTypes="/0">
+  <ecore:EClass name="Commands">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Commands"/>
     </eAnnotations>
@@ -173,7 +178,7 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="History" eSuperTypes="/0">
+  <ecore:EClass name="History">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="History"/>
     </eAnnotations>
@@ -197,7 +202,7 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="CollaborationStyle" eSuperTypes="/0">
+  <ecore:EClass name="CollaborationStyle">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="CollaborationStyle"/>
     </eAnnotations>
@@ -224,7 +229,7 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="Database" eSuperTypes="/0">
+  <ecore:EClass name="Database">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Database"/>
     </eAnnotations>
@@ -267,7 +272,7 @@
       <details key="leaf" value="true"/>
     </eAnnotations>
   </ecore:EClass>
-  <ecore:EClass name="VersionUnit" eSuperTypes="/0">
+  <ecore:EClass name="VersionUnit">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="VersionUnit"/>
     </eAnnotations>
