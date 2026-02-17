@@ -8,7 +8,7 @@
     <semanticResources>vcsfeaturesRMM.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_OeslgAeGEfGAUPEisu0Uag">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_gisGUAwvEfGKTYgzrmJiVw" name="VCSFeatures RMM" repPath="#_gipqEAwvEfGKTYgzrmJiVw" changeId="1771360886053">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_gisGUAwvEfGKTYgzrmJiVw" name="VCSFeatures FMM" repPath="#_gipqEAwvEfGKTYgzrmJiVw" changeId="1771361098767">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="vcsfeatures.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -550,7 +550,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_lKquUAxAEfGKTYgzrmJiVw" name="commitHistoryRange : EInt" tooltipText="">
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_lKquUAxAEfGKTYgzrmJiVw" name="commitHistoryRange : EInt = 0" tooltipText="">
         <target xmi:type="ecore:EAttribute" href="vcsfeatures.ecore#//History/commitHistoryRange"/>
         <semanticElements xmi:type="ecore:EAttribute" href="vcsfeatures.ecore#//History/commitHistoryRange"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_mUSBzAxAEfGKTYgzrmJiVw" labelAlignment="LEFT">
@@ -558,7 +558,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_nCLpkAxAEfGKTYgzrmJiVw" name="numberOfBranches : EInt" tooltipText="">
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_nCLpkAxAEfGKTYgzrmJiVw" name="numberOfBranches : EInt = 0" tooltipText="">
         <target xmi:type="ecore:EAttribute" href="vcsfeatures.ecore#//History/numberOfBranches"/>
         <semanticElements xmi:type="ecore:EAttribute" href="vcsfeatures.ecore#//History/numberOfBranches"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_oCM8NwxAEfGKTYgzrmJiVw" labelAlignment="LEFT">
