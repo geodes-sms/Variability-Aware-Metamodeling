@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
   <viewpoint:DAnalysis uid="_6n-aEAeCEfGAUPEisu0Uag" selectedViews="_6oae8AeCEfGAUPEisu0Uag" version="15.4.1.202403191723">
-    <semanticResources>Relis.ecore</semanticResources>
     <semanticResources>Relis.genmodel</semanticResources>
     <semanticResources>file:/C:/Users/lamp6/OneDrive/Documentos/Github/Variability-Aware-Metamodeling/Utils/VAMM-UtilityTools/parser/xmi2ecore/output/relis_defaultUMM.ecore</semanticResources>
     <semanticResources>RelisUMM.ecore</semanticResources>
     <semanticResources>RelisPMM.ecore</semanticResources>
     <semanticResources>RelisRMM.ecore</semanticResources>
+    <semanticResources>Relis.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_6oae8AeCEfGAUPEisu0Uag">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_4KPzAQwaEfGKTYgzrmJiVw" name="ReLiS RMM" repPath="#_4KPL8AwaEfGKTYgzrmJiVw" changeId="1771352642483">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_4KPzAQwaEfGKTYgzrmJiVw" name="ReLiS FMM" repPath="#_4KPL8AwaEfGKTYgzrmJiVw" changeId="1771352897902">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="Relis.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -845,7 +845,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_qNRSEAwrEfGKTYgzrmJiVw" name="reviews_per_paper : EInt" tooltipText="">
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_qNRSEAwrEfGKTYgzrmJiVw" name="reviews_per_paper : EInt = 2" tooltipText="">
         <target xmi:type="ecore:EAttribute" href="Relis.ecore#//Screening/reviews_per_paper"/>
         <semanticElements xmi:type="ecore:EAttribute" href="Relis.ecore#//Screening/reviews_per_paper"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_qu28NgwrEfGKTYgzrmJiVw" labelAlignment="LEFT">
@@ -853,7 +853,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_GbHA0AwsEfGKTYgzrmJiVw" name="validation_percentage : EInt" tooltipText="">
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_GbHA0AwsEfGKTYgzrmJiVw" name="validation_percentage : EInt = 20" tooltipText="">
         <target xmi:type="ecore:EAttribute" href="Relis.ecore#//Screening/validation_percentage"/>
         <semanticElements xmi:type="ecore:EAttribute" href="Relis.ecore#//Screening/validation_percentage"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_H3F2ugwsEfGKTYgzrmJiVw" labelAlignment="LEFT">

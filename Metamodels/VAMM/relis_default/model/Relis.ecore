@@ -29,9 +29,10 @@
         defaultValueLiteral="Majority"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="exclusion_criteria" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="inclusion_criteria" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reviews_per_paper" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reviews_per_paper" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="2"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="validation_percentage"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="20"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Phase">
     <eAnnotations source="FM2UMM">
