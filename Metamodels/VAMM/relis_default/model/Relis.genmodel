@@ -10,6 +10,28 @@
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="Relis" basePackage="relis_default" disposableProviderFactory="true"
       ecorePackage="Relis.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Relis.ecore#//ConflictType">
+      <genEnumLiterals ecoreEnumLiteral="Relis.ecore#//ConflictType/IncludeExclude"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Relis.ecore#//ConflictResolution">
+      <genEnumLiterals ecoreEnumLiteral="Relis.ecore#//ConflictResolution/Majority"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Relis.ecore#//AssignmentMode">
+      <genEnumLiterals ecoreEnumLiteral="Relis.ecore#//AssignmentMode/Veto"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Relis.ecore#//SimpleType">
+      <genEnumLiterals ecoreEnumLiteral="Relis.ecore#//SimpleType/String"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Relis.ecore#//ChartType">
+      <genEnumLiterals ecoreEnumLiteral="Relis.ecore#//ChartType/Line"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Relis.ecore#//Field">
+      <genEnumLiterals ecoreEnumLiteral="Relis.ecore#//Field/Title"/>
+      <genEnumLiterals ecoreEnumLiteral="Relis.ecore#//Field/Abstract"/>
+      <genEnumLiterals ecoreEnumLiteral="Relis.ecore#//Field/Paper"/>
+      <genEnumLiterals ecoreEnumLiteral="Relis.ecore#//Field/Author"/>
+      <genEnumLiterals ecoreEnumLiteral="Relis.ecore#//Field/Reference"/>
+    </genEnums>
     <genClasses ecoreClass="Relis.ecore#//ReLiS">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Relis.ecore#//ReLiS/screening"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Relis.ecore#//ReLiS/qa"/>
@@ -18,8 +40,13 @@
     </genClasses>
     <genClasses ecoreClass="Relis.ecore#//Screening">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Relis.ecore#//Screening/phase"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Screening/conflict_type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Screening/validation_assignment_mode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Screening/conflict_resolution"/>
     </genClasses>
-    <genClasses ecoreClass="Relis.ecore#//Phase"/>
+    <genClasses ecoreClass="Relis.ecore#//Phase">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Phase/fields"/>
+    </genClasses>
     <genClasses ecoreClass="Relis.ecore#//QA">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Relis.ecore#//QA/question"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Relis.ecore#//QA/answer"/>
@@ -31,7 +58,9 @@
     </genClasses>
     <genClasses image="false" ecoreClass="Relis.ecore#//Category"/>
     <genClasses image="false" ecoreClass="Relis.ecore#//CategoryType"/>
-    <genClasses image="false" ecoreClass="Relis.ecore#//FreeCategory"/>
+    <genClasses image="false" ecoreClass="Relis.ecore#//FreeCategory">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//FreeCategory/type"/>
+    </genClasses>
     <genClasses ecoreClass="Relis.ecore#//Note"/>
     <genClasses ecoreClass="Relis.ecore#//StaticCategory"/>
     <genClasses ecoreClass="Relis.ecore#//IndependentDynamicCategory"/>
@@ -39,7 +68,9 @@
     <genClasses ecoreClass="Relis.ecore#//Synthesis">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Relis.ecore#//Synthesis/chart"/>
     </genClasses>
-    <genClasses ecoreClass="Relis.ecore#//Chart"/>
-    <genClasses ecoreClass="Relis.ecore#//CompareGraph?"/>
+    <genClasses ecoreClass="Relis.ecore#//Chart">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Relis.ecore#//Chart/chart"/>
+    </genClasses>
+    <genClasses ecoreClass="Relis.ecore#//CompareGraph"/>
   </genPackages>
 </genmodel:GenModel>

@@ -19,11 +19,19 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="phase" lowerBound="1" upperBound="-1"
         eType="#//Phase" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="conflict_type" eType="#//ConflictType"
+        defaultValueLiteral="IncludeExclude"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="validation_assignment_mode"
+        eType="#//AssignmentMode" defaultValueLiteral="Veto"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="conflict_resolution" eType="#//ConflictResolution"
+        defaultValueLiteral="Majority"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Phase">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Phase"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fields" lowerBound="1"
+        upperBound="-1" eType="#//Field"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="QA">
     <eAnnotations source="FM2UMM">
@@ -71,6 +79,8 @@
     <eAnnotations source="FM2UMM">
       <details key="feature" value="FreeCategory"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//SimpleType"
+        defaultValueLiteral="String"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Note" eSuperTypes="#//FreeCategory">
     <eAnnotations source="FM2UMM">
@@ -115,13 +125,37 @@
     <eAnnotations source="FM2UMM">
       <details key="feature" value="Chart"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="chart" lowerBound="1" upperBound="-1"
+        eType="#//ChartType"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CompareGraph?">
+  <eClassifiers xsi:type="ecore:EClass" name="CompareGraph" eSuperTypes="#//Chart">
     <eAnnotations source="FM2UMM">
       <details key="feature" value="CompareGraph"/>
     </eAnnotations>
     <eAnnotations source="FM2UMM">
       <details key="leaf" value="true"/>
     </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ConflictType">
+    <eLiterals name="IncludeExclude"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ConflictResolution">
+    <eLiterals name="Majority"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AssignmentMode">
+    <eLiterals name="Veto"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SimpleType">
+    <eLiterals name="String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ChartType">
+    <eLiterals name="Line"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Field">
+    <eLiterals name="Title"/>
+    <eLiterals name="Abstract" value="1"/>
+    <eLiterals name="Paper" value="2"/>
+    <eLiterals name="Author" value="3"/>
+    <eLiterals name="Reference" value="4"/>
   </eClassifiers>
 </ecore:EPackage>
