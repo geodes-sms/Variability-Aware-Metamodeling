@@ -11,7 +11,7 @@
 		<graphics key="layoutalgorithm" value="1"/>
 	</properties>
 	<struct>
-		<and abstract="true" mandatory="true" name="VCSFeatures">
+		<and mandatory="true" name="VCSFeatures">
 			<and mandatory="true" name="Commands">
 				<feature name="HighLevelCommand"/>
 				<and mandatory="true" name="LowLevelCommand">

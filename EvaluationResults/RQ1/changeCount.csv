@@ -5,3 +5,9 @@ vcsfeatures,empty, classic,84,0,0
 Relis,UMM, PMM,13 ,28 ,24 
 Relis,PMM, RMM,29 ,0 ,1 
 Relis,RMM, FMM,0 ,0 ,2 
+vcsfeatures,UMM, PMM,X, X, X 
+vcsfeatures,PMM, RMM,X, X, X 
+vcsfeatures,RMM, FMM,X, X, X 
+leve4rec,UMM, PMM,X, X, X 
+leve4rec,PMM, RMM,X, X, X 
+leve4rec,RMM, FMM,X, X, X
