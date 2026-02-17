@@ -64,9 +64,19 @@
     <subfeatures name="Category" abstract="true">
       <association xsi:type="FM:MandatoryAssociation" childfeature="CategoryType" parentfeature="Category"/>
       <subfeatures name="CategoryType" abstract="true">
+        <association xsi:type="FM:OptionalAssociation" childfeature="FreeCategory" parentfeature="CategoryType"/>
         <association xsi:type="FM:OptionalAssociation" childfeature="StaticCategory" parentfeature="CategoryType"/>
         <association xsi:type="FM:OptionalAssociation" childfeature="IndependentDynamicCategory" parentfeature="CategoryType"/>
         <association xsi:type="FM:OptionalAssociation" childfeature="DependentDynamicCategory" parentfeature="CategoryType"/>
+        <subfeatures name="FreeCategory">
+          <association xsi:type="FM:OptionalAssociation" childfeature="Note" parentfeature="FreeCategory"/>
+          <association xsi:type="FM:OptionalAssociation" childfeature="SimpleType" parentfeature="FreeCategory"/>
+          <subfeatures name="Note"/>
+          <subfeatures name="SimpleType" abstract="true">
+            <association xsi:type="FM:OptionalAssociation" childfeature="String" parentfeature="SimpleType"/>
+            <subfeatures name="String"/>
+          </subfeatures>
+        </subfeatures>
         <subfeatures name="StaticCategory"/>
         <subfeatures name="IndependentDynamicCategory"/>
         <subfeatures name="DependentDynamicCategory"/>

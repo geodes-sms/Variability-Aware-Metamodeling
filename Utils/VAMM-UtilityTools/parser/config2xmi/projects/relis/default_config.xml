@@ -31,15 +31,15 @@
 	<feature automatic="selected" manual="selected" name="DataExtraction"/>
 	<feature automatic="selected" manual="selected" name="Category"/>
 	<feature automatic="selected" manual="selected" name="CategoryType"/>
-	<feature name="FreeCategory"/>
+	<feature automatic="selected" name="FreeCategory"/>
 	<feature name="Date"/>
-	<feature name="Note"/>
-	<feature name="SimpleType"/>
-	<feature name="Decimal"/>
-	<feature name="String"/>
-	<feature name="Text"/>
-	<feature name="Number"/>
-	<feature name="Boolean"/>
+	<feature manual="selected" name="Note"/>
+	<feature automatic="selected" name="SimpleType"/>
+	<feature automatic="unselected" name="Decimal"/>
+	<feature manual="selected" name="String"/>
+	<feature automatic="unselected" name="Text"/>
+	<feature automatic="unselected" name="Number"/>
+	<feature automatic="unselected" name="Boolean"/>
 	<feature manual="selected" name="StaticCategory"/>
 	<feature manual="selected" name="IndependentDynamicCategory"/>
 	<feature manual="selected" name="DependentDynamicCategory"/>
