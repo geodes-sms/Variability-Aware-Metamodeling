@@ -3,9 +3,10 @@
   <viewpoint:DAnalysis uid="_noifIAeDEfGAUPEisu0Uag" selectedViews="_no-kAAeDEfGAUPEisu0Uag" version="15.4.1.202403191723">
     <semanticResources>lev4rec.ecore</semanticResources>
     <semanticResources>lev4rec.genmodel</semanticResources>
+    <semanticResources>lev4recUMM.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_no-kAAeDEfGAUPEisu0Uag">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_FYGbEAhPEfGGX7K4bth7dw" name="lev4rec PMM" repPath="#_FYF0AAhPEfGGX7K4bth7dw" changeId="1770927122402">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_FYGbEAhPEfGGX7K4bth7dw" name="lev4rec UMM" repPath="#_FYF0AAhPEfGGX7K4bth7dw" changeId="1770927122402">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="lev4rec.ecore#/"/>
       </ownedRepresentationDescriptors>
