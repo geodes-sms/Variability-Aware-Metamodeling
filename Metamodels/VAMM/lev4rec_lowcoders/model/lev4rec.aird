@@ -7,7 +7,7 @@
     <semanticResources>lev4recRMM.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_O7hOgAzjEfGrM4GQnmmYpg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_0vZr0A0iEfGrM4GQnmmYpg" name="lev4rec RMM" repPath="#_0vX2oA0iEfGrM4GQnmmYpg" changeId="1771458002799">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_0vZr0A0iEfGrM4GQnmmYpg" name="lev4rec FMM" repPath="#_0vX2oA0iEfGrM4GQnmmYpg" changeId="1771458002799">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="lev4rec.ecore#/"/>
       </ownedRepresentationDescriptors>
