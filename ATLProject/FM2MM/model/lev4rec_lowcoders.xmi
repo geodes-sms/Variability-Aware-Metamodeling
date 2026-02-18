@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="ASCII"?>
+<FM:RootFeature xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:FM="http://www.example.org/FM" name="RecommenderSpecification" abstract="true">
+  <association xsi:type="FM:MandatoryAssociation" childfeature="RecommenderComponent" parentfeature="RecommenderSpecification"/>
+  <association xsi:type="FM:MandatoryAssociation" childfeature="SupportingLibrary" parentfeature="RecommenderSpecification"/>
+  <feature name="RecommenderComponent">
+    <association xsi:type="FM:MandatoryAssociation" childfeature="AlgorithmComponent" parentfeature="RecommenderComponent"/>
+    <association xsi:type="FM:MandatoryAssociation" childfeature="DatasetComponent" parentfeature="RecommenderComponent"/>
+    <association xsi:type="FM:MandatoryAssociation" childfeature="PreprocessingComponent" parentfeature="RecommenderComponent"/>
+    <association xsi:type="FM:MandatoryAssociation" childfeature="EvaluationComponent" parentfeature="RecommenderComponent"/>
+    <association xsi:type="FM:MandatoryAssociation" childfeature="PresentationComponent" parentfeature="RecommenderComponent"/>
+    <association xsi:type="FM:OptionalAssociation" childfeature="FeedbackComponent" parentfeature="RecommenderComponent"/>
+    <subfeatures name="AlgorithmComponent">
+      <association xsi:type="FM:OptionalAssociation" childfeature="CollaborativeFiltering" parentfeature="AlgorithmComponent"/>
+      <subfeatures name="CollaborativeFiltering">
+        <association xsi:type="FM:OptionalAssociation" childfeature="ItemBased" parentfeature="CollaborativeFiltering"/>
+        <subfeatures name="ItemBased"/>
+      </subfeatures>
+    </subfeatures>
+    <subfeatures name="DatasetComponent">
+      <association xsi:type="FM:MandatoryAssociation" childfeature="DataStructure" parentfeature="DatasetComponent"/>
+      <association xsi:type="FM:MandatoryAssociation" childfeature="DatasetType" parentfeature="DatasetComponent"/>
+      <subfeatures name="DataStructure">
+        <association xsi:type="FM:OptionalAssociation" childfeature="Matrix" parentfeature="DataStructure"/>
+        <subfeatures name="Matrix"/>
+      </subfeatures>
+      <subfeatures name="DatasetType">
+        <association xsi:type="FM:OptionalAssociation" childfeature="SupervisedDataset" parentfeature="DatasetType"/>
+        <subfeatures name="SupervisedDataset"/>
+      </subfeatures>
+    </subfeatures>
+    <subfeatures name="PreprocessingComponent">
+      <association xsi:type="FM:OptionalAssociation" childfeature="FeatureScaling" parentfeature="PreprocessingComponent"/>
+      <association xsi:type="FM:OptionalAssociation" childfeature="Vectorization" parentfeature="PreprocessingComponent"/>
+      <association xsi:type="FM:OptionalAssociation" childfeature="DuplicatesRemoval" parentfeature="PreprocessingComponent"/>
+      <association xsi:type="FM:OptionalAssociation" childfeature="MissingDataManipulation" parentfeature="PreprocessingComponent"/>
+      <association xsi:type="FM:OptionalAssociation" childfeature="Normalization" parentfeature="PreprocessingComponent"/>
+      <subfeatures name="FeatureScaling"/>
+      <subfeatures name="Vectorization"/>
+      <subfeatures name="DuplicatesRemoval"/>
+      <subfeatures name="MissingDataManipulation"/>
+      <subfeatures name="Normalization"/>
+    </subfeatures>
+    <subfeatures name="EvaluationComponent">
+      <association xsi:type="FM:OptionalAssociation" childfeature="CrossFold" parentfeature="EvaluationComponent"/>
+      <association xsi:type="FM:OptionalAssociation" childfeature="UserStudy" parentfeature="EvaluationComponent"/>
+      <subfeatures name="CrossFold">
+        <association xsi:type="FM:OptionalAssociation" childfeature="RandomSpltting" parentfeature="CrossFold"/>
+        <subfeatures name="RandomSpltting"/>
+      </subfeatures>
+      <subfeatures name="UserStudy">
+        <association xsi:type="FM:OptionalAssociation" childfeature="ControlledExperiment" parentfeature="UserStudy"/>
+        <subfeatures name="ControlledExperiment"/>
+      </subfeatures>
+    </subfeatures>
+    <subfeatures name="PresentationComponent">
+      <association xsi:type="FM:OptionalAssociation" childfeature="RawOutcomes" parentfeature="PresentationComponent"/>
+      <subfeatures name="RawOutcomes"/>
+    </subfeatures>
+    <subfeatures name="FeedbackComponent">
+      <association xsi:type="FM:OptionalAssociation" childfeature="FeedBackType" parentfeature="FeedbackComponent"/>
+      <association xsi:type="FM:OptionalAssociation" childfeature="UserBehaviourHandler" parentfeature="FeedbackComponent"/>
+      <association xsi:type="FM:OptionalAssociation" childfeature="LearningToRank" parentfeature="FeedbackComponent"/>
+      <association xsi:type="FM:OptionalAssociation" childfeature="FeedbackBased" parentfeature="FeedbackComponent"/>
+      <subfeatures name="FeedBackType">
+        <association xsi:type="FM:OptionalAssociation" childfeature="Hybrid" parentfeature="FeedBackType"/>
+        <subfeatures name="Hybrid"/>
+      </subfeatures>
+      <subfeatures name="UserBehaviourHandler">
+        <association xsi:type="FM:OptionalAssociation" childfeature="NavigationAndBrowsing" parentfeature="UserBehaviourHandler"/>
+        <association xsi:type="FM:OptionalAssociation" childfeature="ShoppingBehaviour" parentfeature="UserBehaviourHandler"/>
+        <association xsi:type="FM:OptionalAssociation" childfeature="Social" parentfeature="UserBehaviourHandler"/>
+        <association xsi:type="FM:OptionalAssociation" childfeature="Ubiquitous" parentfeature="UserBehaviourHandler"/>
+        <subfeatures name="NavigationAndBrowsing">
+          <association xsi:type="FM:OptionalAssociation" childfeature="DwelingTime" parentfeature="NavigationAndBrowsing"/>
+          <association xsi:type="FM:OptionalAssociation" childfeature="Browsing" parentfeature="NavigationAndBrowsing"/>
+          <association xsi:type="FM:OptionalAssociation" childfeature="WebUsageMining" parentfeature="NavigationAndBrowsing"/>
+          <subfeatures name="DwelingTime"/>
+          <subfeatures name="Browsing"/>
+          <subfeatures name="WebUsageMining"/>
+        </subfeatures>
+        <subfeatures name="ShoppingBehaviour">
+          <association xsi:type="FM:OptionalAssociation" childfeature="ShopVisitor" parentfeature="ShoppingBehaviour"/>
+          <subfeatures name="ShopVisitor"/>
+        </subfeatures>
+        <subfeatures name="Social">
+          <association xsi:type="FM:OptionalAssociation" childfeature="PostsAndComments" parentfeature="Social"/>
+          <subfeatures name="PostsAndComments"/>
+        </subfeatures>
+        <subfeatures name="Ubiquitous"/>
+      </subfeatures>
+      <subfeatures name="LearningToRank">
+        <association xsi:type="FM:OptionalAssociation" childfeature="Pointwise" parentfeature="LearningToRank"/>
+        <subfeatures name="Pointwise"/>
+      </subfeatures>
+      <subfeatures name="FeedbackBased">
+        <association xsi:type="FM:OptionalAssociation" childfeature="HybridBased" parentfeature="FeedbackBased"/>
+        <subfeatures name="HybridBased"/>
+      </subfeatures>
+    </subfeatures>
+  </feature>
+  <feature name="SupportingLibrary">
+    <association xsi:type="FM:MandatoryAssociation" childfeature="AlgorithmLibrary" parentfeature="SupportingLibrary"/>
+    <association xsi:type="FM:OptionalAssociation" childfeature="FeedbackLibrary" parentfeature="SupportingLibrary"/>
+    <association xsi:type="FM:MandatoryAssociation" childfeature="DatasetLibrary" parentfeature="SupportingLibrary"/>
+    <association xsi:type="FM:MandatoryAssociation" childfeature="PresentationLibrary" parentfeature="SupportingLibrary"/>
+    <association xsi:type="FM:MandatoryAssociation" childfeature="EvaluationLibrary" parentfeature="SupportingLibrary"/>
+    <association xsi:type="FM:MandatoryAssociation" childfeature="PreprocessingLibrary" parentfeature="SupportingLibrary"/>
+    <subfeatures name="AlgorithmLibrary">
+      <association xsi:type="FM:OptionalAssociation" childfeature="Surprise" parentfeature="AlgorithmLibrary"/>
+      <subfeatures name="Surprise"/>
+    </subfeatures>
+    <subfeatures name="FeedbackLibrary">
+      <association xsi:type="FM:OptionalAssociation" childfeature="LightFM" parentfeature="FeedbackLibrary"/>
+      <subfeatures name="LightFM"/>
+    </subfeatures>
+    <subfeatures name="DatasetLibrary">
+      <association xsi:type="FM:OptionalAssociation" childfeature="Pandas" parentfeature="DatasetLibrary"/>
+      <association xsi:type="FM:OptionalAssociation" childfeature="Numpy" parentfeature="DatasetLibrary"/>
+      <subfeatures name="Pandas"/>
+      <subfeatures name="Numpy"/>
+    </subfeatures>
+    <subfeatures name="PresentationLibrary">
+      <association xsi:type="FM:OptionalAssociation" childfeature="WebLibrary" parentfeature="PresentationLibrary"/>
+      <subfeatures name="WebLibrary">
+        <association xsi:type="FM:OptionalAssociation" childfeature="Flask" parentfeature="WebLibrary"/>
+        <subfeatures name="Flask"/>
+      </subfeatures>
+    </subfeatures>
+    <subfeatures name="EvaluationLibrary">
+      <association xsi:type="FM:OptionalAssociation" childfeature="SurpriseSplit" parentfeature="EvaluationLibrary"/>
+      <subfeatures name="SurpriseSplit">
+        <association xsi:type="FM:OptionalAssociation" childfeature="SurpriseRandomSplit" parentfeature="SurpriseSplit"/>
+        <subfeatures name="SurpriseRandomSplit"/>
+      </subfeatures>
+    </subfeatures>
+    <subfeatures name="PreprocessingLibrary">
+      <association xsi:type="FM:OptionalAssociation" childfeature="SurprisePreprocessing" parentfeature="PreprocessingLibrary"/>
+      <subfeatures name="SurprisePreprocessing"/>
+    </subfeatures>
+  </feature>
+</FM:RootFeature>

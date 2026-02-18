@@ -2,9 +2,10 @@
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
   <viewpoint:DAnalysis uid="_m4c_ACwWEfCPzpjp2WHhEg" selectedViews="_m5SsgCwWEfCPzpjp2WHhEg _NAiF8DDQEfChZcWISlzDeg _NA22EDDQEfChZcWISlzDeg _NBu_0DDQEfChZcWISlzDeg" version="15.4.1.202403191723">
     <semanticResources>lEV4REC.ecore</semanticResources>
+    <semanticResources>lEV4RECv1.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_m5SsgCwWEfCPzpjp2WHhEg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_bV9O0AxHEfGVOMaIBplrKg" name="lowcoders class diagram" repPath="#_bV7ZoAxHEfGVOMaIBplrKg" changeId="1771363790899">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_bV9O0AxHEfGVOMaIBplrKg" name="lowcoders class diagram" repPath="#_bV7ZoAxHEfGVOMaIBplrKg" changeId="1771429549289">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="lEV4REC.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -4992,7 +4993,9 @@
       <target xmi:type="ecore:EReference" href="lEV4REC.ecore#//RSModel/recommendationSystem"/>
       <semanticElements xmi:type="ecore:EReference" href="lEV4REC.ecore#//RSModel/recommendationSystem"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_bohlmQxHEfGVOMaIBplrKg" description="_bohllgxHEfGVOMaIBplrKg" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_bohlmwxHEfGVOMaIBplrKg" showIcon="false"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_bohlmwxHEfGVOMaIBplrKg" showIcon="false">
+          <labelFormat>bold</labelFormat>
+        </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_bohlmgxHEfGVOMaIBplrKg" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>
         </endLabelStyle>
@@ -5096,7 +5099,9 @@
       <target xmi:type="ecore:EReference" href="lEV4REC.ecore#//VSCodePlugin/handler"/>
       <semanticElements xmi:type="ecore:EReference" href="lEV4REC.ecore#//VSCodePlugin/handler"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_bojaugxHEfGVOMaIBplrKg" description="_bojatwxHEfGVOMaIBplrKg" routingStyle="manhattan" strokeColor="0,0,0">
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_bojavAxHEfGVOMaIBplrKg" showIcon="false"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_bojavAxHEfGVOMaIBplrKg" showIcon="false">
+          <labelFormat>bold</labelFormat>
+        </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_bojauwxHEfGVOMaIBplrKg" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>
         </endLabelStyle>
@@ -5118,7 +5123,9 @@
       <target xmi:type="ecore:EReference" href="lEV4REC.ecore#//SupervisedDataset/dependatVariable"/>
       <semanticElements xmi:type="ecore:EReference" href="lEV4REC.ecore#//SupervisedDataset/dependatVariable"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_bojayAxHEfGVOMaIBplrKg" description="_bohllgxHEfGVOMaIBplrKg" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_bojaygxHEfGVOMaIBplrKg" showIcon="false"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_bojaygxHEfGVOMaIBplrKg" showIcon="false">
+          <labelFormat>bold</labelFormat>
+        </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_bojayQxHEfGVOMaIBplrKg" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>
         </endLabelStyle>
@@ -5129,7 +5136,9 @@
       <target xmi:type="ecore:EReference" href="lEV4REC.ecore#//Variable/dataSource"/>
       <semanticElements xmi:type="ecore:EReference" href="lEV4REC.ecore#//Variable/dataSource"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_bojazwxHEfGVOMaIBplrKg" description="_bohllgxHEfGVOMaIBplrKg" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_boja0QxHEfGVOMaIBplrKg" showIcon="false"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_boja0QxHEfGVOMaIBplrKg" showIcon="false">
+          <labelFormat>bold</labelFormat>
+        </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_boja0AxHEfGVOMaIBplrKg" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>
         </endLabelStyle>

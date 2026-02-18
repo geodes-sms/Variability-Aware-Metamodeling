@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+	<feature automatic="selected" name="RecommenderSpecification"/>
+	<feature automatic="selected" name="RecommenderComponent"/>
+	<feature automatic="selected" name="AlgorithmComponent"/>
+	<feature automatic="selected" name="CollaborativeFiltering"/>
+	<feature manual="selected" name="ItemBased"/>
+	<feature automatic="unselected" name="UserBased"/>
+	<feature automatic="unselected" name="ContentBased"/>
+	<feature automatic="unselected" name="Classification"/>
+	<feature automatic="unselected" name="SupervisedAlgorithm"/>
+	<feature automatic="unselected" name="SVM"/>
+	<feature automatic="unselected" name="MNB"/>
+	<feature automatic="unselected" name="SupervisedNeuralNetwork"/>
+	<feature automatic="unselected" name="SupervisedRNN"/>
+	<feature automatic="unselected" name="SupervisedDNN"/>
+	<feature automatic="unselected" name="SupervisedFeedForwardNN"/>
+	<feature automatic="unselected" name="SupervisedGNN"/>
+	<feature automatic="unselected" name="BayesianNN"/>
+	<feature automatic="unselected" name="SupervisedCNN"/>
+	<feature automatic="unselected" name="DecisionTree"/>
+	<feature automatic="unselected" name="UnsupervisedAlgorithm"/>
+	<feature automatic="unselected" name="KNeighborhood"/>
+	<feature automatic="unselected" name="HierarchicalClustering"/>
+	<feature automatic="unselected" name="UnsupervisedNeuralNetwork"/>
+	<feature automatic="unselected" name="UnsupervisedRNN"/>
+	<feature automatic="unselected" name="UnsupervisedDNN"/>
+	<feature automatic="unselected" name="UnsupervisedFeedForwardNN"/>
+	<feature automatic="unselected" name="UnsupervisedGNN"/>
+	<feature automatic="unselected" name="UnsupervisedCNN"/>
+	<feature automatic="unselected" name="MiningAlgorithm"/>
+	<feature automatic="unselected" name="AssociationRuleMining"/>
+	<feature automatic="unselected" name="FrequentPattern"/>
+	<feature automatic="unselected" name="Apriori"/>
+	<feature automatic="unselected" name="FP-growth"/>
+	<feature automatic="selected" name="DatasetComponent"/>
+	<feature automatic="selected" name="DataStructure"/>
+	<feature automatic="unselected" name="TextualData"/>
+	<feature automatic="unselected" name="GraphData"/>
+	<feature automatic="selected" name="Matrix"/>
+	<feature automatic="unselected" name="ARFF"/>
+	<feature automatic="unselected" name="Tree"/>
+	<feature automatic="selected" name="DatasetType"/>
+	<feature automatic="unselected" name="UnsupervisedDataset"/>
+	<feature manual="selected" name="SupervisedDataset"/>
+	<feature automatic="selected" name="PreprocessingComponent"/>
+	<feature automatic="unselected" name="NLP"/>
+	<feature manual="selected" name="FeatureScaling"/>
+	<feature manual="selected" name="Vectorization"/>
+	<feature manual="selected" name="DuplicatesRemoval"/>
+	<feature manual="selected" name="MissingDataManipulation"/>
+	<feature manual="selected" name="Normalization"/>
+	<feature automatic="selected" name="EvaluationComponent"/>
+	<feature automatic="selected" manual="selected" name="CrossFold"/>
+	<feature automatic="unselected" name="SplittingKfold"/>
+	<feature manual="selected" name="RandomSpltting"/>
+	<feature automatic="selected" name="UserStudy"/>
+	<feature manual="selected" name="ControlledExperiment"/>
+	<feature automatic="unselected" name="CrossoverDesign"/>
+	<feature automatic="unselected" name="LikertScaleQuetionairre"/>
+	<feature automatic="unselected" name="Trust"/>
+	<feature automatic="unselected" name="SystemDesign"/>
+	<feature automatic="unselected" name="Competence"/>
+	<feature automatic="unselected" name="UserIntention"/>
+	<feature automatic="selected" name="PresentationComponent"/>
+	<feature automatic="unselected" name="WebInterface"/>
+	<feature automatic="unselected" name="IDEPlugin"/>
+	<feature manual="selected" name="RawOutcomes"/>
+	<feature automatic="selected" manual="selected" name="FeedbackComponent"/>
+	<feature automatic="selected" name="FeedBackType"/>
+	<feature automatic="unselected" name="Implicit"/>
+	<feature automatic="unselected" name="Direct"/>
+	<feature automatic="unselected" name="Examine"/>
+	<feature automatic="unselected" name="Retain"/>
+	<feature automatic="unselected" name="Reference"/>
+	<feature automatic="unselected" name="Annotate"/>
+	<feature automatic="unselected" name="Indirect"/>
+	<feature automatic="unselected" name="FeatureRelated"/>
+	<feature automatic="unselected" name="UserRelated"/>
+	<feature automatic="selected" manual="selected" name="Hybrid"/>
+	<feature automatic="unselected" name="Additive"/>
+	<feature automatic="unselected" name="Explicit"/>
+	<feature automatic="unselected" name="TransactionModel"/>
+	<feature automatic="unselected" name="Critique"/>
+	<feature automatic="unselected" name="Unit"/>
+	<feature automatic="unselected" name="Compund"/>
+	<feature automatic="unselected" name="Ratings"/>
+	<feature automatic="unselected" name="Numerical"/>
+	<feature automatic="unselected" name="Ordinal"/>
+	<feature automatic="unselected" name="Binary"/>
+	<feature automatic="unselected" name="Unary"/>
+	<feature automatic="selected" name="UserBehaviourHandler"/>
+	<feature automatic="selected" manual="selected" name="NavigationAndBrowsing"/>
+	<feature manual="selected" name="DwelingTime"/>
+	<feature name="MonitoringActions"/>
+	<feature manual="selected" name="Browsing"/>
+	<feature manual="selected" name="WebUsageMining"/>
+	<feature automatic="selected" name="ShoppingBehaviour"/>
+	<feature name="BasketAnalisys"/>
+	<feature manual="selected" name="ShopVisitor"/>
+	<feature name="NavigationLog"/>
+	<feature automatic="selected" manual="selected" name="Social"/>
+	<feature name="TagsAndBookmarks"/>
+	<feature manual="selected" name="PostsAndComments"/>
+	<feature name="FriendshipRelations"/>
+	<feature name="StructuringObjects"/>
+	<feature name="Media"/>
+	<feature manual="selected" name="Ubiquitous"/>
+	<feature automatic="selected" name="LearningToRank"/>
+	<feature manual="selected" name="Pointwise"/>
+	<feature automatic="unselected" name="Pairwise"/>
+	<feature automatic="unselected" name="Listwise"/>
+	<feature automatic="selected" name="FeedbackBased"/>
+	<feature automatic="unselected" name="ImpicitBased"/>
+	<feature automatic="unselected" name="PositiveOnlyProblems"/>
+	<feature automatic="unselected" name="AMAN"/>
+	<feature automatic="unselected" name="AMAU"/>
+	<feature automatic="unselected" name="OneClassCollaborative"/>
+	<feature automatic="unselected" name="WALS"/>
+	<feature automatic="unselected" name="SLASENS"/>
+	<feature automatic="unselected" name="BayesianPersonalizedRaniking"/>
+	<feature automatic="unselected" name="CLiMF"/>
+	<feature automatic="unselected" name="ONESVM"/>
+	<feature automatic="unselected" name="SocialAlgorithm"/>
+	<feature automatic="unselected" name="NeighborhoodModel"/>
+	<feature automatic="unselected" name="AsymmetricSVD"/>
+	<feature automatic="unselected" name="SVDplusplus"/>
+	<feature automatic="unselected" name="IntegratedModel"/>
+	<feature automatic="unselected" name="ExplicitBased"/>
+	<feature automatic="unselected" name="PreferenceBased"/>
+	<feature automatic="unselected" name="AutomaticCalibration"/>
+	<feature manual="selected" name="HybridBased"/>
+	<feature automatic="selected" name="SupportingLibrary"/>
+	<feature automatic="selected" name="AlgorithmLibrary"/>
+	<feature automatic="unselected" name="Sklearn"/>
+	<feature automatic="selected" name="Surprise"/>
+	<feature automatic="unselected" name="PyTorch"/>
+	<feature automatic="unselected" name="TensorFlow"/>
+	<feature automatic="selected" name="FeedbackLibrary"/>
+	<feature manual="selected" name="LightFM"/>
+	<feature automatic="selected" name="DatasetLibrary"/>
+	<feature manual="selected" name="Pandas"/>
+	<feature manual="selected" name="Numpy"/>
+	<feature automatic="selected" name="PresentationLibrary"/>
+	<feature automatic="selected" name="WebLibrary"/>
+	<feature manual="selected" name="Flask"/>
+	<feature automatic="unselected" name="Spring"/>
+	<feature automatic="unselected" name="IDELibrary"/>
+	<feature automatic="unselected" name="EclipsePlugin"/>
+	<feature automatic="unselected" name="IntellijPlugin"/>
+	<feature automatic="unselected" name="VisualizationLibrary"/>
+	<feature automatic="unselected" name="MathplotLib"/>
+	<feature automatic="unselected" name="Seaborn"/>
+	<feature automatic="selected" name="EvaluationLibrary"/>
+	<feature automatic="unselected" name="SklearnSplit"/>
+	<feature automatic="unselected" name="SKCrossFold"/>
+	<feature automatic="unselected" name="SKRandomSplit"/>
+	<feature automatic="selected" name="SurpriseSplit"/>
+	<feature automatic="unselected" name="SurpriseCrossFold"/>
+	<feature automatic="selected" name="SurpriseRandomSplit"/>
+	<feature automatic="selected" name="PreprocessingLibrary"/>
+	<feature name="PandasPreprocessing"/>
+	<feature automatic="unselected" name="SklearnPreprocessing"/>
+	<feature automatic="selected" name="SurprisePreprocessing"/>
+	<feature name="NLTK"/>
+</configuration>
