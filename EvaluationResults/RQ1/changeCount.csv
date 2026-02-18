@@ -8,6 +8,6 @@ Relis,RMM, FMM,0 ,0 ,2
 vcsfeatures,UMM, PMM,36, 41, 14 
 vcsfeatures,PMM, RMM,14, 0, 0 
 vcsfeatures,RMM, FMM,0, 0, 2 
-leve4rec,UMM, PMM,X, X, X 
-leve4rec,PMM, RMM,X, X, X 
-leve4rec,RMM, FMM,X, X, X
+leve4rec,UMM, PMM,26, 89, 62 
+leve4rec,PMM, RMM,289, 5, 109 
+leve4rec,RMM, FMM,0, 0, 0
