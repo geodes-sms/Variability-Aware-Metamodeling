@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: lev4rec_KNN
-Bundle-SymbolicName: lev4rec_KNN; singleton:=true
+Bundle-Name: lev4rec_lowcoders
+Bundle-SymbolicName: lev4rec_lowcoders; singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.core.runtime
