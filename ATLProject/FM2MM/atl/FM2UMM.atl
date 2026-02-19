@@ -56,7 +56,7 @@ rule Feature2Class {
                         Sequence {}
                     endif
                 ),
-            eSuperTypes <- f.inheritsFrom()  -- now safe
+            eSuperTypes <- f.inheritsFrom()
         )
 }
 

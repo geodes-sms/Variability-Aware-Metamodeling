@@ -7,7 +7,7 @@
     <semanticResources>lev4recRMM.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_O7hOgAzjEfGrM4GQnmmYpg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_0vZr0A0iEfGrM4GQnmmYpg" name="lev4rec FMM" repPath="#_0vX2oA0iEfGrM4GQnmmYpg" changeId="1771458002799">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_0vZr0A0iEfGrM4GQnmmYpg" name="lev4rec FMM" repPath="#_0vX2oA0iEfGrM4GQnmmYpg" changeId="1771531030959">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="lev4rec.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -4908,7 +4908,9 @@
       <target xmi:type="ecore:EReference" href="lev4rec.ecore#//Dataset/datasettype"/>
       <semanticElements xmi:type="ecore:EReference" href="lev4rec.ecore#//Dataset/datasettype"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_1A3PSg0iEfGrM4GQnmmYpg" description="_1A3PRw0iEfGrM4GQnmmYpg" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_1A3PTA0iEfGrM4GQnmmYpg" showIcon="false"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_1A3PTA0iEfGrM4GQnmmYpg" showIcon="false">
+          <labelFormat>bold</labelFormat>
+        </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_1A3PSw0iEfGrM4GQnmmYpg" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>
         </endLabelStyle>
@@ -4953,7 +4955,9 @@
       <target xmi:type="ecore:EReference" href="lev4rec.ecore#//DatasetType/superviseddataset"/>
       <semanticElements xmi:type="ecore:EReference" href="lev4rec.ecore#//DatasetType/superviseddataset"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_1A32Xw0iEfGrM4GQnmmYpg" description="_1A3PRw0iEfGrM4GQnmmYpg" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_1A32YQ0iEfGrM4GQnmmYpg" showIcon="false"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_1A32YQ0iEfGrM4GQnmmYpg" showIcon="false">
+          <labelFormat>bold</labelFormat>
+        </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_1A32YA0iEfGrM4GQnmmYpg" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>
         </endLabelStyle>
@@ -4964,7 +4968,9 @@
       <target xmi:type="ecore:EReference" href="lev4rec.ecore#//SupervisedDataset/dependantVariable"/>
       <semanticElements xmi:type="ecore:EReference" href="lev4rec.ecore#//SupervisedDataset/dependantVariable"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_1A4dYQ0iEfGrM4GQnmmYpg" description="_1A3PRw0iEfGrM4GQnmmYpg" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_1A4dYw0iEfGrM4GQnmmYpg" showIcon="false"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_1A4dYw0iEfGrM4GQnmmYpg" showIcon="false">
+          <labelFormat>bold</labelFormat>
+        </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_1A4dYg0iEfGrM4GQnmmYpg" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>
         </endLabelStyle>
@@ -5031,7 +5037,9 @@
       <target xmi:type="ecore:EReference" href="lev4rec.ecore#//Variable/dataSource"/>
       <semanticElements xmi:type="ecore:EReference" href="lev4rec.ecore#//Variable/dataSource"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_1A5rjw0iEfGrM4GQnmmYpg" description="_1A3PRw0iEfGrM4GQnmmYpg" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_1A5rkQ0iEfGrM4GQnmmYpg" showIcon="false"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_1A5rkQ0iEfGrM4GQnmmYpg" showIcon="false">
+          <labelFormat>bold</labelFormat>
+        </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_1A5rkA0iEfGrM4GQnmmYpg" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>
         </endLabelStyle>
@@ -5087,7 +5095,9 @@
       <target xmi:type="ecore:EReference" href="lev4rec.ecore#//RSModel/recommendationSystem"/>
       <semanticElements xmi:type="ecore:EReference" href="lev4rec.ecore#//RSModel/recommendationSystem"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_1A65qA0iEfGrM4GQnmmYpg" description="_1A3PRw0iEfGrM4GQnmmYpg" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_1A65qg0iEfGrM4GQnmmYpg" showIcon="false"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_1A65qg0iEfGrM4GQnmmYpg" showIcon="false">
+          <labelFormat>bold</labelFormat>
+        </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_1A65qQ0iEfGrM4GQnmmYpg" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>
         </endLabelStyle>
@@ -5202,7 +5212,9 @@
       <target xmi:type="ecore:EReference" href="lev4rec.ecore#//VSCodePlugin/handler"/>
       <semanticElements xmi:type="ecore:EReference" href="lev4rec.ecore#//VSCodePlugin/handler"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_1A8u3g0iEfGrM4GQnmmYpg" description="_1A8u2w0iEfGrM4GQnmmYpg" routingStyle="manhattan" strokeColor="0,0,0">
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_1A8u4A0iEfGrM4GQnmmYpg" showIcon="false"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_1A8u4A0iEfGrM4GQnmmYpg" showIcon="false">
+          <labelFormat>bold</labelFormat>
+        </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_1A8u3w0iEfGrM4GQnmmYpg" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>
         </endLabelStyle>
