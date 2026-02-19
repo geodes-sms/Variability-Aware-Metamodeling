@@ -3,9 +3,9 @@ package metamodelAnalyzer
 import java.io.File
 
     fun main() {
-        val outputPath = "results/metamodels.csv"
+        val outputPath = "analyzer/results/metamodels.csv"
         exportEcoreMetricsToCSV(
-            "metamodels",
+            "analyzer/metamodels",
             outputPath
         )
         println("Results saved at: $outputPath")

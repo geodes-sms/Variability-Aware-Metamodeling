@@ -1,13 +1,23 @@
-metamodel,source, target, adds, removes, mod
-Relis,empty, classic,130,0,0
-leve4rec,empty, classic,436,0,0
-vcsfeatures,empty, classic,84,0,0
-Relis,UMM, PMM,23 ,28 ,24 
-Relis,PMM, RMM,29 ,0 ,1 
-Relis,RMM, FMM,0 ,0 ,2 
-vcsfeatures,UMM, PMM,36, 41, 14 
-vcsfeatures,PMM, RMM,14, 0, 0 
-vcsfeatures,RMM, FMM,0, 0, 2 
-leve4rec,UMM, PMM,26, 89, 62 
-leve4rec,PMM, RMM,289, 5, 109 
-leve4rec,RMM, FMM,0, 0, 0
+metamodel,
+Classic_add,Classic_rem,Classic_mod,
+PMM_add,PMM_rem,PMM_mod,
+RMM_add,RMM_rem,RMM_mod,
+FMM_add,FMM_rem,FMM_mod
+
+Relis,
+130,0,0,
+23,28,24,
+29,0,1,
+0,0,2
+
+LEV4REC,
+436,0,0,
+26,89,62,
+289,5,109,
+0,0,0
+
+VCSFeatures,
+84,0,0,
+36,41,14,
+14,0,0,
+0,0,2

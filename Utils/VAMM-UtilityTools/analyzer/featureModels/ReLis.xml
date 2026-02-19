@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+	<properties>
+		<graphics key="autolayoutconstraints" value="false"/>
+		<graphics key="legendautolayout" value="true"/>
+		<graphics key="showconstraints" value="true"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="horizontal"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<graphics key="layoutalgorithm" value="1"/>
+	</properties>
+	<struct>
+		<and mandatory="true" name="ReLiS">
+			<and name="Screening">
+				<graphics key="collapsed" value="false"/>
+				<or abstract="true" mandatory="true" name="Criteria">
+					<feature name="Inclusion"/>
+					<feature name="Exclusion"/>
+				</or>
+				<and name="MultipleReviewers">
+					<and abstract="true" mandatory="true" name="Conflict">
+						<alt abstract="true" name="ConflictType">
+							<feature name="IncludeExclude"/>
+							<feature name="ExclusionCriteria"/>
+						</alt>
+						<alt abstract="true" name="ConflictResolution">
+							<feature name="Majority"/>
+							<feature name="Unanimous"/>
+						</alt>
+					</and>
+				</and>
+				<and name="Validation">
+					<alt abstract="true" mandatory="true" name="AssignmentMode">
+						<feature name="Normal"/>
+						<feature name="Veto"/>
+						<feature name="Info"/>
+					</alt>
+				</and>
+				<and mandatory="true" name="Phase">
+					<or abstract="true" mandatory="true" name="Field">
+						<feature name="Title"/>
+						<feature name="Abstract"/>
+						<feature name="Paper"/>
+						<feature name="Author"/>
+						<feature name="Reference"/>
+					</or>
+				</and>
+			</and>
+			<and name="QA">
+				<feature mandatory="true" name="Question"/>
+				<feature mandatory="true" name="Answer"/>
+			</and>
+			<and name="DataExtraction">
+				<and abstract="true" name="Category">
+					<and abstract="true" mandatory="true" name="CategoryType">
+						<or abstract="true" name="FreeCategory">
+							<feature name="Date"/>
+							<feature name="Note"/>
+							<alt abstract="true" name="SimpleType">
+								<feature name="Decimal"/>
+								<feature name="String"/>
+								<feature name="Text"/>
+								<feature name="Number"/>
+								<feature name="Boolean"/>
+							</alt>
+						</or>
+						<feature name="StaticCategory"/>
+						<feature name="IndependentDynamicCategory"/>
+						<feature name="DependentDynamicCategory"/>
+					</and>
+					<feature name="Subcategories"/>
+					<feature name="MandatoryCategory"/>
+					<feature name="Multivalued"/>
+					<feature name="InitialValue"/>
+				</and>
+			</and>
+			<and name="Synthesis">
+				<or name="Chart">
+					<or abstract="true" name="ChartType">
+						<feature name="Var"/>
+						<feature name="Pie"/>
+						<feature name="Line"/>
+					</or>
+					<feature name="CompareGraph"/>
+				</or>
+			</and>
+		</and>
+	</struct>
+</featureModel>
