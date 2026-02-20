@@ -64,7 +64,8 @@ rule Feature2Class {
 -- helper that returns a sequence of parent EClasses
 helper context FM!Feature def : inheritsFrom() : Sequence(UMM!EClass) =
     FM!Association.allInstances()
-            ->select(a | a.childfeature = self and a.parentfeature.abstract)
+            ->select(a | a.childfeature = self and a.parentfeature.abstract  
+            	and not a.parentfeature.oclIsTypeOf(FM!RootFeature))
             ->collect(a | a.findParentClass());
 
 lazy rule LeafParentAnnotationFromFeature { -- for leaf features we only add the parent as annotation for now
@@ -97,11 +98,12 @@ helper context FM!Feature def : getAbstractParentName() : String =
 
 
 -- Rule 4: Subfeature → Composition (Uncertainty on multiplicity), also Rule 8.1
--- Parent feature is concrete, child is not a leaf
+-- Parent feature is concrete or root, child is not a leaf
 rule SubFeature2Composition {
     from
         ass : FM!Association (
-            not ass.parentfeature.abstract
+    		not ass.parentfeature.abstract
+        	or ass.parentfeature.oclIsTypeOf(FM!RootFeature) -- root features are transformed into concrete classes 
         )
     to
         ref : UMM!EReference (
@@ -125,6 +127,7 @@ lazy rule AddInheritance {
     from
         ass : FM!Association (
             ass.parentfeature.abstract
+			and not ass.parentfeature.oclIsTypeOf(FM!RootFeature)
         )
     to
         c : UMM!EClass (

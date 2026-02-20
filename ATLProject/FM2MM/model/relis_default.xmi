@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<FM:RootFeature xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:FM="http://www.example.org/FM" name="ReLiS">
+<FM:RootFeature xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:FM="http://www.example.org/FM" name="ReLiS" abstract="true">
   <association xsi:type="FM:OptionalAssociation" childfeature="Screening" parentfeature="ReLiS"/>
   <association xsi:type="FM:OptionalAssociation" childfeature="QA" parentfeature="ReLiS"/>
   <association xsi:type="FM:OptionalAssociation" childfeature="DataExtraction" parentfeature="ReLiS"/>

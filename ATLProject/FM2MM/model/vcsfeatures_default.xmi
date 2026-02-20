@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<FM:RootFeature xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:FM="http://www.example.org/FM" name="VCSFeatures">
+<FM:RootFeature xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:FM="http://www.example.org/FM" name="VCSFeatures" abstract="true">
   <association xsi:type="FM:MandatoryAssociation" childfeature="Commands" parentfeature="VCSFeatures"/>
   <association xsi:type="FM:MandatoryAssociation" childfeature="History" parentfeature="VCSFeatures"/>
   <association xsi:type="FM:MandatoryAssociation" childfeature="CollaborationStyle" parentfeature="VCSFeatures"/>
