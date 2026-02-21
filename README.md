@@ -1,9 +1,62 @@
-# FeatureOrientedMetamodelingPackage
-This repository contains all the information for the research paper realized by M.Sc. Hanz Schepens and Prof. Eugene Syriani.
+# Replication Package – MetaVOLE
 
-All the metamodels, feature models, model transformations and examples are included in this repository. 
+This repository contains the artifacts required to replicate the results presented in the paper:
 
-The feature models were realized with FeatureIDE (version v3.11.1): https://featureide.github.io/
-The metamodels were realized with the Eclipse IDE (Version: 2024-09 (4.33.0), Build id: 20240905-0614): https://eclipseide.org/
+> **MetaVOLE: Variability-Oriented Engineering of DSML Families**
 
-We made 2 files for our model-to-model transformation, one is for the basic rule set with the possibility to enable the optional rule 6 a) and the second one for the enumeration rule 2 a). We did two separate files because of how they vary in their matched rules. They cannot be concurrent within the same file, otherwise they would overlap and the engine would not know which rule to pick. Perhaps with other transformation engines this would not be a problem.
+The package includes feature models, ATL transformations, generated metamodels, evaluation results, and supporting utilities.
+
+---
+
+## Structure
+
+The root directory contains the following folders:
+
+### 1. `ATLProject/`
+Contains the ATL transformations implementing the MetaVOLE workflow, including:
+* FM → UMM transformations
+
+---
+
+### 2. `Feature Models/`
+Contains the Feature Models (FMs) and configurations (CFM) used in the case studies:
+* ReLiS
+* VCSFeatures
+* LEV4REC
+
+Each FM represents the variability space from which configurations (CFMs) can be selected.
+
+### 3. `Metamodels/`
+Contains:
+- Generated UMMs, PMMs, RMMs, and FMMs
+
+Contains the following subfolders:
+* FeatureIDE - Contains the project used to define the Feature IDE metamodel
+* Lev4rec - contains the Lev4rec metamodel created with the traditional approach
+* Relis - contains the Relis metamodel created with the traditional approach
+* VCSFeatures - contains the VCSFeatures metamodel created with the traditional approach
+* VOLE- Contains the case studies using our principle
+    * subfolders per case study
+        * inside these subfolders, the .ecore files for the UMM, PMM, RMM, and FMM can be found inside the ```models``` folder. Notice that the default .ecore file for the project is the FMM, with other files being a copy of the previous versions (UMM, PMM, and RMM)
+
+---
+
+### 4. `EvaluationResults/`
+Contains:
+- Metrics collected during evaluation for RQ2
+
+---
+
+### 5. `Utils/`
+Contains supporting tools used in the evaluation:
+* Check the README file inside this folder for details
+
+These utilities are not required to understand the approach but are necessary to reproduce the evaluation results.
+
+
+## Requirements
+
+* Eclipse Modeling Framework (EMF)
+* ATL (Atlas Transformation Language)
+* Java 11+ (recommended) for the utility tools
+* EMFCompare (optional, for artifact differencing and merging)
